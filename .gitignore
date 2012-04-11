@@ -1,0 +1,23 @@
+# Erlang
+*.beam
+*.swf
+*.dump
+
+# Java
+*.jar
+*.class
+
+
+# VIM 
+*~
+*.sw?
+
+# Mac
+.DS_Store
+
+# Nginx
+*.pid
+
+
+
+

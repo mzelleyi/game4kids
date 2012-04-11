@@ -1,0 +1,72 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+    <title> Sopa de Letras </title>
+
+    <link href="css/styles.css" rel="stylesheet" type="text/css"/>
+    <script src="js/aloader.js"></script> 
+  </head>
+  <body>
+    <!-- BEGIN html for message method -->
+    <div id="light" class="white_content">
+
+      <a href = "javascript:void(0)" onclick = "document.getElementById('light').style.display='none';document.getElementById('fade').style.display='none'">(X)</a>
+      <p> Message here </p> 
+    </div>
+    <div id="loading" class="loading">
+      <p> Cargando </p> 
+    </div>
+		<div id="fade" class="black_overlay"></div>
+    <!-- END html for message method -->
+
+    <script>
+      // function to load images and resources 
+      
+(function() {
+  document.getElementById('loading').style.display = 'block';
+  document.getElementById('fade').style.display = 'block';
+  load.css( [ 'css/styles.css'] );                                                                     
+  load.js([ 'js/utils.js', 'js/main.js' ], function() {
+    $('loading').style.display='none';
+    $('fade').style.display='none';
+    __main__();
+  });                                                                     
+})();                                                                           
+
+    </script>
+
+    <center>
+    <div id=container>
+      <h2> Sopa de Letras </h2>
+
+      <div id="render">
+      </div>
+      <div id="toolbar">
+        <ul id="listwords">
+        </ul>
+      </div>
+      <div style="clear:both"></div> 
+  <div id=footer>mAlaniz 2012
+    |<a href="#">top</a>
+  </div>
+
+
+    </div>
+
+
+    </center>
+
+    <audio src='sound/01.wav' preload='auto' id='audio_01'></audio>
+    <audio src='sound/00.wav' preload='auto' id='audio_00'></audio>
+          <audio src='sound/11.wav' preload='auto' id='audio_11'></audio>
+          <audio src='sound/12.wav' preload='auto' id='audio_12'></audio>
+          <audio src='sound/suma_mal.wav' preload='auto' id='sumamal'></audio>
+
+          <audio  loop="loop" autoplay="autoplay">
+            <source src="sound/backsound.mp3" type="audio/mpeg" />
+          </audio>
+  </body>
+</html>
+

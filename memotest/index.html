@@ -1,0 +1,326 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>mAlaniz: MemoTest</title>
+<link rel="stylesheet" type="text/css" href="styles/global.css"/>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.5.0/jquery.min.js"> </script>
+<script src="js/jquery.tmpl.min.js"></script>
+<script src="js/jQueryPreload.js"> </script>
+<script src="js/jQueryRotate.2.1.js"> </script>
+<script src="js/jquery.shuffle.js"></script>
+<script src="js/jquery.easing.1.3.js"></script>
+
+<link  href="http://fonts.googleapis.com/css?family=Bangers:regular" rel="stylesheet" type="text/css" >
+<link rel="stylesheet" type="text/css" href="styles/style.css">
+<script>	
+	var cards=[];
+	var order=0;
+	var currIndex=0;
+	var taps=0;
+	var seconds=0;
+	var score=0;
+	var goals=0;
+	var points=100;
+	var timer;
+	var is_flipping = false;
+	var valores = [0, 1, 2, 3, 4, 5, 6, 7, 0, 1, 2, 3, 4, 5, 6, 7];	
+	
+	//**********************************
+	// Init, show and start game
+	//**********************************
+	var initGame = function (){
+	   //show the content
+	   $("#gameContent").fadeIn('slow');
+	   $("#board").html("");
+	   
+	   //set card template
+	   markup="<div class='holder' id='holder${cardId}' style='display:none'><div class='card' style='background-position:${position}px' id='card${cardId}' num='${cardId}'><img class='question' src='images/xx.png'></div></div>";
+	   	//shuffle valores
+		valores = $.shuffle(valores);
+		
+		//create cards
+	    for(i=0;i<16;i++)
+		{
+           var data = { cardId: i, position: valores[i]*-128, val: valores[i] };
+	
+			$.template( "cardTemplate", markup );
+			$.tmpl( "cardTemplate", data ).appendTo( "#board" );			
+         }
+		
+		//show cards
+		currIndex=0;
+		showCard();
+	}
+	
+	var showCard = function(){
+		if(currIndex<16){			
+			$("#holder" + currIndex).fadeIn('fast',showCard);
+			currIndex++;
+		}
+		else
+		{
+			startGame();
+		}
+	}	
+	
+	var startGame = function(){
+		//enable cards click 
+		$('.card').addClass("enabled");		 		
+		$('.enabled').live('click', function(e) {                      
+			showFace($(this));
+		 });
+	  
+	  	//reset  & show counters
+		goals=0;
+		taps=0;
+		seconds=0;	  
+		score=0;		   
+		$("#tapsCount").html(taps);
+		$("#timeCount").html(seconds);
+		$("#scoreCount").html(score);
+		
+		//start the timer
+		timer=setInterval("updateSeconds()",1000);
+		
+		//play start sound
+		var audio_file1 = document.getElementById('audio_09');
+		audio_file1.play();
+		
+		//show  restart button
+		$("#restart").fadeIn('fast');
+		animRestart();		
+	}
+	
+	var updateSeconds = function(){
+		//update & show seconds
+		seconds++;
+		$("#timeCount").html(seconds);
+		
+		//if passed 10 seconds descrease the current score
+		if((seconds%10==0)&&(score>25)){
+			score-=25;
+			$("#scoreCount").html(score);
+		}
+	}
+	
+	//**********************************
+	// Show & Hide faces
+	//**********************************
+	var showFace = function (card){
+		//if is animating don't do nothing
+		if(is_flipping)
+			return
+			
+		//turn on is_flipping
+		is_flipping = true;
+		
+		//add flipped style
+		card.removeClass("enabled");
+		card.addClass("flipped");
+		
+		$('#board .enabled').addClass("waiting");		
+		$('.enabled').die('click');
+		
+		//play click sound
+		var audio_file1 = document.getElementById('audio_11');
+		audio_file1.play();
+		
+		//update & show taps
+		taps++;
+		$("#tapsCount").html(taps);
+		
+		//save card selected
+		cards[order]=card;
+		order++;      
+		
+		//rotate card selected
+		card.find("img.question").rotate({
+		  angle:0, 
+		  animateTo:360,
+		  callback: checkJugada});
+		card.find("img.question").fadeOut('slow');
+   };
+  
+	var hideFace = function (card){  
+		//turn on is_flipping			
+		card.find("img.question").fadeIn('slow');
+		card.find("img.question").rotate({
+			angle:0, 
+			animateTo:-360});            
+	};
+  
+	//**********************************
+	// Check jugada and game
+	//**********************************
+	var checkJugada = function (){         
+		if(order==2){
+			if(valores[cards[0].attr("num")]==valores[cards[1].attr("num")])
+			  { 
+				//play goal's sound
+				var audio_file1 = document.getElementById('audio_12');
+				audio_file1.play();
+				
+				//remove classes				
+				cards[0].removeClass("flipped");
+			  	cards[1].removeClass("flipped");
+				
+				//mark as player
+				$("#holder" + cards[0].attr("num")).addClass("played");
+				$("#holder" + cards[1].attr("num")).addClass("played");
+				
+				//update & show score
+				score+=points;
+				$("#scoreCount").html(score);
+				
+				//update goals
+				goals++;
+				
+				//reset order
+				order=0;
+				
+				//increase current points
+				points=150;
+				
+				//call checkfinish
+				checkFinish();
+			  }
+			else
+			  {
+			  //play error's sound
+			  var audio_file1 = document.getElementById('sumamal');
+			  audio_file1.play();
+			  
+			  //hide faces
+			  hideFace(cards[0]);
+			  hideFace(cards[1]);
+			  
+			  //remove flipped style
+			  cards[0].removeClass("flipped");
+			  cards[1].removeClass("flipped");
+			  cards[0].addClass("enabled");
+			  cards[1].addClass("enabled");
+			  
+			  //reset order
+			  order=0;
+			  
+			  //decrease current points
+			  points=100;
+			}
+		} 
+	  
+	  	//turn off is_flipping
+	  	is_flipping = false;
+		
+		//remove waiting style	  
+	  	$('#board .enabled').removeClass("waiting");		
+		//enable cards click 
+		$('.enabled').live('click', function(e) {                      
+			showFace($(this));
+		 });
+	};
+	
+	var checkFinish = function (){        
+		//if complete all couples
+		if(goals==8)
+		{
+			//stop timer
+			clearTimeout(timer);
+			
+			//play finish sound
+			var audio_file1 = document.getElementById('audio_01');
+			audio_file1.play();
+			
+			//hide cards
+		  	$(".holder").fadeOut('fast');		
+			
+			//show finish message
+			$("#kiwi").fadeIn('fast');
+			$("#greetings").animate({top: '290px' }, {queue:false, duration:600, easing:'easeOutBounce'});
+			$("#kiwi").animate({left: '550px' }, {queue:false, duration:1200, easing:'easeOutBounce'});
+		}	
+	};
+	
+	function restart(){
+			$("#kiwi").fadeOut('slow');
+			$("#greetings").animate({top: '-250px' }, {queue:false, duration:600, easing:'easeInBounce'});
+			$("#kiwi").animate({left: '1150px' }, {queue:false, duration:600, easing:'easeInBounce'});	
+			
+			$("#tapsCount").html("-");
+			$("#timeCount").html("-");
+			$("#scoreCount").html("-");
+			clearTimeout(timer);
+			initGame();	
+	}
+	
+	function animRestart(){
+			$("#restart").animate({top:"-=5px"},1000).animate({top:"+=5px"}, 1000);
+			setTimeout("animRestart()",2000);
+	}
+		
+	//**********************************
+	// Document ready: preload images and start all
+	//**********************************
+	$(document).ready(function() {
+	  $.preload([
+			"images/xx.png",
+			"images/fruits.png",
+			"images/back.jpg",
+			"images/fruits.png"
+		], {
+			loaded_all: function(loaded, total) {
+				$("#indicator").fadeOut('slow',initGame);                
+			}
+		});
+	}); 
+  
+</script>
+</head>
+<body>
+<div id='body-wrapper'>
+   <div id='outer-wrapper'>
+    <div class='span-24'>
+    <div class='span-3 last'>
+      
+      <!--div class='social-profiles'> <a expr:href='data:blog.homepageUrl + &quot;feeds/posts/default&quot;' target='_blank'><img alt='Subscribe to our RSS Feed' src='http://www.elkuni.com.ar/images/rss.png' title='Subscribe to our RSS Feed'/></a><a href='http://twitter.com/elkuni' target='_blank'><img alt='Follow Us on Twitter' src='http://www.elkuni.com.ar/images/twitter.png' title='Follow Us on Twitter'/></a><a href='http://facebook.com/eknweb' target='_blank'><img alt='Be our fan on Facebook' src='http://www.elkuni.com.ar/images/facebook.png' title='Be our fan on Facebook'/></a> </div -->
+    </div>
+  </div>
+  <div style='clear:both;'/>  <div id="content-wrapper">
+    <div id="gameWrapper">
+      <p id="indicator">
+      		<img src="images/loading.png" width="252" height="71" /><br />
+		    <img src="images/ajax-loader.gif" width="220" height="19" />
+      </p>
+      <div id="gameContent" style="display:none">
+          <div id="scoreWrapper">
+          	<h1>Memotest</h1>
+            <div id="scoreBoard">
+	            <p><span class="label">Clicks:</span><span class="counter" id="tapsCount">-</span></p>
+                <p><span class="label">Tiempo:</span><span class="counter" id="timeCount">-</span></p>
+                <p><span class="label">Puntos:</span><span class="counter" id="scoreCount">-</span></p>
+            </div>
+            <div id="restart" style="display:none;"><a href="javascript:restart()">Reiniciar<br /><img src="images/raft.png"></a></div>
+			<div id="greetings"> Ganaste!</div>
+            <div id="kiwi" style="display:none;"><img src="images/kiwi.png"></div>
+          </div>
+          <div id="board"></div>          
+          <audio src='sound/01.wav' preload='auto' id='audio_01'></audio>
+          <audio src='sound/09.wav' preload='auto' id='audio_09'></audio>
+          <audio src='sound/11.wav' preload='auto' id='audio_11'></audio>
+          <audio src='sound/12.wav' preload='auto' id='audio_12'></audio>
+          <audio src='sound/suma_mal.wav' preload='auto' id='sumamal'></audio>
+
+          <audio  loop="loop" autoplay="autoplay">
+            <source src="sound/osito.mp3" type="audio/mpeg" />
+          </audio>
+     </div>
+     <div class="clear"></div>
+  </div>  
+</div>
+<footer>
+  <div>mAlaniz 2012
+    |<a href="#">top</a>
+  </div>
+</footer>
+</body>
+</html>

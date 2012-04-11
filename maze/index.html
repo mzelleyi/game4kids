@@ -1,0 +1,317 @@
+<html>
+  <head> 
+    <title> Maze Generator </title>
+    <script>
+      function hasClass(ele,cls) {
+        return ele.className.match(new RegExp('(\\s|^)'+cls+'(\\s|$)'));
+      }
+      function addClass(ele,cls) {
+        if (!this.hasClass(ele,cls)) ele.className += " "+cls;
+      }
+      function removeClass(ele,cls) {
+        if (hasClass(ele,cls)) {
+          var reg = new RegExp('(\\s|^)'+cls+'(\\s|$)');
+          //alert(reg);
+          ele.className=ele.className.replace(reg,' ');
+          //alert(ele.className);
+        }
+      }
+
+/* BEGIN butterfly effect ;) */
+var timer_butterfly=0;
+var dombutterfly = null;
+var current = 0;
+function butterfly() {
+  dombutterfly = document.getElementsByClassName('black')[0];
+  dombutterfly.style.backgroundPosition ="-"+ String(current)+"px 0px";
+  current= (current + 50) % 200;
+}
+
+function ghost() {
+  clearInterval(timer_butterfly);
+  timer_butterfly = setInterval("butterfly()", 200)
+}
+
+/* END butterfly effect ;) */
+
+
+
+      function __main__() {
+        var xx = [
+          [[1,0,0,0],  [0,1,0,0], [0,1,0,0], [0,1,0,0], [0,1,0,0], [0,1,1,0] ], 
+          [[1,0,0,0],  [0,0,0,0], [0,0,0,0], [0,0,0,0], [0,0,0,0], [0,0,1,0] ], 
+          [[1,0,0,0],  [0,0,0,0], [0,0,0,0], [0,0,0,0], [0,0,0,0], [0,0,1,0] ], 
+          [[1,0,0,0],  [0,0,0,0], [0,0,0,0], [0,0,0,0], [0,0,0,0], [0,0,1,0] ], 
+          [[1,0,0,0],  [0,0,0,0], [0,1,1,1], [0,0,0,0], [0,0,0,0], [0,0,1,0] ], 
+          [[1,0,0,0],  [0,0,0,0], [0,0,0,0], [0,0,0,0], [0,0,0,0], [0,0,1,0] ], 
+          [[1,0,0,1],  [0,0,0,1], [0,0,0,1], [0,0,0,1], [0,0,0,1], [0,0,1,0] ], 
+          ]
+          , posx = 0
+          , posy = 0
+        ;
+
+
+        (function() { /* block generate maze */
+        
+        var i, j, row, e
+          , divcel = document.createElement('div')
+          , divrow  
+          , render = document.getElementById('render')
+        ;
+          
+        for (i=0; i<xx.length; i++) {
+          row = xx[i];
+          divrow = document.createElement('div');
+          divrow.className = "row";
+          for (j=0; j<row.length; j++) {
+            e = row[j];
+            divcel = divcel.cloneNode(true);
+            divcel.id = "cell-" + String(i) + "-" + String(j);
+            divcel.className = "cell";
+            divcel.className += (e[0] === 1)? " left":"";
+            divcel.className += (e[1] === 1)? " top":"";
+            divcel.className += (e[2] === 1)? " right":"";
+            divcel.className += (e[3] === 1)? " bottom":"";
+
+            divrow.appendChild(divcel);
+          }
+          render.appendChild(divrow);
+        }
+        })();        /* end block maze */
+
+        function playsound(){    
+          var audio_file1 = document.getElementById('audio_01');
+          audio_file1.play();
+        }
+
+        function is_winner() {
+          if( (posx === 5 ) && (posy === 6)) {
+            alert("Ganaste!!!");
+          }
+        }
+        
+        function moveleft(e) {
+          var position = xx[posy][posx];
+          playsound();
+          clean();
+          if ((position[0] !== 1) && (posx>0) && (xx[posy][posx -1][2] !==1)){
+            posx -= 1; 
+          }
+          dibujar();
+          is_winner();
+        }
+
+        function movetop(e) {
+          var position = xx[posy][posx];
+          playsound();
+          clean();
+          if ((position[1] !== 1) && (posy>0) && (xx[posy -1][posx][3] !==1)){
+            posy -= 1; 
+          }
+          dibujar();
+          is_winner();
+        }
+
+        function moveright(e) {
+          var position = xx[posy][posx]
+            , limit = xx[0].length;
+          playsound();
+          clean();
+          if ((position[2] !== 1) && (posx<limit) && (xx[posy][posx +1][0] !==1)){
+            posx += 1; 
+          }
+          dibujar();
+          is_winner();
+        }
+
+        function movebottom(e) {
+          var position = xx[posy][posx]
+            , limit = xx.length;
+          playsound();
+          clean();
+          is_winner();
+          if ((position[3] !== 1) && (posy<limit) && (xx[posy +1][posx][1] !==1)){
+            posy += 1; 
+          }
+          dibujar();
+          is_winner();
+        }
+        
+        function clean() {
+          var x = document.getElementById("cell-" + String(posy) + "-" + String(posx));
+          removeClass(x, 'black');
+          
+        }
+
+
+        function dibujar() {
+          var x = document.getElementById("cell-" + String(posy) + "-" + String(posx));
+          removeClass(x, 'black');
+          addClass(x, 'black');
+
+        }
+
+        dibujar();
+        ghost();
+        document.getElementById("btnleft").onclick = moveleft;
+        document.getElementById("btntop").onclick = movetop;
+        document.getElementById("btnright").onclick = moveright;
+        document.getElementById("btnbottom").onclick = movebottom;
+
+        (function() { /* setting control for touchscreens */
+          
+        var arrows = [], i, elem;
+
+        arrows[0] = document.getElementById("btnleft");
+        arrows[1] = document.getElementById("btntop");
+        arrows[2] = document.getElementById("btnright");
+        arrows[3] = document.getElementById("btnbottom");
+
+        for(i = 0; i< 4; i++) {
+          elem = arrows[i];
+
+          elem.onmouseover = function(e) {
+            this.style.backgroundPositionY = '-35px';
+          };
+          elem.onmouseout = function(e) {
+            //console.log(elem.className);
+            this.style.backgroundPositionY = '';
+          };
+   
+        }
+ 
+        })();/* end setting control for touchscreens */
+      }
+    </script>
+    <style>
+      body {
+      }
+      #container {
+        padding: 15px;
+        margin: 15px;
+        background-image: url('images/background.png');
+        background-repeat: no-repeat;
+        text-align: left;
+        width: 900px;
+        height: 550px;
+      }
+      #render {
+	-webkit-box-shadow: 5px 5px 5px #333;
+	box-shadow: 5px 5px 5px #333;
+	background-color: rgba(255,255,255,.5);
+	
+        width: 530px;
+        min-height: 400px;
+        float: left;
+      }
+      #joystick {
+        background-image: url('images/ctrlbg.png');
+        background-size: 160px 150px;
+        background-repeat: no-repeat;
+        width: 250px;
+
+        min-height: 400px;
+        float: right;
+        text-align: right;
+      }
+      #joystick table {
+        border-collapse:collapse;
+        text-align: right;
+        padding 0;
+        position:absolute;
+        margin: 22px 18px 0px;
+        }
+      #joystick tr {
+        padding:0;
+        margin:0;
+      }
+      #joystick td {
+        padding:3;
+        margin:0;
+        text-align: center;
+        width: 36px; 
+        height: 36px;
+      }
+      #btnleft    { background-image: url('images/ctrlarrows.png'); background-position: -1px 0px;  }
+      #btntop     { background-image: url('images/ctrlarrows.png'); background-position: -40px 1px;   }
+      #btnright   { background-image: url('images/ctrlarrows.png'); background-position: -80px 0px;  }
+      #btnbottom  { background-image: url('images/ctrlarrows.png'); background-position: -120px 1px; }
+
+      .onbtnleft    { background-image: url('images/ctrlarrows.png'); background-position: -36px 0px;  }
+      .onbtntop     { background-image: url('images/ctrlarrows.png'); background-position: -36px 1px;   }
+      .onbtnright   { background-image: url('images/ctrlarrows.png'); background-position: -72px 0px;  }
+      .onbtnbottom  { background-image: url('images/ctrlarrows.png'); background-position: -106px 1px; }
+
+
+      .fleft { float: left; }
+      .fright { float: right; }
+      .cell {
+        width: 80px; 
+        height: 70px;
+        float: left
+      }
+      .row {
+        float: left;
+      }
+      .left {
+        border-left: 3px solid #ccc;
+      }
+      .top {
+        border-top: 3px solid #ccc;
+      }
+      .right {
+        border-right: 3px solid #ccc;
+      }
+      .bottom {
+        border-bottom: 3px solid #ccc;
+      }
+      .black {
+        background-image: url('images/ghost.png');
+        width: 50px;
+        height: 50px;
+        background-repeat: no-repeat;
+      }
+
+
+
+
+    </style>
+
+  </head>
+  <body>
+    <center>
+    <div id=container>
+
+      <div id="render">
+      </div>
+      <div id="joystick">
+        <table>
+          <tr> 
+            <td class="empty">  </td> 
+            <td id="btntop">  </td> 
+            <td class="empty">  </td> 
+          </tr>
+          <tr> 
+            <td id="btnleft"> </td> 
+            <td id="btncenter">  </td> 
+            <td id="btnright"> </td> 
+          </tr>
+          <tr> 
+            <td class="empty">  </td> 
+            <td id="btnbottom" > </td> 
+            <td class="empty">  </td> 
+          </tr>
+        </table>
+      </div>
+      <div style="clear:both"></div> 
+    </div>
+  </center>
+
+          <audio src='sounds/ctrlsound.wav' preload='auto' id='audio_01'></audio>
+    <script>
+      __main__();
+    </script>
+
+  </body>
+</html>
+
