@@ -25,7 +25,7 @@
 	var timer;
 	var is_flipping = false;
 	var valores = [0, 1, 2, 3, 4, 5, 6, 7, 0, 1, 2, 3, 4, 5, 6, 7];	
-	
+  
 	//**********************************
 	// Init, show and start game
 	//**********************************
@@ -287,6 +287,7 @@
   </div>
   <div style='clear:both;'/>  <div id="content-wrapper">
     <div id="gameWrapper">
+      <div id=soundmanager></div>
       <p id="indicator">
       		<img src="images/loading.png" width="252" height="71" /><br />
 		    <img src="images/ajax-loader.gif" width="220" height="19" />
@@ -304,13 +305,13 @@
             <div id="kiwi" style="display:none;"><img src="images/kiwi.png"></div>
           </div>
           <div id="board"></div>          
-          <audio src='sound/01.wav' preload='auto' id='audio_01'></audio>
-          <audio src='sound/09.wav' preload='auto' id='audio_09'></audio>
-          <audio src='sound/11.wav' preload='auto' id='audio_11'></audio>
-          <audio src='sound/12.wav' preload='auto' id='audio_12'></audio>
-          <audio src='sound/suma_mal.wav' preload='auto' id='sumamal'></audio>
+          <audio src='sound/01.wav' preload='auto' id='audio_01' class=audio></audio>
+          <audio src='sound/09.wav' preload='auto' id='audio_09' class=audio></audio>
+          <audio src='sound/11.wav' preload='auto' id='audio_11' class=audio></audio>
+          <audio src='sound/12.wav' preload='auto' id='audio_12' class=audio></audio>
+          <audio src='sound/suma_mal.wav' preload='auto' id='sumamal' class=audio></audio>
 
-          <audio  loop="loop" autoplay="autoplay">
+          <audio  loop="loop" autoplay="autoplay" id="music">
             <source src="sound/osito.mp3" type="audio/mpeg" />
           </audio>
      </div>
@@ -322,5 +323,88 @@
     |<a href="#">top</a>
   </div>
 </footer>
+<script>
+/* BEGIN sound manager */
+var control = [] ;
+
+function sound_manager(o) {
+  var w = 50 
+    , h = 30 
+    , frames = 6
+    , view = document.createElement('div')
+    , tv
+    , i
+  ;
+
+
+  function $(id)  { return document.getElementById(id);         }
+  function $$(id) { return document.getElementsByClassName(id); }
+
+
+
+  if (typeof(o) === 'string') { o = $(o); }
+
+  control[0] = 1; //sound
+  control[1] = 1; //paused
+  control[2] = 1; //music
+
+  view.style.width  = String(w) + "px";
+  view.style.height = String(h) + "px";
+  view.style.backgroundImage = 'url(images/sound.png)';
+
+  /* BEGIN sound controller */
+  tv = view.cloneNode();
+  i = 0;
+  tv.style.backgroundPosition = "-" + String(w*i) + "px 0px";
+  tv.onclick = function (e) {
+    this.style.backgroundPositionY = (control[i] === 1)?"-"+String(h)+"px": "0px";
+    if (control[i] === 0) { $('music').play(); }
+    else                  { $('music').pause(); }
+    control[i] = (control[i] === 0)? 1: 0;
+  };
+  o.appendChild(tv);
+  /* END sound controller */
+
+  /* BEGIN pause game controller */
+  tv = view.cloneNode();
+  i = 1;
+  tv.style.backgroundPosition = "-" + String(w*i) + "px 0px";
+  tv.onclick = function (e) {
+    this.style.backgroundPositionY = (control[i] === 1)?"-"+String(h)+"px": "0px";
+
+    if (control[i] === 0) { TIMER_CONTINUE(); }
+    else                  { TIMER_PAUSE(); }
+
+
+    control[i] = (control[i] === 0)? 1: 0;
+  };
+  //o.appendChild(tv);
+  /* END pause game controller */
+
+  /* BEGIN music controller */
+  tv = view.cloneNode();
+  i = 2;
+  tv.style.backgroundPosition = "-" + String(w*i) + "px 0px";
+  tv.onclick = function (e) {
+    var audios = $$('audio')
+      , j = 0
+      , v = true
+    ;
+    this.style.backgroundPositionY = (control[i] === 1)?"-"+String(h)+"px": "0px";
+
+    v = (control[i] === 0)? false: true;
+    for (j=0; j<audios.length; j++) { audios[j].muted = v; }
+    
+
+    control[i] = (control[i] === 0)? 1: 0;
+  };
+  o.appendChild(tv);
+  /* BEGIN music end controller */
+}
+/* END sound manager */
+sound_manager('soundmanager');
+
+</script>
+
 </body>
 </html>

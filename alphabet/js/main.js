@@ -1,26 +1,29 @@
 function __main__() {
 
   var xx = [[ 0,0,0,0,0,0,0,0,0,0,0,0,0,0 ], 
-            [ 0,0,1,0,0,2,2,2,2,2,0,0,0,0 ], 
-            [ 0,0,1,0,0,0,0,0,0,0,0,0,0,0 ], 
-            [ 0,0,1,0,0,0,0,0,0,0,0,0,0,0 ], 
-            [ 0,0,1,0,0,0,0,0,0,0,0,0,0,0 ], 
-            [ 0,0,0,0,0,0,0,0,0,0,0,0,0,0 ], 
-            [ 0,0,0,0,0,0,0,0,0,0,0,0,0,0 ], 
-            [ 0,0,0,0,0,0,0,0,3,3,3,3,0,0 ], 
-            [ 0,0,0,0,0,0,0,0,0,0,0,0,0,0 ], 
-            [ 0,0,0,0,0,0,0,0,0,0,0,0,0,0 ], 
-            [ 0,0,0,0,0,0,0,0,0,0,0,0,0,0 ], 
-            [ 0,0,0,0,0,0,0,0,0,0,0,0,0,0 ], 
-            [ 0,0,0,0,0,0,0,0,0,0,0,0,0,0 ], 
-            [ 0,0,0,0,0,0,0,0,0,0,0,0,0,0 ], 
+            [ 0,0,2,3,3,3,3,3,3,3,3,3,0,0 ], 
+            [ 0,0,2,0,0,0,0,0,0,0,0,0,0,0 ], 
+            [ 0,0,2,0,5,0,0,0,0,0,0,0,0,0 ], 
+            [ 0,0,2,0,5,0,0,0,0,0,0,0,0,0 ], 
+            [ 0,0,2,0,5,0,0,0,0,0,0,0,0,0 ], 
+            [ 0,0,2,0,5,0,0,0,0,0,0,0,0,0 ], 
+            [ 0,0,2,1,5,4,4,4,4,4,4,4,4,4 ], 
+            [ 0,0,0,1,5,6,0,0,0,0,0,0,0,0 ], 
+            [ 0,0,0,1,0,6,0,0,0,0,0,0,9,0 ], 
+            [ 0,0,0,1,0,6,0,0,0,0,0,0,9,0 ], 
+            [ 0,0,0,0,0,0,0,0,0,0,0,0,9,0 ], 
+            [ 0,0,0,7,7,7,7,0,0,0,0,0,9,0 ], 
+            [ 0,0,8,8,8,8,8,8,8,0,0,0,0,0 ], 
             [ 0,0,0,0,0,0,0,0,0,0,0,0,0,0 ]]
 
-    , words = [ 'GATO', 'PERRO', 'MATE' ]
+    , words = [ 'APIO', 'REPOLLO', 'ZANAHORIA', 'ACHICORIA', 
+                'MORRON', 'UVA', 'KIWI', 'MANZANA', 'PERA'
+              ]
     , alphabet = [ 'A','B','C','D','E','F','G','H','I','J','K','L','M',
       'N','O','P', 'Q','R','S','T','U','V','W','X','Y','Z']
     , selectedword = "notselected"
     , htmlwords = $('listwords').getElementsByTagName('li')
+    , htmlletters = []
     , count = 0
   ;
   
@@ -28,7 +31,7 @@ function __main__() {
  
 
     function event_win() {
-      MESSAGEandReload("GANASTE!!!!");
+      MESSAGEandReload("<img src='images/win.png'>");
     }
 
     function event_right_word(i) {
@@ -36,9 +39,15 @@ function __main__() {
 
       htmlwords[i].style.display = "none";
       htmlwords[i].onclick = function() {};
+      htmlletters= [];
     }
 
     function event_wrong() {
+      var i = 0;
+      for(i =0; i<htmlletters.length; i++) {
+        removeClass(htmlletters[i], 'selected');
+      }
+      count = 0;
       $('audio_01').play();
     }
     /* END events */
@@ -62,6 +71,7 @@ function __main__() {
           //rotate(this);
           count++;
           this.className = this.className + " selected";
+          htmlletters[htmlletters.length] = this; 
           if (selectedword.length === count) {
             // remove from list
             words = words.filter(function(x) { return x !== selectedword; });
@@ -75,7 +85,7 @@ function __main__() {
             if (words.length === 0 ){
               event_win();
             }
-          }
+          } 
           return;
         } else {
           event_wrong();
@@ -86,7 +96,7 @@ function __main__() {
       }
     } else {
       event_wrong();
-      MESSAGE("select a word");
+      MESSAGE("Selecciona <br> una palabra!");
     }
     count = 0;
     selectedword = "notselected";
@@ -114,8 +124,8 @@ function __main__() {
       divcel.className = "cell";
       
       if (e !== 0) {
-        console.log("TMP:" + tmpwords);
-        console.log("WDS:" + words);
+        //console.log("TMP:" + tmpwords);
+        //console.log("WDS:" + words);
         head = tmpwords[e-1][0];
         tail = tmpwords[e-1].substring(1);
         tmpwords[e-1] = tail;
@@ -178,6 +188,7 @@ function __main__() {
   })();        /* end block generate listwords */
 
 
+  sound_manager('soundmanager');
 }
 
 

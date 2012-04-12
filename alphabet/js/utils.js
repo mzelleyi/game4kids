@@ -11,6 +11,10 @@ Object.prototype.clone = function() {
 function $(id) {
   return document.getElementById(id);
 }
+function $$(id) {
+  return document.getElementsByClassName(id);
+}
+
 
 function hasClass(ele,cls) {
   return ele.className.match(new RegExp('(\\s|^)'+cls+'(\\s|$)'));
@@ -90,9 +94,90 @@ function TIMER(o) {
   return timer;
 }
 
-function STOPTIMER() {
-  clearInterval(timer);
-}
+function TIMER_PAUSE   () { clearInterval(timer);             }
+function TIMER_CONTINUE() { timer = setInterval("t()", 1000); }
 
 
 /* END timer */
+
+/* BEGIN sound manager */
+var control = [] ;
+
+function sound_manager(o) {
+  var w = 50 
+    , h = 30 
+    , frames = 6
+    , view = document.createElement('div')
+    , tv
+    , i
+  ;
+  if (typeof(o) === 'string') { o = $(o); }
+
+  control[0] = 1; //sound
+  control[1] = 1; //paused
+  control[2] = 1; //music
+
+  view.style.width  = String(w) + "px";
+  view.style.height = String(h) + "px";
+  view.style.backgroundImage = 'url(images/sound.png)';
+
+  /* BEGIN sound controller */
+  tv = view.cloneNode();
+  i = 0;
+  tv.style.backgroundPosition = "-" + String(w*i) + "px 0px";
+  tv.onclick = function (e) {
+    this.style.backgroundPositionY = (control[i] === 1)?"-"+String(h)+"px": "0px";
+    if (control[i] === 0) { $('music').play(); }
+    else                  { $('music').pause(); }
+    control[i] = (control[i] === 0)? 1: 0;
+    return false;
+  };
+  o.appendChild(tv);
+  /* END sound controller */
+
+  /* BEGIN pause game controller */
+  tv = view.cloneNode();
+  i = 1;
+  tv.style.backgroundPosition = "-" + String(w*i) + "px 0px";
+  tv.onclick = function (e) {
+    this.style.backgroundPositionY = (control[i] === 1)?"-"+String(h)+"px": "0px";
+
+    if (control[i] === 0) { TIMER_CONTINUE(); }
+    else                  { TIMER_PAUSE(); }
+
+
+    control[i] = (control[i] === 0)? 1: 0;
+    return false;
+  };
+  o.appendChild(tv);
+  /* END pause game controller */
+
+  /* BEGIN music controller */
+  tv = view.cloneNode();
+  i = 2;
+  tv.style.backgroundPosition = "-" + String(w*i) + "px 0px";
+  tv.onclick = function (e) {
+    var audios = $$('audio')
+      , j = 0
+      , v = true
+    ;
+    this.style.backgroundPositionY = (control[i] === 1)?"-"+String(h)+"px": "0px";
+
+    v = (control[i] === 0)? false: true;
+    for (j=0; j<audios.length; j++) { audios[j].muted = v; }
+    
+
+    control[i] = (control[i] === 0)? 1: 0;
+    return false;
+  };
+  o.appendChild(tv);
+  /* BEGIN end controller */
+
+
+
+
+  console.log('im here');
+
+}
+/* END sound manager */
+

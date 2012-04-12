@@ -2,20 +2,81 @@
   <head> 
     <title> Maze Generator </title>
     <script>
-      function hasClass(ele,cls) {
-        return ele.className.match(new RegExp('(\\s|^)'+cls+'(\\s|$)'));
-      }
-      function addClass(ele,cls) {
-        if (!this.hasClass(ele,cls)) ele.className += " "+cls;
-      }
-      function removeClass(ele,cls) {
-        if (hasClass(ele,cls)) {
-          var reg = new RegExp('(\\s|^)'+cls+'(\\s|$)');
-          //alert(reg);
-          ele.className=ele.className.replace(reg,' ');
-          //alert(ele.className);
-        }
-      }
+Object.prototype.clone = function() {
+  var newObj = (this instanceof Array) ? [] : {};
+  for (i in this) {
+    if (i == 'clone') continue;
+    if (this[i] && typeof this[i] == "object") {
+      newObj[i] = this[i].clone();
+    } else newObj[i] = this[i]
+  } return newObj;
+};
+
+function $(id) {
+  return document.getElementById(id);
+}
+function $$(id) {
+  return document.getElementsByClassName(id);
+}
+
+
+function hasClass(ele,cls) {
+  return ele.className.match(new RegExp('(\\s|^)'+cls+'(\\s|$)'));
+}
+function addClass(ele,cls) {
+  if (!this.hasClass(ele,cls)) ele.className += " "+cls;
+}
+function removeClass(ele,cls) {
+  if (hasClass(ele,cls)) {
+    var reg = new RegExp('(\\s|^)'+cls+'(\\s|$)');
+    ele.className=ele.className.replace(reg,' ');
+  }
+}
+
+function MESSAGE(msg) {
+  var o = document.getElementById('light');
+  o.style.display='block';
+  o.getElementsByTagName('p')[0].innerHTML=msg;
+  document.getElementById('fade').style.display='block';
+}
+
+function MESSAGEandReload(msg) {
+
+  var o = document.getElementById('light');
+  o.style.display='block';
+  o.getElementsByTagName('p')[0].innerHTML=msg;
+  o.getElementsByTagName('a')[0].onclick = function() {
+    location.reload(true);
+    return false;
+  }
+  document.getElementById('fade').style.display='block';
+}
+
+
+
+
+/* BEGIN timer */
+var time = 0;
+var timer;
+domtimer = null;
+
+function t() {
+  domtimer.innerHTML = "Tiempo : " + String(time);  
+  time++;
+}
+
+function TIMER(o) {
+  if (typeof(o) === 'string') { o = $(o); }
+  domtimer = o;
+  t();
+  timer = setInterval("t()", 1000)
+  return timer;
+}
+
+function TIMER_PAUSE   () { clearInterval(timer);             }
+function TIMER_CONTINUE() { timer = setInterval("t()", 1000); }
+
+/* END timer */
 
 /* BEGIN butterfly effect ;) */
 var timer_butterfly=0;
@@ -34,17 +95,95 @@ function ghost() {
 
 /* END butterfly effect ;) */
 
+/* BEGIN sound manager */
+var control = [] ;
+
+function sound_manager(o) {
+  var w = 50 
+    , h = 30 
+    , frames = 6
+    , view = document.createElement('div')
+    , tv
+    , i
+  ;
+  if (typeof(o) === 'string') { o = $(o); }
+
+  control[0] = 1; //sound
+  control[1] = 1; //paused
+  control[2] = 1; //music
+
+  view.style.width  = String(w) + "px";
+  view.style.height = String(h) + "px";
+  view.style.backgroundImage = 'url(images/sound.png)';
+
+  /* BEGIN sound controller */
+  tv = view.cloneNode();
+  i = 0;
+  tv.style.backgroundPosition = "-" + String(w*i) + "px 0px";
+  tv.onclick = function (e) {
+    this.style.backgroundPositionY = (control[i] === 1)?"-"+String(h)+"px": "0px";
+    if (control[i] === 0) { $('music').play(); }
+    else                  { $('music').pause(); }
+    control[i] = (control[i] === 0)? 1: 0;
+    return false;
+  };
+  o.appendChild(tv);
+  /* END sound controller */
+
+  /* BEGIN pause game controller */
+  tv = view.cloneNode();
+  i = 1;
+  tv.style.backgroundPosition = "-" + String(w*i) + "px 0px";
+  tv.onclick = function (e) {
+    this.style.backgroundPositionY = (control[i] === 1)?"-"+String(h)+"px": "0px";
+
+    if (control[i] === 0) { TIMER_CONTINUE(); }
+    else                  { TIMER_PAUSE(); }
 
 
-      function __main__() {
+    control[i] = (control[i] === 0)? 1: 0;
+    return false;
+  };
+  o.appendChild(tv);
+  /* END pause game controller */
+
+  /* BEGIN music controller */
+  tv = view.cloneNode();
+  i = 2;
+  tv.style.backgroundPosition = "-" + String(w*i) + "px 0px";
+  tv.onclick = function (e) {
+    var audios = $$('audio')
+      , j = 0
+      , v = true
+    ;
+    this.style.backgroundPositionY = (control[i] === 1)?"-"+String(h)+"px": "0px";
+
+    v = (control[i] === 0)? false: true;
+    for (j=0; j<audios.length; j++) { audios[j].muted = v; }
+    
+
+    control[i] = (control[i] === 0)? 1: 0;
+    return false;
+  };
+  o.appendChild(tv);
+  /* BEGIN end controller */
+
+}
+/* END sound manager */
+
+
+function __main__() {
         var xx = [
-          [[1,0,0,0],  [0,1,0,0], [0,1,0,0], [0,1,0,0], [0,1,0,0], [0,1,1,0] ], 
-          [[1,0,0,0],  [0,0,0,0], [0,0,0,0], [0,0,0,0], [0,0,0,0], [0,0,1,0] ], 
-          [[1,0,0,0],  [0,0,0,0], [0,0,0,0], [0,0,0,0], [0,0,0,0], [0,0,1,0] ], 
-          [[1,0,0,0],  [0,0,0,0], [0,0,0,0], [0,0,0,0], [0,0,0,0], [0,0,1,0] ], 
-          [[1,0,0,0],  [0,0,0,0], [0,1,1,1], [0,0,0,0], [0,0,0,0], [0,0,1,0] ], 
-          [[1,0,0,0],  [0,0,0,0], [0,0,0,0], [0,0,0,0], [0,0,0,0], [0,0,1,0] ], 
-          [[1,0,0,1],  [0,0,0,1], [0,0,0,1], [0,0,0,1], [0,0,0,1], [0,0,1,0] ], 
+          [[1,0,1,0],  [1,1,0,0], [0,1,1,1], [1,1,1,0], [1,1,1,0], [1,1,0,1], [0,1,1,0], [1,1,0,1], [0,1,1,0], [1,1,1,0], [1,1,0,1],[0,1,1,0]  ], 
+          [[1,0,1,0],  [1,0,1,0], [1,1,0,1], [0,0,0,1], [0,0,0,0], [0,1,1,1], [1,0,0,1], [0,1,1,0], [1,0,1,0], [1,0,0,0], [0,1,0,0],  [0,0,1,1] ], 
+          [[1,0,0,1],  [0,0,0,1], [0,1,0,0], [0,1,1,0], [1,0,0,1], [0,1,1,0], [1,1,1,0], [1,0,1,0], [1,0,0,1], [0,0,1,1],[1,0,1,0],   [1,1,1,0] ], 
+          [[1,1,0,1],  [0,1,0,1], [0,0,1,0], [1,0,0,0], [0,1,0,1], [0,0,0,1], [0,0,0,1], [0,0,1,1], [1,1,1,0], [1,1,1,0],  [1,0,0,1], [0,0,1,0] ], 
+          [[1,1,1,0],  [1,1,1,0], [1,0,1,0], [1,0,0,1], [0,1,0,0], [0,1,0,1], [0,1,0,0], [0,1,0,1], [0,0,1,0], [1,0,0,1],  [0,1,0,1], [0,0,1,0] ], 
+          [[1,0,1,0],  [1,0,1,0], [1,0,0,1], [0,1,1,1], [1,0,0,1], [0,1,1,1], [1,0,0,1], [0,1,1,1], [1,0,1,0], [1,1,1,0], [1,1,0,0], [0,0,1,1] ], 
+          [[1,0,1,0],  [1,0,0,1], [0,1,0,1], [0,1,0,1], [0,1,0,1], [0,1,0,0], [0,1,0,0], [0,1,1,1], [1,0,1,0], [1,0,1,0], [1,0,1,0],  [1,1,1,0] ], 
+          [[1,0,1,0],  [1,1,1,0], [1,1,1,0], [1,1,0,1], [0,1,0,1], [0,0,1,0], [1,0,1,0], [1,1,1,0], [1,0,0,0], [0,0,1,1], [1,0,0,0],  [0,0,1,0] ], 
+          [[1,0,0,0],  [0,0,1,0], [1,0,0,0], [0,1,1,1], [1,1,0,0], [0,0,1,0], [1,0,0,0], [0,0,0,1], [0,0,0,1], [0,1,1,1], [1,0,1,0], [1,0,1,1] ], 
+          [[1,0,1,1],  [0,0,0,1], [0,0,0,1], [0,1,0,1], [0,0,1,1], [1,0,1,1], [1,0,0,1], [0,1,0,1], [0,1,0,1], [0,1,0,1], [0,0,0,1], [0,1,1,0] ]
           ]
           , posx = 0
           , posy = 0
@@ -85,8 +224,10 @@ function ghost() {
         }
 
         function is_winner() {
-          if( (posx === 5 ) && (posy === 6)) {
-            alert("Ganaste!!!");
+          if( (posx === 11 ) && (posy === 9)) {
+
+            MESSAGEandReload("Ganaste!!!");
+            $('audio_02').play();
           }
         }
         
@@ -150,9 +291,7 @@ function ghost() {
           addClass(x, 'black');
 
         }
-
         dibujar();
-        ghost();
         document.getElementById("btnleft").onclick = moveleft;
         document.getElementById("btntop").onclick = movetop;
         document.getElementById("btnright").onclick = moveright;
@@ -181,34 +320,64 @@ function ghost() {
         }
  
         })();/* end setting control for touchscreens */
+
+        ghost();
+        TIMER('thetimer');
+        sound_manager('soundmanager');
       }
     </script>
     <style>
       body {
+        background-image: url('images/background.png');
       }
       #container {
+        border-top: 10px solid #777;
+        border-bottom: 10px solid #777;
+        border-left: 2px solid #777;
         padding: 15px;
         margin: 15px;
-        background-image: url('images/background.png');
+        margin-top:9;
+        background-image: url('images/bgmaze.png');
+        background-position: -10px 0px;
         background-repeat: no-repeat;
+        background-color: #000;
         text-align: left;
-        width: 900px;
-        height: 550px;
+        width: 850px;
+        height: 610px;
       }
       #render {
-	-webkit-box-shadow: 5px 5px 5px #333;
-	box-shadow: 5px 5px 5px #333;
-	background-color: rgba(255,255,255,.5);
-	
-        width: 530px;
-        min-height: 400px;
+        margin-left: 28px;
+        margin-top: 80px;
+        width: 540px;
+        min-height: 350px;
         float: left;
       }
+      #coins {
+        text-align: right;
+        width: 850px;
+        padding: 15px;
+        font-size: 30px;
+        background-color: rgba(255,255,255,.5);
+        margin:0px;
+        text-shadow: 1px 3px 2px #777, 3px 3px 10px #FFF;
+        -moz-border-radius: 5px;
+        border-radius: 5px;
+        box-shadow: 0px 5px 5px #fff;
+      }
+      #coins h2 {
+        float: left;
+        padding: 0;
+        margin: 0;
+        margin-left: 100;
+      }
+      #footer {
+        font-size: 10px;
+        color: #ccc;
+        margin-top:75px;
+      }
       #joystick {
-        background-image: url('images/ctrlbg.png');
-        background-size: 160px 150px;
         background-repeat: no-repeat;
-        width: 250px;
+        width: 210px;
 
         min-height: 400px;
         float: right;
@@ -219,7 +388,7 @@ function ghost() {
         text-align: right;
         padding 0;
         position:absolute;
-        margin: 22px 18px 0px;
+        margin: 24px 15px 0px;
         }
       #joystick tr {
         padding:0;
@@ -246,40 +415,130 @@ function ghost() {
       .fleft { float: left; }
       .fright { float: right; }
       .cell {
-        width: 80px; 
-        height: 70px;
+        width: 45px; 
+        height: 45px;
         float: left
       }
       .row {
         float: left;
       }
       .left {
-        border-left: 3px solid #ccc;
+        /*border-left: 3px solid #ccc;*/
       }
       .top {
-        border-top: 3px solid #ccc;
+        /*border-top: 3px solid #ccc;*/
       }
       .right {
-        border-right: 3px solid #ccc;
+        /*border-right: 3px solid #ccc;*/
       }
       .bottom {
-        border-bottom: 3px solid #ccc;
+       /* border-bottom: 3px solid #ccc; */
       }
       .black {
         background-image: url('images/ghost.png');
-        width: 50px;
-        height: 50px;
+        background-size: 190px 45px;
+      /*  width: 50px;
+        height: 50px; */
         background-repeat: no-repeat;
       }
+/* modal box */
+.black_overlay{
+  display: none;
+  position: absolute;
+  top: 0%;
+  left: 0%;
+  width: 100%;
+  height: 100%;
+  background-color: black;
+  z-index:1001;
+  -moz-opacity: 0.8;
+  opacity:.80;
+  filter: alpha(opacity=80);
+}
+.white_content {
+  display: none;
+  position: absolute;
+  top: 25%;
+  left: 30%;
+  width: 500px;
+  height: 300px;
+  /*background-color: white;*/
+  background-image: url('images/cartel.png');
+  background-repeat: no-repeat;
+  z-index:1002;
+  overflow: auto;
+}
+#light p {
+  margin-top: 90px;
+  margin-left: 50px;
+  font-size: 40px;
+}
+#light a {
+  float: right;
+}
+.loading {
+  display: none;
+  position: absolute;
+  top: 25%;
+  left: 25%;
+  width: 50%;
+  height: 50%;
+  padding: 16px;
+  border: 16px solid orange;
+  background-color: white;
+  z-index:1002;
+  overflow: auto;
+}
+/* end modal box */
 
 
+
+
+      #soundmanager div {
+        float: left
+      }
+      #soundmanager {
+        border-radius: 15px;
+        -webkit-box-shadow: 5px 5px 5px #333;
+        box-shadow: 5px 5px 5px #333;
+        background-color: rgba(255,255,255,.5);
+        float: left;
+        
+        top: 30px;
+        left: 200px;
+        width: 150px;
+        z-index:1001;
+        -moz-opacity: 0.8;
+        opacity:.80;
+        filter: alpha(opacity=80);
+      }
 
 
     </style>
 
   </head>
   <body>
+    <!-- BEGIN html for message method -->
+    <div id="light" class="white_content">
+      <a href = "javascript:void(0)" 
+        onclick = "document.getElementById('light').style.display='none';document.getElementById('fade').style.display='none'">
+        <img src='images/close.png'>
+      </a>
+      <p> Message here </p> 
+    </div>
+    <div id="loading" class="loading">
+      <p> Cargando </p> 
+    </div>
+		<div id="fade" class="black_overlay"></div>
+    <!-- END html for message method -->
+
+
     <center>
+      <div id=coins>
+      <div id="soundmanager"></div>
+      <h2>El Laberinto!</h2>
+        <div id=thetimer></div>
+      </div>
     <div id=container>
 
       <div id="render">
@@ -304,13 +563,22 @@ function ghost() {
         </table>
       </div>
       <div style="clear:both"></div> 
+      <div id=footer>
+        mAlaniz 2012 | develop3r
+      </div>
     </div>
+
   </center>
 
-          <audio src='sounds/ctrlsound.wav' preload='auto' id='audio_01'></audio>
-    <script>
-      __main__();
-    </script>
+<audio src='sound/ctrlsound.wav' preload='auto' id='audio_01' class=audio></audio>
+<audio src='sound/aplausos.mp3' preload='auto' id='audio_02' class=audio></audio>
+<audio  loop="loop" autoplay="autoplay" id="music">
+    <source src="sound/music.mp3" type="audio/mpeg" />
+</audio>
+ 
+  <script>
+  __main__();
+  </script>
 
   </body>
 </html>

@@ -14,7 +14,7 @@ a img {
 #gameWrapper {
 	width:950px;
 	height:594px;
-	background:url(../images/back.jpg);
+	background:url(../images/back.png);
 }
 #gameWrapper h1 {
 	font-family: 'Bangers', verdana, arial;
@@ -32,6 +32,7 @@ a img {
 	width:128px;
 	height:128px;
 	float:left;
+  font-size: 30px;
 	background-color: rgba(255,255,255,.5);
 	margin:10px;
 	-moz-border-radius: 15px;
@@ -41,7 +42,7 @@ a img {
 	box-shadow: 5px 5px 5px #333;
 }
 .played {
-	background-color: rgba(250,114,15,.5);
+	background-color: rgba(250,214,15,.5);
 }
 .card {
 	width:128px;
@@ -78,7 +79,7 @@ a img {
 }
 #scoreBoard {
 	width:250px;
-	height:250px;
+	height:180px;
 	float:left;
 	background-color: rgba(255,204,0,.5);
 	margin:0 50px;
@@ -90,7 +91,7 @@ a img {
 }
 #scoreBoard p {
 	padding:0 15px 15px;
-	font-size:45px;
+	font-size:30px;
 	font-weight:bold;
 	color:#FFF;
 	font-family: 'Bangers', verdana, serif;
@@ -111,7 +112,7 @@ a img {
 #restart {
 	position:absolute;
 	top:450px;
-	left: 110px;
+	left: 150px;
 	z-index:20;
 	text-align:center;
 }
@@ -143,4 +144,23 @@ a img {
 	top:150px;
 	left: 1150px;
 	z-index:21;
+}
+
+#soundmanager div {
+  float: left
+}
+#soundmanager {
+	border-radius: 15px;
+	-webkit-box-shadow: 5px 5px 5px #333;
+	box-shadow: 5px 5px 5px #333;
+	background-color: rgba(255,255,255,.5);
+	
+  position: absolute;
+  top: 20px;
+  left: 210px;
+  width: 100px;
+  z-index:1001;
+  -moz-opacity: 0.8;
+  opacity:.80;
+  filter: alpha(opacity=80);
 }
