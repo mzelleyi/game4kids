@@ -82,6 +82,7 @@ function __main__() {
               }
             }
             count = 0;
+            selectedword = "notselected";
             if (words.length === 0 ){
               event_win();
             }
@@ -99,7 +100,6 @@ function __main__() {
       MESSAGE("Selecciona <br> una palabra!");
     }
     count = 0;
-    selectedword = "notselected";
     return false;
   }
 
@@ -189,6 +189,7 @@ function __main__() {
 
 
   sound_manager('soundmanager');
+
 }
 
 

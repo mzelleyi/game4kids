@@ -321,10 +321,17 @@ function __main__() {
  
         })();/* end setting control for touchscreens */
 
-        ghost();
+        callhelp();
+       ghost();
         TIMER('thetimer');
         sound_manager('soundmanager');
       }
+        function callhelp() {
+          MESSAGE( "Usa las flechas de la luna, para guiar al fantasma y cruzar el laberinto. Puedes guiarte siguiendo las comidas en este orden: desayuno, almuerzo, merienda y cena. ");
+          return false;
+        }
+
+ 
     </script>
     <style>
       body {
@@ -469,9 +476,10 @@ function __main__() {
   overflow: auto;
 }
 #light p {
+  width: 400px;
   margin-top: 90px;
   margin-left: 50px;
-  font-size: 40px;
+  font-size: 20px;
 }
 #light a {
   float: right;
@@ -513,6 +521,17 @@ function __main__() {
         filter: alpha(opacity=80);
       }
 
+      #help {
+  position: absolute;
+  top: 40%;
+  left: 62%;
+  width: 252px;
+  height: 400px;
+  background-image: url('images/help.png');
+  background-repeat: no-repeat;
+  z-index:1003;
+
+      }
 
     </style>
 
@@ -562,6 +581,7 @@ function __main__() {
           </tr>
         </table>
       </div>
+      <a id="help" href="javascript:void(0)" onclick='callhelp(this);'> </a>
       <div style="clear:both"></div> 
       <div id=footer>
         mAlaniz 2012 | develop3r

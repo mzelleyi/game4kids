@@ -14,7 +14,7 @@
         onclick = "document.getElementById('light').style.display='none';document.getElementById('fade').style.display='none'">
         <img src='images/close.png'>
       </a>
-      <p> Message here </p> 
+      <p> </p> 
     </div>
     <div id="loading" class="loading">
       <p> Cargando </p> 
@@ -25,36 +25,48 @@
 
 <script>
 // function to load images and resources 
+      
 (function() {
   document.getElementById('loading').style.display = 'block';
   document.getElementById('fade').style.display = 'block';
   load.css( [ 'css/styles.css'] );                                                                     
-  load.js([ 'js/utils.js', 'js/main.js', 'js/sha256.js' ], function() {
+  load.js([ 'js/utils.js', 'js/main2.js' ], function() {
     $('loading').style.display='none';
     $('fade').style.display='none';
-  if( hex_sha256($('container').innerHTML) === '24953fe7049a8ce1d68ab9c7060c2955a5ccd08228fd8f930c760ef7e038776b' ) {
     __main__();
-  }
   });                                                                     
 })();                                                                           
 </script>
 
     <center>
     <div id=container>
-      <h2> Sopa de Letras </h2>
+      <h2> ¿Que sabes de comidas? </h2>
 
       <div id="soundmanager"></div>
+
+      <center>
+        <div id="timer"> </div>
       <div id="render">
       </div>
-      <div id="toolbar">
-        <ul id="listwords">
+    </center>
+      <div id="option1">
+        <h2> Des/Merienda </h2>
+
+        <ul id="listfood1">
         </ul>
       </div>
+
+      <div id="option2">
+        <h2>Alm/Cena </h2>
+        <ul id="listfood2">
+        </ul>
+      </div>
+ 
       <div style="clear:both"></div> 
+    </div>
       <div id=footer>mAlaniz 2012
         |<a href="#">top</a>
       </div>
-    </div>
     </center>
 
     <!-- BEGIN audio stuff -->

@@ -14,7 +14,7 @@ h1{font-family:Verdana, Geneva, sans-serif}
 }
 #outer-wrapper {
 	width:950px;
-	margin:0px auto 0px;
+	margin: 0px auto 0px;
 	padding:0;
 text-align:$startSide;
 font:$bodyfont;
