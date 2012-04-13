@@ -122,6 +122,7 @@ function __main__() {
       , image = new Image(100, 70);
     ;
     
+    $('audio_11').play();
     image.src = "images/" + q.image;
     message_question.id = 'question';
     message_question.appendChild(document.createTextNode(q.html));
@@ -153,6 +154,7 @@ function __main__() {
   function loop(event) {
     
     if (event && event.option !== event.food.answer ) {
+      $('audio_01').play();
       MESSAGE("Tienes otro intento!");
       return;
     }

@@ -126,6 +126,7 @@ function __main__() {
       , message_button 
       , image = new Image(100, 70);
     ;
+    $('audio_11').play();
     
     image.src = "images/" + q.image;
     message_question.id = 'question';
@@ -183,6 +184,7 @@ function __main__() {
         $('listfood2').appendChild(elem);
         break;
       case 2:
+          $('audio_11').play();
           MESSAGE("¿Porque no lo probaste?");
         break;
     };
