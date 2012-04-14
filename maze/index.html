@@ -173,6 +173,10 @@ function sound_manager(o) {
 
 
 function __main__() {
+
+        var y = Math.random();
+        y = y > 0.5? true: false;
+        if (y) {
         var xx = [
           [[1,0,1,0],  [1,1,0,0], [0,1,1,1], [1,1,1,0], [1,1,1,0], [1,1,0,1], [0,1,1,0], [1,1,0,1], [0,1,1,0], [1,1,1,0], [1,1,0,1],[0,1,1,0]  ], 
           [[1,0,1,0],  [1,0,1,0], [1,1,0,1], [0,0,0,1], [0,0,0,0], [0,1,1,1], [1,0,0,1], [0,1,1,0], [1,0,1,0], [1,0,0,0], [0,1,0,0],  [0,0,1,1] ], 
@@ -187,7 +191,30 @@ function __main__() {
           ]
           , posx = 0
           , posy = 0
+          , winx = 11
+          , winy = 9
         ;
+        } else { 
+        var xx = [
+          [[1,0,0,0],[0,1,0,1],[0,1,0,1],[0,1,1,0],[1,1,1,0],[1,1,1,0],[1,1,0,1],[0,1,1,0],[1,1,0,0],[0,1,1,0],[1,1,1,0],[1,1,1,0]] ,
+          [[1,0,1,1],[1,1,0,1],[1,1,0,1],[1,0,0,1],[0,0,1,0],[1,0,0,0],[0,1,1,0],[1,0,1,0],[1,0,1,0],[1,0,0,0],[0,0,1,1],[1,0,1,0]] ,
+          [[1,1,0,0],[0,1,0,0],[0,1,0,0],[0,1,1,0],[1,0,1,0],[1,0,1,1],[1,0,0,1],[0,0,0,1],[0,0,1,0],[1,0,0,0],[0,1,0,0],[0,0,1,1]] ,
+          [[1,0,1,0],[1,0,1,1],[1,0,1,0],[1,0,0,0],[0,0,1,0],[1,1,0,1],[0,1,0,1],[0,1,1,0],[1,0,1,1],[1,0,1,1],[1,0,1,0],[1,1,1,0]] ,
+          [[1,0,0,1],[0,1,1,1],[1,0,1,0],[1,0,1,1],[1,0,0,0],[0,1,0,0],[0,1,1,1],[1,0,0,1],[0,1,0,1],[0,1,1,0],[1,0,1,0],[1,0,1,0]] ,
+          [[1,1,1,0],[1,1,1,0],[1,0,1,0],[1,1,0,0],[0,0,1,0],[1,0,0,1],[0,1,1,0],[1,1,1,0],[1,1,1,0],[1,0,1,0],[1,0,0,0],[0,0,1,1]] ,
+          [[1,0,0,1],[0,0,1,0],[1,0,1,1],[1,0,1,1],[1,0,1,0],[1,1,1,0],[1,0,0,0],[0,0,0,1],[0,0,1,1],[1,0,1,0],[1,0,0,1],[0,1,1,0]] ,
+          [[1,1,1,0],[1,0,1,0],[1,1,0,0],[0,1,1,1],[1,0,0,1],[0,0,1,0],[1,0,0,1],[0,1,1,0],[1,1,0,1],[0,0,0,1],[0,1,0,1],[0,0,1,0]] ,
+          [[1,0,0,1],[0,0,0,1],[0,0,0,1],[0,1,1,0],[1,1,0,0],[0,0,0,1],[0,1,1,1],[1,0,0,1],[0,1,0,0],[0,1,1,0],[1,1,0,0],[0,0,1,0]],
+          [[1,1,0,1],[0,1,0,1],[0,1,0,1],[0,0,0,1],[0,0,0,1],[0,1,0,1],[0,1,0,1],[0,1,1,1],[1,0,1,1],[1,0,0,1],[0,0,1,1],[1,0,1,0]]
+          ]
+          , posx = 0
+          , posy = 0
+          , winx = 11
+          , winy = 9
+        ;
+        document.getElementById('container').style.backgroundImage = "url(images/bgmaze2.png)";
+      
+        } 
 
 
         (function() { /* block generate maze */
@@ -224,7 +251,8 @@ function __main__() {
         }
 
         function is_winner() {
-          if( (posx === 11 ) && (posy === 9)) {
+          //if( (posx === 11 ) && (posy === 9)) {
+          if( (posx === winx ) && (posy === winy)) {
 
             MESSAGEandReload("Ganaste!!!");
             $('audio_02').play();
@@ -337,6 +365,12 @@ function __main__() {
       body {
         background-image: url('images/background.png');
       }
+#logod {
+  background-image: url(images/bg.gif);
+  width: 880px;
+  height: 80px;
+}
+
       #container {
         border-top: 10px solid #777;
         border-bottom: 10px solid #777;
@@ -368,7 +402,6 @@ function __main__() {
         margin:0px;
         text-shadow: 1px 3px 2px #777, 3px 3px 10px #FFF;
         -moz-border-radius: 5px;
-        border-radius: 5px;
         box-shadow: 0px 5px 5px #fff;
       }
       #coins h2 {
@@ -380,7 +413,7 @@ function __main__() {
       #footer {
         font-size: 10px;
         color: #ccc;
-        margin-top:75px;
+        margin-top:85px;
       }
       #joystick {
         background-repeat: no-repeat;
@@ -523,7 +556,7 @@ function __main__() {
 
       #help {
   position: absolute;
-  top: 40%;
+  top: 50%;
   left: 62%;
   width: 252px;
   height: 400px;
@@ -553,6 +586,10 @@ function __main__() {
 
 
     <center>
+
+  <div id="logod">
+    <img src="images/logod.png">
+  </div>
       <div id=coins>
       <div id="soundmanager"></div>
       <h2>El Laberinto!</h2>
@@ -584,7 +621,7 @@ function __main__() {
       <a id="help" href="javascript:void(0)" onclick='callhelp(this);'> </a>
       <div style="clear:both"></div> 
       <div id=footer>
-        mAlaniz 2012 | develop3r
+        Logatec 2012 |<a href="http://www.logatec.com.ar"> site </a> 
       </div>
     </div>
 
@@ -602,4 +639,5 @@ function __main__() {
 
   </body>
 </html>
+
 

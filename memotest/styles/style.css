@@ -1,6 +1,11 @@
 a img {
 	border:none;
 }
+#logod {
+  background-image: url(../images/bg.gif);
+  width: 950px;
+  height: 80px;
+}
 #content-wrapper {
 	padding-left:0;
 	padding-right:0;

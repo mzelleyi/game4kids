@@ -16,7 +16,6 @@ function __main__() {
         yogur:            { img: 'yogur.png'           , label: 'Yogur'              }, 
         flan:             { img: 'flan.png'            , label: 'Flan'               }, 
         huevos:           { img: 'huevos.png'          , label: 'Huevos'             }, 
-        harina:           { img: 'harina.png'          , label: 'Harina'             }, 
         arroz:            { img: 'arroz.png'           , label: 'Arroz'              }, 
         manteca:          { img: 'manteca.png'         , label: 'Manteca'            }, 
         mani:             { img: 'mani.png'            , label: 'Mani'               }, 
@@ -24,10 +23,7 @@ function __main__() {
         leche:            { img: 'leche.png'           , label: 'Leche'              }, 
         carnes:           { img: 'carnes.png'          , label: 'Carnes'             }, 
         pollo:            { img: 'pollo.png'           , label: 'Pollo'              }, 
-        polenta:          { img: 'polenta.png'         , label: 'Polenta'            }, 
-        lentejas:         { img: 'lentejas.png'        , label: 'Lentejas'           }, 
         pan:              { img: 'pan.png'             , label: 'Pan'                }, 
-        galletitasagua:   { img: 'galletitasagua.png'  , label: 'Galletitas de agua' }, 
         fideos:           { img: 'fideos.png'          , label: 'Fideos'             }, 
         berenjenas:       { img: 'berenjenas.png'      , label: 'Berenjenas'         }, 
         cebolla:          { img: 'cebolla.png'         , label: 'Cebolla'            }, 
@@ -50,21 +46,20 @@ function __main__() {
          * 5 para sacar cartel "solo para comer muy de ves en cuando"
          * 9 cualquiera de las 2 opciones
          */
-        manzana:               0, 
-        pera:                  0 , 
+        manzana:               2, 
+        pera:                  2 , 
         gaseosa:               2 , 
         chocolate:             2 , 
         caramelos:             2 , 
         mermelada:             0 , 
-        banana:                0 , 
-        sandia:                0 , 
+        banana:                2 , 
+        sandia:                2 , 
         uvas:                  2 , 
         naranja:               2 , 
         galletitasdulces:      0 ,
         yogur:                 0 , 
         flan:                  2 , 
         huevos:                1 , 
-        harina:                1 , 
         arroz:                 1 , 
         manteca:               2 , 
         mani:                  1 , 
@@ -72,10 +67,7 @@ function __main__() {
         leche:                 0 , 
         carnes:                1 , 
         pollo:                 1 , 
-        polenta:               1 , 
-        lentejas:              1 , 
         pan:                   2 , 
-        galletitasagua:        2 , 
         fideos:                1 , 
         berenjenas:            1 , 
         cebolla:               1 , 
@@ -101,6 +93,7 @@ function __main__() {
 
         for (var food in foods) {
           if (foods.hasOwnProperty(food)) {
+            console.log(food);
             questions[questions.length] =  { 
               html: motto.question,
               answer: foods[food],
