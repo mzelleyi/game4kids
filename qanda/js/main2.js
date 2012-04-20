@@ -63,7 +63,7 @@ function __main__() {
         arroz:                 1 , 
         manteca:               2 , 
         mani:                  1 , 
-        agua:                  1 , 
+        agua:                  2 , 
         leche:                 0 , 
         carnes:                1 , 
         pollo:                 1 , 
@@ -117,7 +117,7 @@ function __main__() {
       , message_question = document.createElement('p')
       , buttons_wrapper = document.createElement('div')
       , message_button 
-      , image = new Image(100, 70);
+      , image = new Image(130, 100);
     ;
     
     $('audio_11').play();

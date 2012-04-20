@@ -12,6 +12,74 @@ Object.prototype.clone = function() {
   } return newObj;
 };
 
+(function() { /* making fullscreenapi */
+    var
+        fullScreenApi = {
+            supportsFullScreen: false,
+            isFullScreen: function() { return false; },
+            requestFullScreen: function() {},
+            cancelFullScreen: function() {},
+            fullScreenEventName: '',
+            prefix: ''
+        },
+        browserPrefixes = 'webkit moz o ms khtml'.split(' ');
+ 
+    // check for native support
+    if (typeof document.cancelFullScreen != 'undefined') {
+        fullScreenApi.supportsFullScreen = true;
+    } else {
+        // check for fullscreen support by vendor prefix
+        for (var i = 0, il = browserPrefixes.length; i < il; i++ ) {
+            fullScreenApi.prefix = browserPrefixes[i];
+ 
+            if (typeof document[fullScreenApi.prefix + 'CancelFullScreen' ] != 'undefined' ) {
+                fullScreenApi.supportsFullScreen = true;
+ 
+                break;
+            }
+        }
+    }
+ 
+    // update methods to do something useful
+    if (fullScreenApi.supportsFullScreen) {
+        fullScreenApi.fullScreenEventName = fullScreenApi.prefix + 'fullscreenchange';
+ 
+        fullScreenApi.isFullScreen = function() {
+            switch (this.prefix) {
+                case '':
+                    return document.fullScreen;
+                case 'webkit':
+                    return document.webkitIsFullScreen;
+                default:
+                    return document[this.prefix + 'FullScreen'];
+            }
+        }
+        fullScreenApi.requestFullScreen = function(el) {
+            return (this.prefix === '') ? el.requestFullScreen() : el[this.prefix + 'RequestFullScreen']();
+        }
+        fullScreenApi.cancelFullScreen = function(el) {
+            return (this.prefix === '') ? document.cancelFullScreen() : document[this.prefix + 'CancelFullScreen']();
+        }
+    }
+ 
+    // jQuery plugin
+    if (typeof jQuery != 'undefined') {
+        jQuery.fn.requestFullScreen = function() {
+ 
+            return this.each(function() {
+                if (fullScreenApi.supportsFullScreen) {
+                    fullScreenApi.requestFullScreen(this);
+                }
+            });
+        };
+    }
+ 
+    // export api
+    window.fullScreenApi = fullScreenApi;
+})();  /* end fullscreenapi */
+
+
+
 function $(id) {
   return document.getElementById(id);
 }
@@ -168,15 +236,40 @@ function sound_manager(o) {
   o.appendChild(tv);
   /* BEGIN end controller */
 
+  /* BEGIN screen controller */
+  if (fullScreenApi.supportsFullScreen) {
+    tv = view.cloneNode();
+    i = 3;
+    tv.style.backgroundPosition = "-" + String(w*i) + "px 0px";
+    tv.onclick = function (e) {
+      this.style.backgroundPositionY = (control[i] === 1)?"-"+String(h)+"px": "0px";
+
+      v = (control[i] === 0)? false: true;
+      if (v) {
+        fullScreenApi.requestFullScreen($('body'));
+      } else { 
+        fullScreenApi.cancelFullScreen($('body'));
+      }
+
+      control[i] = (control[i] === 0)? 1: 0;
+      return false;
+    };
+    o.appendChild(tv);
+  }
+  /* BEGIN end controller */
+
+
+
+
 }
+
 /* END sound manager */
 
 
 function __main__() {
 
-        var y = Math.random();
-        y = y > 0.5? true: false;
-        if (y) {
+      var y = Math.random();
+      if (y < 0.3) {
         var xx = [
           [[1,0,1,0],  [1,1,0,0], [0,1,1,1], [1,1,1,0], [1,1,1,0], [1,1,0,1], [0,1,1,0], [1,1,0,1], [0,1,1,0], [1,1,1,0], [1,1,0,1],[0,1,1,0]  ], 
           [[1,0,1,0],  [1,0,1,0], [1,1,0,1], [0,0,0,1], [0,0,0,0], [0,1,1,1], [1,0,0,1], [0,1,1,0], [1,0,1,0], [1,0,0,0], [0,1,0,0],  [0,0,1,1] ], 
@@ -189,12 +282,17 @@ function __main__() {
           [[1,0,0,0],  [0,0,1,0], [1,0,0,0], [0,1,1,1], [1,1,0,0], [0,0,1,0], [1,0,0,0], [0,0,0,1], [0,0,0,1], [0,1,1,1], [1,0,1,0], [1,0,1,1] ], 
           [[1,0,1,1],  [0,0,0,1], [0,0,0,1], [0,1,0,1], [0,0,1,1], [1,0,1,1], [1,0,0,1], [0,1,0,1], [0,1,0,1], [0,1,0,1], [0,0,0,1], [0,1,1,0] ]
           ]
+          , goods = [[3,2],[7,4],[7,8],[8,9]]
+          , bads  = [[2,3],[4,5],[6,7],[9,7]]
+          , wellcome = "Hola! Usa Las flechas de la Luna y cruza el laberinto. Puedes guiarte siguiendo los Alimentos del desayuno para llegar a la salida"
+          , cartel_goods = "Genial!!! Sigue buscando Alimentos del desayuno y llegaras a la salida!"
+          , cartel_bads = "Mmmm!!! Recuerda buscar Alimentos del desayuno y llegaras a la salida!"
           , posx = 0
           , posy = 0
           , winx = 11
           , winy = 9
         ;
-        } else { 
+      } else if (y < 0.7) { 
         var xx = [
           [[1,0,0,0],[0,1,0,1],[0,1,0,1],[0,1,1,0],[1,1,1,0],[1,1,1,0],[1,1,0,1],[0,1,1,0],[1,1,0,0],[0,1,1,0],[1,1,1,0],[1,1,1,0]] ,
           [[1,0,1,1],[1,1,0,1],[1,1,0,1],[1,0,0,1],[0,0,1,0],[1,0,0,0],[0,1,1,0],[1,0,1,0],[1,0,1,0],[1,0,0,0],[0,0,1,1],[1,0,1,0]] ,
@@ -207,6 +305,11 @@ function __main__() {
           [[1,0,0,1],[0,0,0,1],[0,0,0,1],[0,1,1,0],[1,1,0,0],[0,0,0,1],[0,1,1,1],[1,0,0,1],[0,1,0,0],[0,1,1,0],[1,1,0,0],[0,0,1,0]],
           [[1,1,0,1],[0,1,0,1],[0,1,0,1],[0,0,0,1],[0,0,0,1],[0,1,0,1],[0,1,0,1],[0,1,1,1],[1,0,1,1],[1,0,0,1],[0,0,1,1],[1,0,1,0]]
           ]
+          , goods = [[2,0],[5,4],[6,6],[7,8],[10,9]]
+          , bads  = [[3,3],[4,7],[3,9]]
+          , wellcome = "Hola! Usa Las flechas de la Luna y cruza el laberinto. Puedes guiarte siguiendo las Frutas para llegar a la salida"
+          , cartel_goods = "Genial!!! Sigue buscando Frutas y llegaras a la salida!"
+          , cartel_bads = "Mmmm!!! Recuerda buscar Frutas y llegaras a la salida!"
           , posx = 0
           , posy = 0
           , winx = 11
@@ -214,7 +317,33 @@ function __main__() {
         ;
         document.getElementById('container').style.backgroundImage = "url(images/bgmaze2.png)";
       
-        } 
+      } else {
+        var xx = [
+          [[1,0,1,0],[1,1,0,0],[0,1,0,1],[0,1,1,1],[1,1,0,1],[0,1,1,0],[1,1,1,0],[1,1,1,0],[1,1,1,0],[1,1,1,0],[1,1,1,0],[1,1,1,0]] ,
+          [[1,0,0,0],[0,0,1,1],[1,1,0,0],[0,1,0,0],[0,1,1,1],[1,0,0,1],[0,0,1,0],[1,0,1,0],[1,0,0,0],[0,0,0,0],[0,0,0,0],[0,0,1,1]] ,
+          [[1,0,1,0],[1,1,0,1],[0,0,1,1],[1,0,0,0],[0,1,0,0],[0,1,1,1],[1,0,0,1],[0,0,0,1],[0,0,1,1],[1,0,1,1],[1,0,0,1],[0,1,1,0]] ,
+          [[1,0,0,0],[0,1,1,0],[1,1,0,0],[0,0,1,1],[1,0,0,1],[0,1,0,0],[0,1,0,1],[0,1,0,0],[0,1,0,1],[0,1,1,0],[1,1,1,0],[1,0,1,0]] ,
+          [[1,0,1,1],[1,0,0,0],[0,0,1,1],[1,1,1,0],[1,0,1,1],[1,0,1,0],[1,1,0,0],[0,0,0,0],[0,1,1,0],[1,0,0,1],[0,0,0,1],[0,0,1,0]] ,
+          [[1,1,1,0],[1,0,1,0],[1,0,1,1],[1,0,1,0],[1,1,0,0],[0,0,1,0],[1,0,1,0],[1,0,1,1],[1,0,1,0],[1,1,1,0],[1,1,1,0],[1,0,1,1]],
+          [[1,0,0,1],[0,0,1,1],[1,1,1,0],[1,0,1,0],[1,0,1,1],[1,0,1,0],[1,0,1,0],[1,1,0,0],[0,0,1,1],[1,0,0,1],[0,0,1,0],[1,1,1,0]],
+          [[1,1,0,1],[0,1,1,0],[1,0,1,0],[1,0,1,0],[1,1,1,0],[1,0,1,0],[1,0,1,0],[1,0,1,0],[1,1,0,1],[0,1,1,0],[1,0,0,1],[0,0,1,0]],
+          [[1,1,1,0],[1,0,1,0],[1,0,0,1],[0,0,1,0],[1,0,1,0],[1,0,1,1],[1,0,1,1],[1,0,1,0],[1,1,0,0],[0,0,0,1],[0,1,1,1],[1,0,1,0]],
+          [[1,0,0,1],[0,0,0,1],[0,1,0,1],[0,0,0,1],[0,0,0,1],[0,1,0,1],[0,1,0,1],[0,0,0,1],[0,0,0,1],[0,1,0,1],[0,1,0,1],[0,0,1,0]] 
+
+          ]
+          , goods = [[0,3],[2,3],[6,3],[8,6],[10,9]]
+          , bads  = [[1,1],[1,5],[6,9],[6,4],[6,8]]
+          , wellcome = "Hola! Usa Las flechas de la Luna y cruza el laberinto. Puedes guiarte siguiendo las Verdudas para llegar a la salida"
+          , cartel_goods = "Genial!!! Sigue buscando Verduras y llegaras a la salida!"
+          , cartel_bads = "Mmmm!!! Recuerda buscar Verduras y llegaras a la salida!"
+          , posx = 0
+          , posy = 0
+          , winx = 11
+          , winy = 9
+        ;
+        document.getElementById('container').style.backgroundImage = "url(images/bgmaze3.png)";
+ 
+      }
 
 
         (function() { /* block generate maze */
@@ -238,6 +367,8 @@ function __main__() {
             divcel.className += (e[1] === 1)? " top":"";
             divcel.className += (e[2] === 1)? " right":"";
             divcel.className += (e[3] === 1)? " bottom":"";
+            /*debug*/
+            //divcel.innerHTML = "<center><p>" + j  +"," + i + "<p></center>";
 
             divrow.appendChild(divcel);
           }
@@ -252,8 +383,21 @@ function __main__() {
 
         function is_winner() {
           //if( (posx === 11 ) && (posy === 9)) {
+          var c = 0;
+          for (c=0; c<goods.length; c++) {
+            if (posx === goods[c][0] && posy === goods[c][1]){
+              $('audio_03').play();
+              MESSAGE(cartel_goods);
+            }
+          }
+          for (c=0; c<bads.length; c++) {
+            if (posx === bads[c][0] && posy === bads[c][1]){
+              $('audio_04').play();
+              MESSAGE(cartel_bads);
+            }
+          }
+ 
           if( (posx === winx ) && (posy === winy)) {
-
             MESSAGEandReload("Ganaste!!!");
             $('audio_02').play();
           }
@@ -298,7 +442,6 @@ function __main__() {
             , limit = xx.length;
           playsound();
           clean();
-          is_winner();
           if ((position[3] !== 1) && (posy<limit) && (xx[posy +1][posx][1] !==1)){
             posy += 1; 
           }
@@ -349,15 +492,17 @@ function __main__() {
  
         })();/* end setting control for touchscreens */
 
-        callhelp();
-       ghost();
-        TIMER('thetimer');
-        sound_manager('soundmanager');
+      function callhelp() {
+        MESSAGE(wellcome); 
+        return false;
       }
-        function callhelp() {
-          MESSAGE( "Usa las flechas de la luna, para guiar al fantasma y cruzar el laberinto. Puedes guiarte siguiendo las comidas en este orden: desayuno, almuerzo, merienda y cena. ");
-          return false;
-        }
+
+
+      callhelp();
+      ghost();
+      TIMER('thetimer');
+      sound_manager('soundmanager');
+}
 
  
     </script>
@@ -547,7 +692,7 @@ function __main__() {
         
         top: 30px;
         left: 200px;
-        width: 150px;
+        width: 200px;
         z-index:1001;
         -moz-opacity: 0.8;
         opacity:.80;
@@ -569,7 +714,7 @@ function __main__() {
     </style>
 
   </head>
-  <body>
+  <body id="body">
     <!-- BEGIN html for message method -->
     <div id="light" class="white_content">
       <a href = "javascript:void(0)" 
@@ -629,6 +774,8 @@ function __main__() {
 
 <audio src='sound/ctrlsound.wav' preload='auto' id='audio_01' class=audio></audio>
 <audio src='sound/aplausos.mp3' preload='auto' id='audio_02' class=audio></audio>
+<audio src='sound/12.wav' preload='auto' id='audio_03' class=audio></audio>
+<audio src='sound/01.wav' preload='auto' id='audio_04' class=audio></audio>
 <audio  loop="loop" autoplay="autoplay" id="music">
     <source src="sound/music.mp3" type="audio/mpeg" />
 </audio>

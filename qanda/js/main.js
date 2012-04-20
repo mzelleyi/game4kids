@@ -112,7 +112,7 @@ function __main__() {
       , message_question = document.createElement('p')
       , buttons_wrapper = document.createElement('div')
       , message_button 
-      , image = new Image(100, 70);
+      , image = new Image(130, 100);
     ;
     
     $('audio_11').play();
