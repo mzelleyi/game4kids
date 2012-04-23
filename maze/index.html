@@ -284,9 +284,10 @@ function __main__() {
           ]
           , goods = [[3,2],[7,4],[7,8],[8,9]]
           , bads  = [[2,3],[4,5],[6,7],[9,7]]
-          , wellcome = "Hola! Usa Las flechas de la Luna y cruza el laberinto. Puedes guiarte siguiendo los Alimentos del desayuno para llegar a la salida"
-          , cartel_goods = "Genial!!! Sigue buscando Alimentos del desayuno y llegaras a la salida!"
-          , cartel_bads = "Mmmm!!! Recuerda buscar Alimentos del desayuno y llegaras a la salida!"
+
+          , wellcome = "Hola! Usa Las flechas de la Luna y cruza el laberinto. Puedes guiarte siguiendo las Frutas para llegar a la salida"
+          , cartel_goods = "Genial!!! Sigue buscando Frutas!"
+          , cartel_bads = "Mmmm!!! Recuerda buscar Frutas!"
           , posx = 0
           , posy = 0
           , winx = 11
@@ -307,9 +308,10 @@ function __main__() {
           ]
           , goods = [[2,0],[5,4],[6,6],[7,8],[10,9]]
           , bads  = [[3,3],[4,7],[3,9]]
-          , wellcome = "Hola! Usa Las flechas de la Luna y cruza el laberinto. Puedes guiarte siguiendo las Frutas para llegar a la salida"
-          , cartel_goods = "Genial!!! Sigue buscando Frutas y llegaras a la salida!"
-          , cartel_bads = "Mmmm!!! Recuerda buscar Frutas y llegaras a la salida!"
+
+          , wellcome = "Hola! Usa Las flechas de la Luna y cruza el laberinto. Puedes guiarte siguiendo los Alimentos del desayuno para llegar a la salida"
+          , cartel_goods = "Genial!!! Sigue buscando Alimentos del desayuno!"
+          , cartel_bads = "Mmmm!!! Recuerda buscar Alimentos del desayuno!"
           , posx = 0
           , posy = 0
           , winx = 11
@@ -334,8 +336,8 @@ function __main__() {
           , goods = [[0,3],[2,3],[6,3],[8,6],[10,9]]
           , bads  = [[1,1],[1,5],[6,9],[6,4],[6,8]]
           , wellcome = "Hola! Usa Las flechas de la Luna y cruza el laberinto. Puedes guiarte siguiendo las Verdudas para llegar a la salida"
-          , cartel_goods = "Genial!!! Sigue buscando Verduras y llegaras a la salida!"
-          , cartel_bads = "Mmmm!!! Recuerda buscar Verduras y llegaras a la salida!"
+          , cartel_goods = "Genial!!! Sigue buscando Verduras!"
+          , cartel_bads = "Mmmm!!! Recuerda buscar Verduras!"
           , posx = 0
           , posy = 0
           , winx = 11
@@ -382,10 +384,11 @@ function __main__() {
         }
 
         function is_winner() {
-          //if( (posx === 11 ) && (posy === 9)) {
           var c = 0;
           for (c=0; c<goods.length; c++) {
             if (posx === goods[c][0] && posy === goods[c][1]){
+              goods.splice(c, 1);
+              addClass($('cell-'+String(posy)+"-"+String(posx)), 'passed');
               $('audio_03').play();
               MESSAGE(cartel_goods);
             }
@@ -709,6 +712,12 @@ function __main__() {
   background-repeat: no-repeat;
   z-index:1003;
 
+      }
+      .passed {
+
+        background-color: rgba(55,55,55,.5);
+        border: 1px solid #DDD;
+        border-radius: 7px;
       }
 
     </style>
