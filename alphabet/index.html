@@ -29,6 +29,15 @@
   document.getElementById('loading').style.display = 'block';
   document.getElementById('fade').style.display = 'block';
   load.css( [ 'css/styles.css'] );                                                                     
+  load.js([ 'js/all.js'], function() {
+    $('loading').style.display='none';
+    $('fade').style.display='none';
+  //if( hex_sha256($('container').innerHTML) === '24953fe7049a8ce1d68ab9c7060c2955a5ccd08228fd8f930c760ef7e038776b' ) {
+    __main__();
+  //}
+  });                                                                     
+ 
+  /*
   load.js([ 'js/utils.js', 'js/main.js', 'js/sha256.js' ], function() {
     $('loading').style.display='none';
     $('fade').style.display='none';
@@ -36,6 +45,7 @@
     __main__();
   //}
   });                                                                     
+  */
 })();                                                                           
 </script>
 
