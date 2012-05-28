@@ -1,4 +1,0 @@
-#!/bin/bash
-
-#rsync -e ssh --stats --progress  -avz --exclude '.hg' ~/dev/moalaniz/ moalaniz@inter4.unsl.edu.ar:public_html 
-rsync -e ssh --stats --progress  -avz --exclude '.git' ~/dev/game4 dsl.puntania.com.ar:dsl.puntania.com.ar

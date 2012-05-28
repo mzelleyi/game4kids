@@ -9,8 +9,11 @@ body {
   color:#F44B0A;
 }
 #logod {
-  background-image: url(../images/bg.gif);
+  background-color: #fff;
   width: 900px;
+  height: 80px;
+}
+#logod img {
   height: 80px;
 }
 #container {

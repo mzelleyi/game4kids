@@ -2,8 +2,12 @@ a img {
 	border:none;
 }
 #logod {
-  background-image: url(../images/bg.gif);
+  background-color: #fff;
   width: 950px;
+  height: 80px;
+}
+
+#logod img {
   height: 80px;
 }
 #content-wrapper {
