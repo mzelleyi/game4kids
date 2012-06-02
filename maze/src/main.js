@@ -49,7 +49,6 @@ function __main__() {
           , winx = 11
           , winy = 9
         ;
-        document.getElementById('container').style.backgroundImage = "url(images/bgmaze2.png)";
       
       } else {
         var xx = [
@@ -75,14 +74,13 @@ function __main__() {
           , winx = 11
           , winy = 9
         ;
-        document.getElementById('container').style.backgroundImage = "url(images/bgmaze3.png)";
  
       }
 
 
         (function() { /* block generate maze */
         
-        var i, j, row, e
+        var i, j, k, row, e
           , divcel = document.createElement('div')
           , divrow  
           , render = document.getElementById('render')
@@ -94,15 +92,32 @@ function __main__() {
           divrow.className = "row";
           for (j=0; j<row.length; j++) {
             e = row[j];
-            divcel = divcel.cloneNode(true);
+            //divcel = divcel.cloneNode(true);
+            divcel = document.createElement('div');
             divcel.id = "cell-" + String(i) + "-" + String(j);
             divcel.className = "cell";
-            divcel.className += (e[0] === 1)? " left":"";
-            divcel.className += (e[1] === 1)? " top":"";
-            divcel.className += (e[2] === 1)? " right":"";
-            divcel.className += (e[3] === 1)? " bottom":"";
+
+            divcel.className += (e[0]===1)?" left":" eleft";
+            divcel.className += (e[1]===1)?" top": " etop";
+            divcel.className += (e[2]===1)?" right":" eright";
+            divcel.className += (e[3]===1)?" bottom":" ebottom";
+      
             /*debug*/
             //divcel.innerHTML = "<center><p>" + j  +"," + i + "<p></center>";
+            k = goods.length;
+            while(k--) {
+              if ( (goods[k][0] === j) && (goods[k][1] === i) ) {
+                divcel.innerHTML = "<center><p>" + j  +"," + i + "<p></center>";
+              }
+            }
+
+            k = bads.length;
+            while(k--) {
+              if ( (bads[k][0] === j) && (bads[k][1] === i) ) {
+                divcel.innerHTML = "<center><p><b>" + j  +"," + i + "</b><p></center>";
+              }
+            }
+
 
             divrow.appendChild(divcel);
           }
@@ -120,7 +135,8 @@ function __main__() {
           for (c=0; c<goods.length; c++) {
             if (posx === goods[c][0] && posy === goods[c][1]){
               goods.splice(c, 1);
-              addClass($('cell-'+String(posy)+"-"+String(posx)), 'passed');
+              //addClass($('cell-'+String(posy)+"-"+String(posx)), 'passed');
+              $('cell-'+String(posy) + "-" + String(posx)).innerHTML = ":D";
               $('audio_03').play();
               MESSAGE(cartel_goods);
             }
@@ -232,6 +248,7 @@ function __main__() {
         return false;
       }
 
+      $('help').onclick = callhelp;
 
       callhelp();
       ghost();
