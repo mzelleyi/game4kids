@@ -7,7 +7,6 @@ Object.prototype.clone = function() {
     } else newObj[i] = this[i]
   } return newObj;
 };
-
 (function() { /* making fullscreenapi */
     var
         fullScreenApi = {
@@ -74,6 +73,7 @@ Object.prototype.clone = function() {
     window.fullScreenApi = fullScreenApi;
 })();  /* end fullscreenapi */
 
+
 function $(id) {
   return document.getElementById(id);
 }
@@ -95,7 +95,7 @@ function removeClass(ele,cls) {
   }
 }
 
-function MESSAGE(msg) {
+function MESSAGE(msg, f) {
   var o = document.getElementById('light');
   o.style.display='block';
   o.getElementsByTagName('p')[0].innerHTML=msg;
@@ -113,6 +113,8 @@ function MESSAGEandReload(msg) {
   }
   document.getElementById('fade').style.display='block';
 }
+
+
 
 
 /* BEGIN butterfly effect ;) */
@@ -182,7 +184,6 @@ function sound_manager(o) {
   control[0] = 1; //sound
   control[1] = 1; //paused
   control[2] = 1; //music
-  control[3] = 1; //fullscreen
 
   view.style.width  = String(w) + "px";
   view.style.height = String(h) + "px";
@@ -240,6 +241,7 @@ function sound_manager(o) {
   o.appendChild(tv);
   /* BEGIN end controller */
 
+
   /* BEGIN screen controller */
   if (fullScreenApi.supportsFullScreen) {
     tv = view.cloneNode();
@@ -263,14 +265,15 @@ function sound_manager(o) {
   /* BEGIN end controller */
 
 
+
+
+
   console.log('im here');
 
 }
 /* END sound manager */
 
-
-
-
-
-
+function redirectTo(link) {
+    window.location = link;
+}
 

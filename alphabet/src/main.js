@@ -1,1 +1,195 @@
-function __main__(){function h(){MESSAGEandReload("<img src='images/win.png'>")}function i(a){$("audio_12").play(),e[a].style.display="none",e[a].onclick=function(){},f=[]}function j(){var a=0;for(a=0;a<f.length;a++)removeClass(f[a],"selected");g=0,$("audio_01").play()}function k(c){var e,k,l,m,n;e=this.id.split("-"),k=e[1],e=e[2],$("audio_00").play();if(d!=="notselected"){if(a[k][e]===0)return j(),!1;if(d[g]===this.innerHTML){g++,this.className=this.className+" selected",f[f.length]=this;if(d.length===g){b=b.filter(function(a){return a!==d}),n=$("listwords").getElementsByTagName("li");for(m=0;m<n.length;m++)n[m].childNodes[1].innerHTML===d&&i(m);g=0,d="notselected",b.length===0&&h()}return}j()}else j(),MESSAGE("Selecciona <br> una palabra!");return g=0,!1}var a=[[0,0,0,0,0,0,0,0,0,0,0,0,0,0],[0,0,2,3,3,3,3,3,3,3,3,3,0,0],[0,0,2,0,0,0,0,0,0,0,0,0,0,0],[0,0,2,0,5,0,0,0,0,0,0,0,0,0],[0,0,2,0,5,0,0,0,0,0,0,0,0,0],[0,0,2,0,5,0,0,0,0,0,0,0,0,0],[0,0,2,0,5,0,0,0,0,0,0,0,0,0],[0,0,2,1,5,4,4,4,4,4,4,4,4,4],[0,0,0,1,5,6,0,0,0,0,0,0,0,0],[0,0,0,1,0,6,0,0,0,0,0,0,9,0],[0,0,0,1,0,6,0,0,0,0,0,0,9,0],[0,0,0,0,0,0,0,0,0,0,0,0,9,0],[0,0,0,7,7,7,7,0,0,0,0,0,9,0],[0,0,8,8,8,8,8,8,8,0,0,0,0,0],[0,0,0,0,0,0,0,0,0,0,0,0,0,0]],b=["APIO","REPOLLO","ZANAHORIA","ACHICORIA","MORRON","UVA","KIWI","MANZANA","PERA"],c=["A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z"],d="notselected",e=$("listwords").getElementsByTagName("li"),f=[],g=0;(function(){var d,e,f,g,h,i,j=document.getElementById("render"),l,m,n,o=b.clone();for(d=0;d<a.length;d++){f=a[d],i=document.createElement("div"),i.className="row";for(e=0;e<f.length;e++)g=f[e],h=document.createElement("div"),h.id="cell-"+String(d)+"-"+String(e),h.className="cell",g!==0?(l=o[g-1][0],m=o[g-1].substring(1),o[g-1]=m):(n=Math.floor(Math.random()*c.length),l=c[n]),h.onclick=k,h.appendChild(document.createTextNode(l)),i.appendChild(h);j.appendChild(i)}})(),function(){var a=document.getElementById("listwords"),c=0,e="",f,g,h,i=document.createElement("div");i.id="timer",a.appendChild(i),TIMER(i);for(c=0;c<b.length;c++)e=b[c],f=document.createElement("li"),g=document.createElement("div"),h=document.createElement("div"),g.className="butterfly",h.appendChild(document.createTextNode(e)),f.appendChild(g),f.appendChild(h),f.onclick=function(a){var b=$("listwords").getElementsByTagName("li"),c,e,f;f=this.childNodes[0],e=this.childNodes[1],$("audio_11").play(),butterfly_effect(f);for(c=0;c<b.length;c++)b[c].className="";return d=e.innerHTML,this.className="menuselected",!1},a.appendChild(f)}(),sound_manager("soundmanager")};
+function __main__() {
+
+  var xx = [[ 0,0,0,0,0,0,0,0,0,0,0,0,0,0 ], 
+            [ 0,0,2,3,3,3,3,3,3,3,3,3,0,0 ], 
+            [ 0,0,2,0,0,0,0,0,0,0,0,0,0,0 ], 
+            [ 0,0,2,0,5,0,0,0,0,0,0,0,0,0 ], 
+            [ 0,0,2,0,5,0,0,0,0,0,0,0,0,0 ], 
+            [ 0,0,2,0,5,0,0,0,0,0,0,0,0,0 ], 
+            [ 0,0,2,0,5,0,0,0,0,0,0,0,0,0 ], 
+            [ 0,0,2,1,5,4,4,4,4,4,4,4,4,4 ], 
+            [ 0,0,0,1,5,6,0,0,0,0,0,0,0,0 ], 
+            [ 0,0,0,1,0,6,0,0,0,0,0,0,9,0 ], 
+            [ 0,0,0,1,0,6,0,0,0,0,0,0,9,0 ], 
+            [ 0,0,0,0,0,0,0,0,0,0,0,0,9,0 ], 
+            [ 0,0,0,7,7,7,7,0,0,0,0,0,9,0 ], 
+            [ 0,0,8,8,8,8,8,8,8,0,0,0,0,0 ], 
+            [ 0,0,0,0,0,0,0,0,0,0,0,0,0,0 ]]
+
+    , words = [ 'APIO', 'REPOLLO', 'ZANAHORIA', 'ACHICORIA', 
+                'MORRON', 'UVA', 'KIWI', 'MANZANA', 'PERA'
+              ]
+    , alphabet = [ 'A','B','C','D','E','F','G','H','I','J','K','L','M',
+      'N','O','P', 'Q','R','S','T','U','V','W','X','Y','Z']
+    , selectedword = "notselected"
+    , htmlwords = $('listwords').getElementsByTagName('li')
+    , htmlletters = []
+    , count = 0
+  ;
+  
+    /* BEGIN events */
+ 
+
+    function event_win() {
+      MESSAGEandReload("<img src='images/win.png'>");
+    }
+
+    function event_right_word(i) {
+      $('audio_12').play();
+
+      htmlwords[i].style.display = "none";
+      htmlwords[i].onclick = function() {};
+      htmlletters= [];
+    }
+
+    function event_wrong() {
+      var i = 0;
+      for(i =0; i<htmlletters.length; i++) {
+        removeClass(htmlletters[i], 'selected');
+      }
+      count = 0;
+      $('audio_01').play();
+    }
+    /* END events */
+
+
+  function select(e) {
+    var x, y
+      , letter 
+      , i
+      , htmlwords
+    ;
+
+
+    x = this.id.split('-');
+    y = x[1]; x = x[2];
+    
+    $('audio_00').play();
+    if (selectedword !== "notselected" ) {
+      if (xx[y][x] !== 0 ) {
+        if (selectedword[count] === this.innerHTML) {
+          //rotate(this);
+          count++;
+          this.className = this.className + " selected";
+          htmlletters[htmlletters.length] = this; 
+          if (selectedword.length === count) {
+            // remove from list
+            words = words.filter(function(x) { return x !== selectedword; });
+            htmlwords = $('listwords').getElementsByTagName('li');
+            for (i=0; i<htmlwords.length; i++) {
+              if (htmlwords[i].childNodes[1].innerHTML === selectedword) { 
+                event_right_word(i);
+              }
+            }
+            count = 0;
+            selectedword = "notselected";
+            if (words.length === 0 ){
+              event_win();
+            }
+          } 
+          return;
+        } else {
+          event_wrong();
+        }
+      } else {
+        event_wrong();
+        return false;
+      }
+    } else {
+      event_wrong();
+      MESSAGE("Selecciona <br> una palabra!");
+    }
+    count = 0;
+    return false;
+  }
+
+  (function() { /* block generate alphabet */
+  
+  var i, j, row, e
+    , divcel  
+    , divrow  
+    , render = document.getElementById('render')
+    , head, tail, pos
+    , tmpwords = words.clone()
+  ;
+    
+  for (i=0; i<xx.length; i++) {
+    row = xx[i];
+    divrow = document.createElement('div');
+    divrow.className = "row";
+    for (j=0; j<row.length; j++) {
+      e = row[j];
+      divcel = document.createElement('div');
+      divcel.id = "cell-" + String(i) + "-" + String(j);
+      divcel.className = "cell";
+      
+      if (e !== 0) {
+        //console.log("TMP:" + tmpwords);
+        //console.log("WDS:" + words);
+        head = tmpwords[e-1][0];
+        tail = tmpwords[e-1].substring(1);
+        tmpwords[e-1] = tail;
+      } else {
+        pos = Math.floor(Math.random()*alphabet.length);
+        head = alphabet[pos];
+      }
+      divcel.onclick = select;
+      divcel.appendChild(document.createTextNode(head));
+      divrow.appendChild(divcel);
+    }
+    render.appendChild(divrow);
+  }
+  })();        /* end block generation */
+
+
+  (function() {/* block generate listwords */
+    var list = document.getElementById('listwords')
+      , i = 0
+      , w = ""
+      , e, s, div
+    ;
+
+    var timerwrapper = document.createElement('div');
+    timerwrapper.id = "timer";
+    list.appendChild(timerwrapper);
+    TIMER(timerwrapper); 
+    for (i=0; i<words.length; i++) {
+      w = words[i];
+      e = document.createElement('li');
+      s = document.createElement('div');
+      div = document.createElement('div');
+
+      s.className = 'butterfly';
+      div.appendChild(document.createTextNode(w));
+      e.appendChild(s);
+      e.appendChild(div);
+
+      /* BEGIN select a word of the menu */
+      e.onclick = function(e) {
+        var lis = $('listwords').getElementsByTagName('li')
+          , i, text, butterfly
+        ;
+        butterfly = this.childNodes[0];
+        text = this.childNodes[1];
+
+        $('audio_11').play();
+        butterfly_effect(butterfly);
+        for (i=0; i<lis.length; i++) {
+          lis[i].className ="";
+        }
+        selectedword = text.innerHTML;
+        this.className ="menuselected";
+        return false;
+      };
+      /* END onclick in words of the menu */
+
+      list.appendChild(e);
+    }
+  })();        /* end block generate listwords */
+
+
+  sound_manager('soundmanager');
+
+}
+
+

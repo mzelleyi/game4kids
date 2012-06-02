@@ -1,13 +1,4 @@
-Object.prototype.clone = function() {
-  var newObj = (this instanceof Array) ? [] : {};
-  for (i in this) {
-    if (i == 'clone') continue;
-    if (this[i] && typeof this[i] == "object") {
-      newObj[i] = this[i].clone();
-    } else newObj[i] = this[i]
-  } return newObj;
-};
-
+function posPage() { // -- postprocessing
 (function() { /* making fullscreenapi */
     var
         fullScreenApi = {
@@ -74,97 +65,6 @@ Object.prototype.clone = function() {
     window.fullScreenApi = fullScreenApi;
 })();  /* end fullscreenapi */
 
-function $(id) {
-  return document.getElementById(id);
-}
-function $$(id) {
-  return document.getElementsByClassName(id);
-}
-
-
-function hasClass(ele,cls) {
-  return ele.className.match(new RegExp('(\\s|^)'+cls+'(\\s|$)'));
-}
-function addClass(ele,cls) {
-  if (!this.hasClass(ele,cls)) ele.className += " "+cls;
-}
-function removeClass(ele,cls) {
-  if (hasClass(ele,cls)) {
-    var reg = new RegExp('(\\s|^)'+cls+'(\\s|$)');
-    ele.className=ele.className.replace(reg,' ');
-  }
-}
-
-function MESSAGE(msg) {
-  var o = document.getElementById('light');
-  o.style.display='block';
-  o.getElementsByTagName('p')[0].innerHTML=msg;
-  document.getElementById('fade').style.display='block';
-}
-
-function MESSAGEandReload(msg) {
-
-  var o = document.getElementById('light');
-  o.style.display='block';
-  o.getElementsByTagName('p')[0].innerHTML=msg;
-  o.getElementsByTagName('a')[0].onclick = function() {
-    location.reload(true);
-    return false;
-  }
-  document.getElementById('fade').style.display='block';
-}
-
-
-/* BEGIN butterfly effect ;) */
-var timer_butterfly=0;
-var dombutterfly = null;
-
-function butterfly() {
-  if (!dombutterfly.style.backgroundPosition || 
-      dombutterfly.style.backgroundPosition === "-40px 0px"
-      ) {
-    dombutterfly.style.backgroundPosition = "0px 0px";  
-  } else {
-    dombutterfly.style.backgroundPosition = "-40px 0px";  
-  }
-}
-
-function butterfly_effect(o) {
-  if (typeof(o) === 'string') { o = $(o); }
-  clearInterval(timer_butterfly);
-  dombutterfly = o;
-  butterfly();
-  timer_butterfly = setInterval("butterfly()", 100)
-}
-
-/* END butterfly effect ;) */
-
-
-
-
-/* BEGIN timer */
-var time = 0;
-var timer;
-domtimer = null;
-
-function t() {
-  domtimer.innerHTML = "Tiempo : " + String(time);  
-  time++;
-}
-
-function TIMER(o) {
-  if (typeof(o) === 'string') { o = $(o); }
-  domtimer = o;
-  t();
-  timer = setInterval("t()", 1000)
-  return timer;
-}
-
-function TIMER_PAUSE   () { clearInterval(timer);             }
-function TIMER_CONTINUE() { timer = setInterval("t()", 1000); }
-
-
-/* END timer */
 
 /* BEGIN sound manager */
 var control = [] ;
@@ -177,12 +77,18 @@ function sound_manager(o) {
     , tv
     , i
   ;
+
+
+  function $(id)  { return document.getElementById(id);         }
+  function $$(id) { return document.getElementsByClassName(id); }
+
+
+
   if (typeof(o) === 'string') { o = $(o); }
 
   control[0] = 1; //sound
   control[1] = 1; //paused
   control[2] = 1; //music
-  control[3] = 1; //fullscreen
 
   view.style.width  = String(w) + "px";
   view.style.height = String(h) + "px";
@@ -197,7 +103,6 @@ function sound_manager(o) {
     if (control[i] === 0) { $('music').play(); }
     else                  { $('music').pause(); }
     control[i] = (control[i] === 0)? 1: 0;
-    return false;
   };
   o.appendChild(tv);
   /* END sound controller */
@@ -214,9 +119,8 @@ function sound_manager(o) {
 
 
     control[i] = (control[i] === 0)? 1: 0;
-    return false;
   };
-  o.appendChild(tv);
+  //o.appendChild(tv);
   /* END pause game controller */
 
   /* BEGIN music controller */
@@ -235,10 +139,9 @@ function sound_manager(o) {
     
 
     control[i] = (control[i] === 0)? 1: 0;
-    return false;
   };
   o.appendChild(tv);
-  /* BEGIN end controller */
+  /* BEGIN music end controller */
 
   /* BEGIN screen controller */
   if (fullScreenApi.supportsFullScreen) {
@@ -263,14 +166,11 @@ function sound_manager(o) {
   /* BEGIN end controller */
 
 
-  console.log('im here');
+
 
 }
 /* END sound manager */
+sound_manager('soundmanager');
 
 
-
-
-
-
-
+} // -- ending postprocessing

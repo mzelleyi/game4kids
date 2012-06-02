@@ -2,10 +2,10 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title> Preguntas! </title>
+<title> Sopa de Letras </title>
 
 <link href="css/styles.css" rel="stylesheet" type="text/css"/>
-<script src="js/aloader.min.js"></script> 
+<script src="js/aloader.js"></script> 
 </head>
 <body id=body>
     <!-- BEGIN html for message method -->
@@ -14,7 +14,7 @@
         onclick = "document.getElementById('light').style.display='none';document.getElementById('fade').style.display='none'">
         <img src='images/close.png'>
       </a>
-      <p> </p> 
+      <p> Message here </p> 
     </div>
     <div id="loading" class="loading">
       <p> Cargando </p> 
@@ -25,14 +25,14 @@
 
 <script>
 // function to load images and resources 
-      
 (function() {
   document.getElementById('loading').style.display = 'block';
   document.getElementById('fade').style.display = 'block';
   load.css( [ 'css/styles.css'] );                                                                     
-  load.js([ 'js/utils.js', 'js/main.js' ], function() {
+  load.js([ 'src/utils.js', 'src/main.js', 'src/sha256.js' ], function() {
     $('loading').style.display='none';
     $('fade').style.display='none';
+  //if( hex_sha256($('container').innerHTML) === '24953fe7049a8ce1d68ab9c7060c2955a5ccd08228fd8f930c760ef7e038776b' ) {
     __main__();
   });                                                                     
 })();                                                                           
@@ -44,32 +44,20 @@
   </div>
 
     <div id=container>
+      <h2> Sopa de Letras </h2>
 
       <div id="soundmanager"></div>
-
-      <center>
-        <div id="timer"> </div>
       <div id="render">
       </div>
-    </center>
-      <div id="option1">
-        <h2>Dulce </h2>
-
-        <ul id="listfood1">
+      <div id="toolbar">
+        <ul id="listwords">
         </ul>
       </div>
-
-      <div id="option2">
-        <h2> Salado </h2>
-        <ul id="listfood2">
-        </ul>
-      </div>
- 
       <div style="clear:both"></div> 
-    </div>
       <div id=footer>Logatec 2012
-        |<a href="http://www.logatec.com.ar">top</a>
+        |<a href="http://www.logatec.com.ar">site</a>
       </div>
+    </div>
     </center>
 
     <!-- BEGIN audio stuff -->
