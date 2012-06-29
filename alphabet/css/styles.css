@@ -5,12 +5,14 @@ body {
   padding:0;
   background-image: url('../images/background.png');
   font-family: verdana, arial;
+  font-family: 'Fredoka One', cursive;
   font-size:20px;
   color:#F44B0A;
 }
 #logod {
-  background-color: #fff;
-  width: 900px;
+  background-image:  url('../images/bg.gif');
+  /*background-color: #fff;*/
+  width: 1200px;
   height: 80px;
 }
 #logod img {
@@ -20,9 +22,10 @@ body {
   padding: 0;
   margin: -23px;
   background-image:  url('../images/fondo.png');
+  background-color: #444;
   background-repeat: no-repeat;
   text-align: left;
-  width:904px;
+  width:1200px;
 }
 #container h2 {
   padding-right: 30px;
@@ -32,18 +35,24 @@ body {
 
 }
 #footer {
+  
+  text-align: right;
   margin: 0 auto;
-  color: white;
-  border-top: 5px solid #C2C90C;
+  color: black;
   font-size: 0.8em;
-  padding: 5px 0;
+  padding-right: 5px ;
 }
 #render {
-  margin-top: 3px;
+  -webkit-user-select: none;
+  -khtml-user-select: none;   
+  -webkit-user-select: none;
+  user-select: none;
+  margin-top: -5px;
   margin-left: 90px;
-  width: 450px;
+  width: 650px;
   min-height: 490px;
   float: left;
+  font-family: 'Shojumaru', cursive;
 }
 #toolbar {
 	border-radius: 15px;
@@ -60,6 +69,7 @@ body {
   margin: 0;
   list-style-type: none;
   padding-left: 10px;
+  padding-top: 10px;
   clear:both;
 
 }
@@ -102,9 +112,10 @@ body {
   padding-top: 2px;
   text-align: center;
   vertical-align: center;
-  width: 32px; 
-  height: 28px;
-  float: left
+  width: 45px; 
+  height: 40px;
+  float: left;
+  font-size: 22px;
 }
 .row {
   float: left;
@@ -131,9 +142,19 @@ body {
 
 
 .selected {
-	border-radius: 15px;
-	background-color: rgba(250,214,15,.5);
+  -webkit-animation: letterAnim 1s linear 0s infinite alternate;
+  color: #00aa00;
 }
+@-webkit-keyframes letterAnim {
+  from { 
+    /*text-shadow: 0 0 0.3em #020055, 0 0 0.3em #020055,0 0 0.3em #020055;*/
+    font-size: 15px;
+  }
+  to {
+    font-size: 30px;
+  }
+}
+
 
 
 /* modal box */
@@ -214,8 +235,8 @@ body {
 	background-color: rgba(255,255,255,.5);
 	
   position: absolute;
-  top: 30px;
-  left: 200px;
+  top: 60px;
+  left: 100px;
   width: 200px;
   z-index:1001;
   -moz-opacity: 0.8;

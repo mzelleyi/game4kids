@@ -1,6 +1,7 @@
 function __main__() {
 
       var y = Math.random();
+      var mazeGame = -1;
       if (y < 0.3) {
         var xx = [
           [[1,0,1,0],  [1,1,0,0], [0,1,1,1], [1,1,1,0], [1,1,1,0], [1,1,0,1], [0,1,1,0], [1,1,0,1], [0,1,1,0], [1,1,1,0], [1,1,0,1],[0,1,1,0]  ], 
@@ -12,7 +13,7 @@ function __main__() {
           [[1,0,1,0],  [1,0,0,1], [0,1,0,1], [0,1,0,1], [0,1,0,1], [0,1,0,0], [0,1,0,0], [0,1,1,1], [1,0,1,0], [1,0,1,0], [1,0,1,0],  [1,1,1,0] ], 
           [[1,0,1,0],  [1,1,1,0], [1,1,1,0], [1,1,0,1], [0,1,0,1], [0,0,1,0], [1,0,1,0], [1,1,1,0], [1,0,0,0], [0,0,1,1], [1,0,0,0],  [0,0,1,0] ], 
           [[1,0,0,0],  [0,0,1,0], [1,0,0,0], [0,1,1,1], [1,1,0,0], [0,0,1,0], [1,0,0,0], [0,0,0,1], [0,0,0,1], [0,1,1,1], [1,0,1,0], [1,0,1,1] ], 
-          [[1,0,1,1],  [0,0,0,1], [0,0,0,1], [0,1,0,1], [0,0,1,1], [1,0,1,1], [1,0,0,1], [0,1,0,1], [0,1,0,1], [0,1,0,1], [0,0,0,1], [0,1,1,0] ]
+          [[1,0,1,1],  [1,0,0,1], [0,0,0,1], [0,1,0,1], [0,0,1,1], [1,0,1,1], [1,0,0,1], [0,1,0,1], [0,1,0,1], [0,1,0,1], [0,0,0,1], [0,1,1,0] ]
           ]
           , goods = [[3,2],[7,4],[7,8],[8,9]]
           , bads  = [[2,3],[4,5],[6,7],[9,7]]
@@ -25,10 +26,11 @@ function __main__() {
           , winx = 11
           , winy = 9
         ;
+        mazeGame = 1;
       } else if (y < 0.7) { 
         var xx = [
           [[1,0,0,0],[0,1,0,1],[0,1,0,1],[0,1,1,0],[1,1,1,0],[1,1,1,0],[1,1,0,1],[0,1,1,0],[1,1,0,0],[0,1,1,0],[1,1,1,0],[1,1,1,0]] ,
-          [[1,0,1,1],[1,1,0,1],[1,1,0,1],[1,0,0,1],[0,0,1,0],[1,0,0,0],[0,1,1,0],[1,0,1,0],[1,0,1,0],[1,0,0,0],[0,0,1,1],[1,0,1,0]] ,
+          [[1,0,1,1],[1,1,0,1],[0,1,0,1],[0,0,0,1],[0,0,1,0],[1,0,0,0],[0,1,1,0],[1,0,1,0],[1,0,1,0],[1,0,0,0],[0,0,1,1],[1,0,1,0]] ,
           [[1,1,0,0],[0,1,0,0],[0,1,0,0],[0,1,1,0],[1,0,1,0],[1,0,1,1],[1,0,0,1],[0,0,0,1],[0,0,1,0],[1,0,0,0],[0,1,0,0],[0,0,1,1]] ,
           [[1,0,1,0],[1,0,1,1],[1,0,1,0],[1,0,0,0],[0,0,1,0],[1,1,0,1],[0,1,0,1],[0,1,1,0],[1,0,1,1],[1,0,1,1],[1,0,1,0],[1,1,1,0]] ,
           [[1,0,0,1],[0,1,1,1],[1,0,1,0],[1,0,1,1],[1,0,0,0],[0,1,0,0],[0,1,1,1],[1,0,0,1],[0,1,0,1],[0,1,1,0],[1,0,1,0],[1,0,1,0]] ,
@@ -49,14 +51,15 @@ function __main__() {
           , winx = 11
           , winy = 9
         ;
+        mazeGame = 2;
       
       } else {
         var xx = [
           [[1,0,1,0],[1,1,0,0],[0,1,0,1],[0,1,1,1],[1,1,0,1],[0,1,1,0],[1,1,1,0],[1,1,1,0],[1,1,1,0],[1,1,1,0],[1,1,1,0],[1,1,1,0]] ,
           [[1,0,0,0],[0,0,1,1],[1,1,0,0],[0,1,0,0],[0,1,1,1],[1,0,0,1],[0,0,1,0],[1,0,1,0],[1,0,0,0],[0,0,0,0],[0,0,0,0],[0,0,1,1]] ,
           [[1,0,1,0],[1,1,0,1],[0,0,1,1],[1,0,0,0],[0,1,0,0],[0,1,1,1],[1,0,0,1],[0,0,0,1],[0,0,1,1],[1,0,1,1],[1,0,0,1],[0,1,1,0]] ,
-          [[1,0,0,0],[0,1,1,0],[1,1,0,0],[0,0,1,1],[1,0,0,1],[0,1,0,0],[0,1,0,1],[0,1,0,0],[0,1,0,1],[0,1,1,0],[1,1,1,0],[1,0,1,0]] ,
-          [[1,0,1,1],[1,0,0,0],[0,0,1,1],[1,1,1,0],[1,0,1,1],[1,0,1,0],[1,1,0,0],[0,0,0,0],[0,1,1,0],[1,0,0,1],[0,0,0,1],[0,0,1,0]] ,
+          [[1,0,0,0],[0,1,1,0],[1,1,0,0],[0,0,1,1],[1,0,0,0],[0,1,0,0],[0,1,0,1],[0,1,0,0],[0,1,0,1],[0,1,1,0],[1,1,1,0],[1,0,1,0]] ,
+          [[1,0,1,1],[1,0,0,0],[0,0,1,0],[1,1,1,0],[1,0,1,1],[1,0,1,0],[1,1,0,0],[0,0,0,0],[0,1,1,0],[1,0,0,1],[0,0,0,1],[0,0,1,0]] ,
           [[1,1,1,0],[1,0,1,0],[1,0,1,1],[1,0,1,0],[1,1,0,0],[0,0,1,0],[1,0,1,0],[1,0,1,1],[1,0,1,0],[1,1,1,0],[1,1,1,0],[1,0,1,1]],
           [[1,0,0,1],[0,0,1,1],[1,1,1,0],[1,0,1,0],[1,0,1,1],[1,0,1,0],[1,0,1,0],[1,1,0,0],[0,0,1,1],[1,0,0,1],[0,0,1,0],[1,1,1,0]],
           [[1,1,0,1],[0,1,1,0],[1,0,1,0],[1,0,1,0],[1,1,1,0],[1,0,1,0],[1,0,1,0],[1,0,1,0],[1,1,0,1],[0,1,1,0],[1,0,0,1],[0,0,1,0]],
@@ -75,12 +78,14 @@ function __main__() {
           , winy = 9
         ;
  
+        mazeGame = 3;
       }
 
+      console.log(mazeGame);
 
         (function() { /* block generate maze */
         
-        var i, j, k, row, e
+        var i, j, k, row, e, goodCount = 1, badCount = 1
           , divcel = document.createElement('div')
           , divrow  
           , render = document.getElementById('render')
@@ -104,17 +109,25 @@ function __main__() {
       
             /*debug*/
             //divcel.innerHTML = "<center><p>" + j  +"," + i + "<p></center>";
+
             k = goods.length;
             while(k--) {
               if ( (goods[k][0] === j) && (goods[k][1] === i) ) {
-                divcel.innerHTML = "<center><p>" + j  +"," + i + "<p></center>";
+                divcel.innerHTML = "<center>"; 
+                divcel.innerHTML += "<img src='images/maze"+mazeGame+"/goods/"+goodCount+".png' >";
+                divcel.innerHTML += "</center>";
+                goodCount++;
               }
             }
 
             k = bads.length;
             while(k--) {
               if ( (bads[k][0] === j) && (bads[k][1] === i) ) {
-                divcel.innerHTML = "<center><p><b>" + j  +"," + i + "</b><p></center>";
+
+                divcel.innerHTML =  "<center>";
+                divcel.innerHTML += "<img src='images/maze"+mazeGame+"/bads/"+badCount+".png' >";
+                divcel.innerHTML += "<center>";
+                badCount++;
               }
             }
 
@@ -135,21 +148,27 @@ function __main__() {
           for (c=0; c<goods.length; c++) {
             if (posx === goods[c][0] && posy === goods[c][1]){
               goods.splice(c, 1);
-              //addClass($('cell-'+String(posy)+"-"+String(posx)), 'passed');
-              $('cell-'+String(posy) + "-" + String(posx)).innerHTML = ":D";
+              addClass($('cell-'+String(posy) + "-" + String(posx)), "eat");
+              setTimeout(function() { 
+                $('cell-'+String(posy) + "-" + String(posx)).innerHTML = "";
+              }, 1000);
               $('audio_03').play();
-              MESSAGE(cartel_goods);
+              ModalMessage.show(cartel_goods);
             }
           }
           for (c=0; c<bads.length; c++) {
             if (posx === bads[c][0] && posy === bads[c][1]){
+              addClass($('cell-'+String(posy) + "-" + String(posx)), "eat");
+              setTimeout(function() { 
+                $('cell-'+String(posy) + "-" + String(posx)).innerHTML = "";
+              }, 1000);
               $('audio_04').play();
-              MESSAGE(cartel_bads);
+              ModalMessage.show(cartel_bads);
             }
           }
  
           if( (posx === winx ) && (posy === winy)) {
-            MESSAGEandReload("Ganaste!!!");
+            ModalMessage,andReload("Ganaste!!!");
             $('audio_02').play();
           }
         }
@@ -201,14 +220,14 @@ function __main__() {
         }
         
         function clean() {
-          var x = document.getElementById("cell-" + String(posy) + "-" + String(posx));
+          var x = $("cell-" + String(posy) + "-" + String(posx));
           removeClass(x, 'black');
           
         }
 
 
         function dibujar() {
-          var x = document.getElementById("cell-" + String(posy) + "-" + String(posx));
+          var x = $("cell-" + String(posy) + "-" + String(posx));
           removeClass(x, 'black');
           addClass(x, 'black');
 
@@ -244,16 +263,34 @@ function __main__() {
         })();/* end setting control for touchscreens */
 
       function callhelp() {
-        MESSAGE(wellcome); 
+        ModalMessage.show(wellcome); 
         return false;
       }
 
       $('help').onclick = callhelp;
 
       callhelp();
+
+      /* BEGIN ghost effect ;) */
+      var timer_butterfly=0;
+      var dombutterfly = null;
+      var current = 0;
+      function butterfly() {
+        dombutterfly = document.getElementsByClassName('black')[0];
+        dombutterfly.style.backgroundPosition ="-"+ String(current)+"px 0px";
+        current= (current + 50) % 200;
+      }
+
+      function ghost() {
+        clearInterval(timer_butterfly);
+        timer_butterfly = setInterval("butterfly()", 200)
+      }
+      window.butterfly = butterfly;
+
       ghost();
-      TIMER('thetimer');
-      sound_manager('soundmanager');
+      /* END ghost effect ;) */
+
+
 }
 
  

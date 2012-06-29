@@ -3,7 +3,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title> Sopa de Letras </title>
-
+<link href='http://fonts.googleapis.com/css?family=Shojumaru' rel='stylesheet' type='text/css'>
 <link href="css/styles.css" rel="stylesheet" type="text/css"/>
 <script src="js/aloader.js"></script> 
 </head>
@@ -29,23 +29,12 @@
   document.getElementById('loading').style.display = 'block';
   document.getElementById('fade').style.display = 'block';
   load.css( [ 'css/styles.css'] );                                                                     
-  load.js([ 'js/alphabet.js'], function() {
+  load.js([ 'src/utils.js', 'src/main.js', 'src/sha256.js' ], function() {
     $('loading').style.display='none';
     $('fade').style.display='none';
   //if( hex_sha256($('container').innerHTML) === '24953fe7049a8ce1d68ab9c7060c2955a5ccd08228fd8f930c760ef7e038776b' ) {
     __main__();
-  //}
   });                                                                     
- 
-  /*
-  load.js([ 'js/utils.js', 'js/main.js', 'js/sha256.js' ], function() {
-    $('loading').style.display='none';
-    $('fade').style.display='none';
-  //if( hex_sha256($('container').innerHTML) === '24953fe7049a8ce1d68ab9c7060c2955a5ccd08228fd8f930c760ef7e038776b' ) {
-    __main__();
-  //}
-  });                                                                     
-  */
 })();                                                                           
 </script>
 
@@ -61,6 +50,7 @@
       <div id="render">
       </div>
       <div id="toolbar">
+      <div id="timer"> </div>
         <ul id="listwords">
         </ul>
       </div>

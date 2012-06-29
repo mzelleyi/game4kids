@@ -1,0 +1,32 @@
+<html>
+  <head>
+    <script src="sprite.js"></script>
+    <style>
+      #mysprite {
+        border: 1px solid #f00;
+      }
+    </style>
+  </head>
+
+<body>
+  
+<div id="mysprite"></div>
+  
+<script>
+
+
+  var ghost = new Sprite({
+    image: "pagaro.png",
+    xFrames: 4, yFrames: 1, 
+    render: 'mysprite', 
+    refreshTime: 300,
+    viewport: { width: 162, height: 201} 
+  });
+
+ghost.define('eat',  [0,1,2,3], 'x', 0);
+ghost.animate('eat');
+</script>
+<a href="javascript:void(0)" onclick="ghost.move('down');"> down </a>
+</body>
+
+</html>

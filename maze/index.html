@@ -1,7 +1,8 @@
 <html>
   <head> 
     <title> Maze Generator </title>
-
+    <link href='http://fonts.googleapis.com/css?family=Butcherman' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Eater' rel='stylesheet' type='text/css'>
 <script src="js/aloader.js"></script> 
   </head>
   <body id="body">
@@ -27,7 +28,7 @@
   document.getElementById('loading').style.display = 'block';
   document.getElementById('fade').style.display = 'block';
   load.css( [ 'css/styles.css'] );                                                                     
-  load.js([ 'js/maze.js'], function() {
+  load.js([ 'src/utils.js', 'src/main.js', 'src/sha256.js'], function() {
     $('loading').style.display='none';
     $('fade').style.display='none';
   //if( hex_sha256($('container').innerHTML) === '24953fe7049a8ce1d68ab9c7060c2955a5ccd08228fd8f930c760ef7e038776b' ) {
@@ -40,12 +41,12 @@
  
  
   <div id="logod">
-    <img src="images/minsalud.png">
+    <img src="images/logod.png">
   </div>
       <div id=coins>
       <div id="soundmanager"></div>
       <h2>El Laberinto!</h2>
-        <div id=thetimer></div>
+        <div id=timer></div>
       </div>
     <div id=container>
 
@@ -70,7 +71,7 @@
           </tr>
         </table>
       </div>
-      <a id="help" href="javascript:void(0)" onclick='callhelp(this);'> </a>
+      <a id="help" href="javascript:void(0)"> </a>
       <div style="clear:both"></div> 
       <div id=footer>
         Logatec 2012 |<a href="http://www.logatec.com.ar"> site </a> 

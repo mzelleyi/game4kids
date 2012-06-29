@@ -1,6 +1,5 @@
 function __main__() {
-   sound_manager('soundmanager');
-   TIMER('timer');
+   //TIMER('timer');
    var oos = {
         manzana:          { img: 'manzana.png'         , label: 'Manzana'            }, 
         pera:             { img: 'pera.png'            , label: 'Pera'               }, 
@@ -88,7 +87,7 @@ function __main__() {
 
         for (var food in foods) {
           if (foods.hasOwnProperty(food)) {
-            console.log(food);
+            //console.log(food);
             questions[questions.length] =  { 
               html: motto.question,
               answer: foods[food],
@@ -100,7 +99,7 @@ function __main__() {
         }
       }
     }
-    console.log(questions);
+    //console.log(questions);
     return questions; 
   }
   var questions_object = makeQuestions();
@@ -117,6 +116,7 @@ function __main__() {
     
     $('audio_11').play();
     image.src = "images/" + q.image;
+    image.className = 'animationFruits';
     message_question.id = 'question';
     message_question.appendChild(document.createTextNode(q.html));
 
@@ -145,14 +145,16 @@ function __main__() {
 
 
   function loop(event) {
-    
-    if (event && event.option !== event.food.answer ) {
+    event = (event) ? event: {};
+    event.option = ('option' in event)? event.option: 3;
+    event.food = ('food' in event)? event.food: 'invalid';
+
+    if ((event.option !== 3) && (event.option !== event.food.answer)) {
       $('audio_01').play();
-      MESSAGE("Tienes otro intento!");
+      ModalMessage.show("Tienes otro intento!");
       return;
     }
 
-   
     if( questions_pos < questions_object.length ) {
       make_question(questions_object[questions_pos++], loop)
     } else {
@@ -184,6 +186,32 @@ function __main__() {
 
   }
   loop(); 
+
+
+
+  var ghost = new Sprite({
+    image: "images/pagaro.png",
+    xFrames: 4, yFrames: 1, 
+    render: 'pajarito1', 
+    refreshTime: 300,
+    viewport: { width: 25, height: 30} 
+  });
+
+ghost.define('eat',  [0,1,2,3], 'x', 0);
+ghost.animate('eat');
+
+  var ghost = new Sprite({
+    image: "images/pagaro.png",
+    xFrames: 4, yFrames: 1, 
+    render: 'pajarito2', 
+    refreshTime: 300,
+    viewport: { width: 25, height: 30} 
+  });
+
+ghost.define('eat',  [0,1,2,3], 'x', 0);
+ghost.animate('eat');
+
+
 }
 
 

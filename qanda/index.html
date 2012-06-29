@@ -3,86 +3,112 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title> Preguntas! </title>
-
+<link href='http://fonts.googleapis.com/css?family=Happy+Monkey' rel='stylesheet' type='text/css'>
 <link href="css/styles.css" rel="stylesheet" type="text/css"/>
 <script src="js/aloader.min.js"></script> 
 </head>
+
 <body id=body>
-    <!-- BEGIN html for message method -->
-    <div id="light" class="white_content">
-      <a href = "javascript:void(0)" 
-        onclick = "document.getElementById('light').style.display='none';document.getElementById('fade').style.display='none'">
-        <img src='images/close.png'>
-      </a>
-      <p> </p> 
-    </div>
-    <div id="loading" class="loading">
-      <p> Cargando </p> 
-    </div>
-		<div id="fade" class="black_overlay"></div>
-    <!-- END html for message method -->
 
 
+<!-- BEGIN html for message method -->
+<div id="light" class="white_content">
+  <a href = "javascript:void(0)" 
+    onclick = "ModalMessage.close();">
+    <img src='images/close.png'>
+  </a>
+  <p> </p> 
+</div>
+<div id="loading" class="loading"> <p> Cargando </p>  </div>
+<div id="fade" class="black_overlay"></div>
+<!-- END html for message method -->
+
+
+<!-- BEGIN javascript preLoad Code -->
 <script>
-// function to load images and resources 
       
 (function() {
   document.getElementById('loading').style.display = 'block';
   document.getElementById('fade').style.display = 'block';
   load.css( [ 'css/styles.css'] );                                                                     
-  load.js([ 'js/utils.js', 'js/main.js' ], function() {
+  load.js([ 'src/utils.js', 'src/main.js' ], function() {
     $('loading').style.display='none';
     $('fade').style.display='none';
     __main__();
-  });                                                                     
+  });
 })();                                                                           
-</script>
 
-    <center>
-  <div id="logod">
-    <img src="images/logod.png">
+</script>
+<!-- END javascript preLoad Code -->
+
+
+<!-- BEGIN All on center -->
+<center>
+
+<div id="logod">
+  <img src="images/logod.png">
+</div>
+
+<div id=container>
+  <img id="cloud1" src="images/nube2.png"></img>
+  <img id="cloud2" src="images/nube2.png"></img>
+  <div id="soundmanager"></div>
+  
+  <!-- BEGIN Pregunta centro -->
+  <div id="top">
+  <center>
+    <div id="timer" > </div>
+    <div id="render"> </div>
+  </center>
+
+  <!-- END   Pregunta centro -->
+
+  <!-- BEGIN opcion 1 izquierda -->
+  <div id="option1">
+    <h2>Dulce </h2>
+    <ul id="listfood1"> </ul>
+  </div>
+  <!-- END   opcion 1 izquierda -->
+
+  <!-- BEGIN opcion 2 izquierda -->
+  <div id="option2">
+    <h2> Salado </h2>
+    <ul id="listfood2"> </ul>
+  </div>
+  <!-- END   opcion 2 izquierda -->
+  <div style="clear:both"></div> 
+
   </div>
 
-    <div id=container>
+<div id="pajarito1"></div>
+<div id="pajarito2"></div>
+<script>
 
-      <div id="soundmanager"></div>
+</script>
 
-      <center>
-        <div id="timer"> </div>
-      <div id="render">
-      </div>
-    </center>
-      <div id="option1">
-        <h2>Dulce </h2>
+</div>
 
-        <ul id="listfood1">
-        </ul>
-      </div>
+<div id=footer>Logatec 2012
+  |<a href="http://www.logatec.com.ar">top</a>
+</div>
 
-      <div id="option2">
-        <h2> Salado </h2>
-        <ul id="listfood2">
-        </ul>
-      </div>
- 
-      <div style="clear:both"></div> 
-    </div>
-      <div id=footer>Logatec 2012
-        |<a href="http://www.logatec.com.ar">top</a>
-      </div>
-    </center>
+</center>
+<!-- END All on center -->
 
-    <!-- BEGIN audio stuff -->
-    <audio src='sound/01.wav' preload='auto' id='audio_01' class="audio"></audio>
-    <audio src='sound/00.wav' preload='auto' id='audio_00' class="audio"></audio>
-    <audio src='sound/11.wav' preload='auto' id='audio_11' class="audio"></audio>
-    <audio src='sound/12.wav' preload='auto' id='audio_12' class="audio"></audio>
-    <audio src='sound/suma_mal.wav' preload='auto' id='sumamal' class="audio"></audio>
 
-    <audio  loop="loop" autoplay="autoplay" id="music">
-      <source src="sound/backsound.mp3" type="audio/mpeg" />
-    </audio>
-    <!-- END audio stuff -->
-  </body>
+<!-- BEGIN audio stuff -->
+<audio src='sound/01.wav' preload='auto' id='audio_01' class="audio"></audio>
+<audio src='sound/00.wav' preload='auto' id='audio_00' class="audio"></audio>
+<audio src='sound/11.wav' preload='auto' id='audio_11' class="audio"></audio>
+<audio src='sound/12.wav' preload='auto' id='audio_12' class="audio"></audio>
+<audio src='sound/suma_mal.wav' preload='auto' id='sumamal' class="audio"></audio>
+
+<audio  loop="loop" autoplay="autoplay" id="music">
+  <source src="sound/backsound.mp3" type="audio/mpeg" />
+</audio>
+<!-- END audio stuff -->
+
+
+</body>
 </html>
 

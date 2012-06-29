@@ -1,13 +1,16 @@
 body {
   background-image: url('../images/background.png');
+  font-family: 'Butcherman', cursive;
+  font-family: 'Eater', cursive;
 }
 #logod {
-  /*background-image: url(../images/bg.gif);*/
+  background-image: url(../images/bg.gif);
   background-color: #fff;
 
-  width: 1000px;
+  width: 1035px;
   height: 80px;
 }
+*/
 #logod img{
   height: 80px;
 }
@@ -37,7 +40,7 @@ body {
 }
 #coins {
   text-align: right;
-  width: 850px;
+  width: 1000px;
   padding: 15px;
   font-size: 30px;
   background-color: rgba(255,255,255,.5);
@@ -86,9 +89,26 @@ body {
 #btnleft    { background-image: url('../images/ctrlarrows.png'); background-position: -1px 0px;  }
 #btntop     { background-image: url('../images/ctrlarrows.png'); background-position: -40px 1px;   }
 #btnright   { background-image: url('../images/ctrlarrows.png'); background-position: -80px 0px;  }
-#btnbottom  { background-image: url('../images/ctrlarrows.png'); background-position: -120px 1px; }
+#btnbottom  { background-image: url('../images/ctrlarrows.png'); background-position: -120px 1px; 
 
-.onbtnleft    { background-image: url('../images/ctrlarrows.png'); background-position: -36px 0px;  }
+}
+
+.onbtnleft    { 
+  background-image: url('../images/ctrlarrows.png');
+  background-position: -36px 0px;  
+
+}
+
+@-webkit-keyframes letterAnim {
+  from { 
+    /*text-shadow: 0 0 0.3em #020055, 0 0 0.3em #020055,0 0 0.3em #020055;*/
+  }
+  to {
+    -webkit-transform: scale(2,4);
+  }
+}
+
+
 .onbtntop     { background-image: url('../images/ctrlarrows.png'); background-position: -36px 1px;   }
 .onbtnright   { background-image: url('../images/ctrlarrows.png'); background-position: -72px 0px;  }
 .onbtnbottom  { background-image: url('../images/ctrlarrows.png'); background-position: -106px 1px; }
@@ -212,5 +232,21 @@ body {
   border: 1px solid #DDD;
   border-radius: 7px;
 }
+
+.eat img{
+  -webkit-animation: eatfood 1s linear 0s 1 alternate;
+}
+@-webkit-keyframes eatfood {
+  0% { 
+  }
+  70% {
+    -webkit-transform: scale(3,3); 
+  }
+  100%{
+    -webkit-transform: scale(2,2); 
+    opacity: 0; 
+  }
+}
+
 
 

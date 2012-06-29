@@ -58,7 +58,7 @@
 	  	//reset  & show counters
 		goals=0;
 		taps=0;
-		seconds=0;	  
+		seconds=300;	  
 		score=0;		   
 		$("#tapsCount").html(taps);
 		$("#timeCount").html(seconds);
@@ -78,7 +78,15 @@
 	
 	var updateSeconds = function(){
 		//update & show seconds
-		seconds++;
+    var callback = function() {
+      seconds = 0;
+      //MESSAGEandReload("Perdiste!!! ");
+      ModalMessage.andReload("Perdiste!!! ");
+      clearInterval(timer);
+    };
+    if (seconds=== 0 ) { callback(); }
+ 
+		seconds--;
 		$("#timeCount").html(seconds);
 		
 		//if passed 10 seconds descrease the current score

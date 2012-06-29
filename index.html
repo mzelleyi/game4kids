@@ -1,0 +1,80 @@
+<!DOCTYPE HTML>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+  <link href='http://fonts.googleapis.com/css?family=Spicy+Rice' rel='stylesheet' type='text/css'>
+  <link href='http://fonts.googleapis.com/css?family=Chango' rel='stylesheet' type='text/css'>
+	<title></title>
+  <style> 
+    body { 
+      font-family: 'Spicy Rice', cursive;
+      background-image: url('libs/back.png');
+      padding: 0px;
+      margin: 0px;
+      color: white;
+    }
+    h1 {
+      font-family: 'Chango', cursive;
+      font-size: 40px;
+      -webkit-animation: titleAnim 2s linear 0s infinite alternate;
+
+    }
+    @-webkit-keyframes titleAnim {
+      from { 
+        text-shadow: 0 0 0.3em #020055, 0 0 0.3em #020055,0 0 0.3em #020055;
+      }
+      to {
+        text-shadow: 0 0 0.3em #87F, 0 0 0.3em #87F,0 0 0.3em #87F;
+      }
+    }
+
+    .opaqued {
+      
+    }
+    #menu {
+      margin-top: 100px;
+      width: 800px;
+    }
+
+    #menu a {
+      background-color: #a614c9;
+      border-radius: 10px;
+      display: block;
+      box-shadow: 0 0 5px 5px #dbadfc;
+      float: left;
+      color: white;
+      font-size: 26px;
+      /* 
+      padding: 400px 10px 0px 10px;
+      height: 100px;
+      width: 100px;
+      */
+      padding: 10px;
+      margin: 30px 30px 0 30px;
+      width: 300px;
+      text-decoration: none;
+    }
+
+    #menu a:hover {
+      -webkit-transition: all 0.5s ease-in-out;
+      background-color: #fd5f00;
+      color: #020055;
+      box-shadow: 0 0 5px 5px #fcf6ad;
+      /*
+      opacity: 1;
+      width: 400px;
+      */
+    }
+
+  </style>
+</head>
+<body>
+  <center>
+    <h1> NutriJuegos<span id="wow"> !<span> </h1>
+  <div id="menu"> </div>
+</center>
+  <script src="libs/dialogue.js">
+  
+  </script>
+</body>
+</html>
