@@ -91,12 +91,12 @@ function __main__() {
 
   function event_right_word(i) {
     $('audio_12').play();
-
     htmlwords[i].style.display = "none";
     htmlwords[i].onclick = function() {};
-    htmlletters= [];
+    ids = [];
   }
 
+  /*
   function event_wrong() {
     var i = 0;
     for(i =0; i<htmlletters.length; i++) {
@@ -105,8 +105,14 @@ function __main__() {
     count = 0;
     $('audio_01').play();
   }
+  */
   /* END events */
-
+  function event_wrong() {
+    unmark();
+    ids = [];
+    $('audio_01').play();
+  }
+ 
 
   /* deprecated 
   function select(e) {
@@ -160,10 +166,66 @@ function __main__() {
   var start = {}
     , end   = {}
     , clicked = false 
+    , ids   = [];
   ;
   function mark(o) {
     addClass(o, 'selected');
   }
+  function unmark() {
+    var i = 0;
+    for(i=0; i<ids.length; i++) {
+        removeClass($(ids[i]), 'selected');
+    }
+  }
+  function down(evt) {
+    clicked = true;
+    ids[ids.length] = evt.target.id;
+    mark(evt.target);
+  }
+  function over(evt) {
+    if (clicked) {
+      mark(evt.target);
+      ids[ids.length] = evt.target.id;
+    }
+  }
+  function up(evt) {
+    clicked = false;
+    proccessWord();
+  }
+   function proccessWord() {
+    var word = "";
+    var i = 0;
+    
+    for (i=0; i<ids.length; i++) {
+      word += $(ids[i]).innerHTML;
+    }
+    if (selectedword === 'notselected') {
+        event_wrong();
+        ModalMessage.show("Selecciona <br> una palabra!");
+ 
+        return;
+    }
+    if (word === selectedword) {
+      words = words.filter(function(x) { return x !== selectedword; });
+      htmlwords = $('listwords').getElementsByTagName('li');
+      for (i=0; i<htmlwords.length; i++) {
+        if (htmlwords[i].childNodes[1].innerHTML === selectedword) { 
+          event_right_word(i);
+        }
+      }
+      count = 0;
+ 
+      selectedword = "notselected";
+      if (words.length === 0 ){
+        event_win();
+      }
+    } else {
+        event_wrong();
+    }
+  }
+
+
+  /*
   function unmark() {
     var ids = [];
     var i = 0;
@@ -195,24 +257,23 @@ function __main__() {
     end.y = parseInt(splits[1]);
     proccessWord();
   }
-
   function proccessWord() {
     var word = "";
     var ids = [];
     var i = 0;
     var from, to, fixed;
-    if (start.x === end.x) { /* horizontal */
+    if (start.x === end.x) {
       fixed = start.x;
       from = (start.y > end.y)? end.y  : start.y;
       to   = (start.y > end.y)? start.y: end.y  ;
       for (i=from; i<=to; i++) { ids[ids.length] = 'cell-' + fixed + "-" + i; }
 
-    } else if (start.y === end.y) { /* vertical */
+    } else if (start.y === end.y) { 
       fixed = start.y;
       from = (start.x > end.x)? end.x  : start.x;
       to   = (start.x > end.x)? start.x: end.x  ;
       for (i=from; i<=to; i++) { ids[ids.length] = 'cell-' + i +"-" + fixed; }
-    } else { /* error */
+    } else { 
       console.log("error");
     }
     for (i=0; i<ids.length; i++) {
@@ -244,6 +305,7 @@ function __main__() {
     }
   }
 
+  */
 
 
   (function() { /* block generate alphabet */

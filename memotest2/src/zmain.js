@@ -38,6 +38,7 @@
 		//show cards
 		currIndex=0;
 		showCard();
+    $('#player'+player).addClass("playerselected");
 	}
 	
 	var showCard = function(){
@@ -147,6 +148,11 @@
 			angle:0, 
 			animateTo:-360});            
 	};
+  var nextplayer = function() {
+    $('#player'+player).removeClass("playerselected");
+    player = (player === 1)? 2: 1;
+    $('#player'+player).addClass("playerselected");
+  }
   
 	//**********************************
 	// Check jugada and game
@@ -210,7 +216,8 @@
 			  //decrease current points
 			  points=100;
 			}
-        player = (player === 1)? 2: 1;
+
+      nextplayer();
 		} 
 	  
 	  	//turn off is_flipping

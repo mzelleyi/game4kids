@@ -66,15 +66,34 @@
       */
     }
 
+#soundmanager div {
+  float: left
+}
+#soundmanager {
+	border-radius: 15px;
+	-webkit-box-shadow: 5px 5px 5px #333;
+	box-shadow: 5px 5px 5px #333;
+	background-color: rgba(255,255,255,.5);
+	
+  position: absolute;
+  top: 60px;
+  left: 100px;
+  width: 200px;
+  z-index:1001;
+  -moz-opacity: 0.8;
+  opacity:.80;
+  filter: alpha(opacity=80);
+}
+
   </style>
 </head>
 <body>
   <center>
     <h1> NutriJuegos<span id="wow"> !<span> </h1>
+        <div id="soundmanager"></div> 
   <div id="menu"> </div>
 </center>
-  <script src="libs/dialogue.js">
-  
-  </script>
+  <script src="libs/dialogue.js"></script>
+
 </body>
 </html>
