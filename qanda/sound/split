@@ -1,9 +1,0 @@
-REM CREATOR "MP3SPLT_GTK"
-REM SPLT_TITLE_IS_FILENAME
-FILE "/home/malaniz/dev/game4/memotest/sound/osito.mp3" mp3
-	TRACK 01 AUDIO
-		TITLE "description here" 
-		INDEX 01 0:08:14
-	TRACK 02 AUDIO
-		TITLE "descripción aquí" 
-		INDEX 01 2:35:96

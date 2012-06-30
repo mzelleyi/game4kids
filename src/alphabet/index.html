@@ -5,7 +5,7 @@
 <title> Sopa de Letras </title>
 <link href='http://fonts.googleapis.com/css?family=Shojumaru' rel='stylesheet' type='text/css'>
 <link href="css/styles.css" rel="stylesheet" type="text/css"/>
-<script src="js/aloader.js"></script> 
+<script src="../libs/aloader.js"></script> 
 </head>
 <body id=body>
     <!-- BEGIN html for message method -->
@@ -29,7 +29,7 @@
   document.getElementById('loading').style.display = 'block';
   document.getElementById('fade').style.display = 'block';
   load.css( [ 'css/styles.css'] );                                                                     
-  load.js([ 'src/utils.js', 'src/main.js', 'src/sha256.js' ], function() {
+  load.js([ 'js/utils.js', 'js/main.js', 'js/sha256.js' ], function() {
     $('loading').style.display='none';
     $('fade').style.display='none';
   //if( hex_sha256($('container').innerHTML) === '24953fe7049a8ce1d68ab9c7060c2955a5ccd08228fd8f930c760ef7e038776b' ) {
