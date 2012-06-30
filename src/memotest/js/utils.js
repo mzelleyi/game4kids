@@ -72,7 +72,7 @@ var control = [] ;
 function sound_manager(o) {
   var w = 50 
     , h = 30 
-    , frames = 6
+    , frames = 7
     , view = document.createElement('div')
     , tv
     , i
@@ -89,6 +89,7 @@ function sound_manager(o) {
   control[0] = 1; //sound
   control[1] = 1; //paused
   control[2] = 1; //music
+  control[3] = 1; //back
 
   view.style.width  = String(w) + "px";
   view.style.height = String(h) + "px";
@@ -120,7 +121,7 @@ function sound_manager(o) {
 
     control[i] = (control[i] === 0)? 1: 0;
   };
-  //o.appendChild(tv);
+ // o.appendChild(tv);
   /* END pause game controller */
 
   /* BEGIN music controller */
@@ -141,6 +142,7 @@ function sound_manager(o) {
     control[i] = (control[i] === 0)? 1: 0;
   };
   o.appendChild(tv);
+
   /* BEGIN music end controller */
 
   /* BEGIN screen controller */
@@ -163,6 +165,17 @@ function sound_manager(o) {
     };
     o.appendChild(tv);
   }
+
+  /* begin back controller */
+  tv = view.cloneNode();
+  i = 4;
+  tv.style.backgroundPosition = "-" + String(w*i) + "px 0px";
+  tv.onclick = function (e) {
+    window.location = '../index.html';
+  };
+  o.appendChild(tv);
+
+
   /* BEGIN end controller */
 
 

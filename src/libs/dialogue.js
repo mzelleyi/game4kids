@@ -3,50 +3,61 @@
 
 
 function back() { menu(menu0); walk = []; } ;
+function labelback (){ 
+  var p = document.createElement('span');
+  var img = new Image();
+  img.style.float = 'left';
+  img.src = 'libs/volver.png';
+  img.style.width = '35px';
+  p.appendChild(img);
+  p.appendChild(document.createTextNode('  Volver'));
+  return p;
+}
+
 var menu1 = [
   {id:'m1', label:'Fácil'     , next: 'alphabet/index.html?level=easy' } ,
   {id:'m2', label:'Intermedio', next: 'alphabet/index.html?level=middle' } ,
   {id:'m3', label:'Dificil'   , next: 'alphabet/index.html?level=hard' } ,
-  {id:'m4', label:'Volver'    , next: back} 
+  {id:'m4', label:labelback()    , next: back} 
 ];
 var menu2a = [
   {id:'m1', label:'Fácil'     , next: 'memotest/index.html?level=easy' } ,
   {id:'m2', label:'Intermedio', next: 'memotest/index.html?level=middle' } ,
   {id:'m3', label:'Dificil'   , next: 'memotest/index.html?level=hard' } ,
-  {id:'m4', label:'Volver'    , next: back} 
+  {id:'m4', label:labelback()    , next: back} 
 ];
 
 var menu2b = [
   {id:'m1', label:'Fácil'     , next: 'memotest2/index.html?level=easy' } ,
   {id:'m2', label:'Intermedio', next: 'memotest2/index.html?level=middle' } ,
   {id:'m3', label:'Dificil'   , next: 'memotest2/index.html?level=hard' } ,
-  {id:'m4', label:'Volver'    , next: back} 
+  {id:'m4', label:labelback()    , next: back} 
 ];
 
 
 var menu2 = [
   {id:'m1', label:'Un Jugador'   , next: menu2a } ,
   {id:'m2', label:'Dos Jugadores', next: menu2b } ,
-  {id:'m4', label:'Volver'    , next: back} 
+  {id:'m4', label:labelback()    , next: back} 
 ];
 
 var menu3a = [
   {id:'m1', label:'Fácil'     , next: 'qanda/index.html?level=easy' } ,
   {id:'m2', label:'Intermedio', next: 'qanda/index.html?level=middle' } ,
   {id:'m3', label:'Dificil'   , next: 'qanda/index.html?level=hard' } ,
-  {id:'m4', label:'Volver'    , next: back} 
+  {id:'m4', label:labelback()    , next: back} 
 ];
 var menu3b = [
   {id:'m1', label:'Fácil'     , next: 'qanda/index2.html?level=easy' } ,
   {id:'m2', label:'Intermedio', next: 'qanda/index2.html?level=middle' } ,
   {id:'m3', label:'Dificil'   , next: 'qanda/index2.html?level=hard' } ,
-  {id:'m4', label:'Volver'    , next: back} 
+  {id:'m4', label:labelback()    , next: back} 
 ];
 var menu3c = [
   {id:'m1', label:'Fácil'     , next: 'qanda/index3.html?level=easy' } ,
   {id:'m2', label:'Intermedio', next: 'qanda/index3.html?level=middle' } ,
   {id:'m3', label:'Dificil'   , next: 'qanda/index3.html?level=hard' } ,
-  {id:'m4', label:'Volver'    , next: back} 
+  {id:'m4', label:labelback()    , next: back} 
 ];
 
 
@@ -54,7 +65,7 @@ var menu3 = [
   {id:'m1', label:'¿Dulce o Salado? '     , next: menu3a } ,
   {id:'m2', label:'¿Desayuno o Almuerzo?' , next: menu3b } ,
   {id:'m3', label:'¿Te gusta?'            , next: menu3c } ,
-  {id:'m4', label:'Volver'    , next: back} 
+  {id:'m4', label:labelback()    , next: back} 
 ];
 
 
@@ -63,7 +74,7 @@ var menu4 = [
   {id:'m1', label:'Fácil'     , next: 'maze/index.html?level=easy' } ,
   {id:'m2', label:'Intermedio', next: 'maze/index.html?level=middle' } ,
   {id:'m3', label:'Dificil'   , next: 'maze/index.html?level=hard' } ,
-  {id:'m4', label:'Volver'    , next: back} 
+  {id:'m4', label:labelback()    , next: back} 
 ];
 
 var menu0 = [
@@ -71,8 +82,8 @@ var menu0 = [
   {id:'m2', label:'Memotest'              , image: 'm2.png', next:menu2} ,
   {id:'m3', label:'Preguntas y Respuestas', image: 'm3.png', next:menu3} ,
   {id:'m4', label:'Laberintos'            , image: 'm4.png', next:menu4} ,
-  {id:'m5', label:'Dientes Sanos'            , image: 'm4.png', next:menu4} ,
-  {id:'m6', label:'Adivinanzas'            , image: 'm4.png', next:menu4} 
+//  {id:'m5', label:'Dientes Sanos'            , image: 'm4.png', next:menu4} ,
+//  {id:'m6', label:'Adivinanzas'            , image: 'm4.png', next:menu4} 
 ];
 
 

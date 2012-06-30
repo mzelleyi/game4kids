@@ -334,6 +334,7 @@ function controlManager (options) {
     , div2 = document.createElement('div')
     , div3 = document.createElement('div')
     , div4 = document.createElement('div')
+    , div5 = document.createElement('div')
     ;
       
 
@@ -341,6 +342,7 @@ function controlManager (options) {
   options.render.appendChild(div2);
   options.render.appendChild(div3);
   options.render.appendChild(div4);
+  options.render.appendChild(div5);
 
   controllerSpriteOptions = {
     image: "images/sound.png",
@@ -413,6 +415,20 @@ function controlManager (options) {
       fullScreenApi.cancelFullScreen($('body'));
     }
   });
+  var buttonBack = new Sprite({
+    image: "images/sound.png",
+    xFrames: 7, yFrames: 2, 
+    render: div5, 
+    initial: {x: 4, y:0 },
+    viewport: { width: 50, height: 30} 
+  });
+ 
+  buttonBack.off = false;
+  buttonBack.define('onoff',  [1,0], 'y', 4);
+  buttonBack.event('click', function(e) {
+    redirectTo('../index.html');
+  });
+
 
 }
 
