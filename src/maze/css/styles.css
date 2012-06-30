@@ -77,10 +77,16 @@ body {
   color: #ccc;
 }
 #joystick {
+  background-image: url('../images/moon.png');
+  background-size: 100%;
   background-repeat: no-repeat;
-  width: 210px;
+  padding: 30px;
+  padding-top: 53px;
+  width: 180px;
+  margin-right: 180px;
+  margin-top: -60px;
 
-  min-height: 400px;
+  min-height: 150px;
   float: right;
   text-align: right;
 }
