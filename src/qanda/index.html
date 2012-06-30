@@ -5,7 +5,7 @@
 <title> Preguntas! </title>
 <link href='http://fonts.googleapis.com/css?family=Happy+Monkey' rel='stylesheet' type='text/css'>
 <link href="css/styles.css" rel="stylesheet" type="text/css"/>
-<script src="js/aloader.min.js"></script> 
+<script src="js/aloader.js"></script> 
 </head>
 
 <body id=body>
@@ -31,7 +31,7 @@
   document.getElementById('loading').style.display = 'block';
   document.getElementById('fade').style.display = 'block';
   load.css( [ 'css/styles.css'] );                                                                     
-  load.js([ 'src/utils.js', 'src/main.js' ], function() {
+  load.js([ 'js/utils.js', 'js/main.js' ], function() {
     $('loading').style.display='none';
     $('fade').style.display='none';
     __main__();
