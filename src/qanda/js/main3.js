@@ -34,51 +34,122 @@ function __main__() {
   };
  
   
-  var xx = {
-    c2: {
-      question: "¿Te gusta?",
-      options: [ 'Si!', 'No!', 'No probe!' ] ,
-      answer: {
-        /* 0 para opcion 0
-         * 1 para opcion 1
-         * 5 para sacar cartel "solo para comer muy de ves en cuando"
-         * 9 cualquiera de las 2 opciones
-         */
-        manzana:               0, 
-        pera:                  0 , 
-        gaseosa:               2 , 
-        chocolate:             2 , 
-        caramelos:             2 , 
-        mermelada:             0 , 
-        banana:                0 , 
-        sandia:                0 , 
-        uvas:                  2 , 
-        naranja:               2 , 
-        galletitasdulces:      0 ,
-        yogur:                 0 , 
-        flan:                  2 , 
-        huevos:                1 , 
-        arroz:                 1 , 
-        manteca:               2 , 
-        mani:                  1 , 
-        agua:                  1 , 
-        leche:                 0 , 
-        carnes:                1 , 
-        pollo:                 1 , 
-        pan:                   2 , 
-        fideos:                1 , 
-        berenjenas:            1 , 
-        cebolla:               1 , 
-        tomate:                1 ,
-        lechuga:               1 , 
-        palta:                 1 , 
-        queso:                 1 , 
-        pescado:               1 , 
-        papa:                  1 
-      }
-    } 
-  
-  };
+  if (level === 'easy') {
+    var xx = {
+      c2: {
+        question: "¿Te gusta?",
+        options: [ 'Si!', 'No!', 'No probe!' ] ,
+        answer: {
+          /* 0 para opcion 0
+           * 1 para opcion 1
+           * 5 para sacar cartel "solo para comer muy de ves en cuando"
+           * 9 cualquiera de las 2 opciones
+           */
+          huevos:                1 , 
+          arroz:                 1 , 
+          manteca:               2 , 
+          mani:                  1 , 
+          agua:                  1 , 
+          leche:                 0 , 
+          carnes:                1 , 
+          pollo:                 1 , 
+          fideos:                1 , 
+          tomate:                1 ,
+          lechuga:               1 , 
+          palta:                 1 , 
+          queso:                 1 , 
+          pescado:               1 , 
+          papa:                  1 
+        }
+      } 
+
+    };
+  } else if (level === 'middle') {
+    var xx = {
+      c2: {
+        question: "¿Te gusta?",
+        options: [ 'Si!', 'No!', 'No probe!' ] ,
+        answer: {
+          /* 0 para opcion 0
+           * 1 para opcion 1
+           * 5 para sacar cartel "solo para comer muy de ves en cuando"
+           * 9 cualquiera de las 2 opciones
+           */
+          manzana:               0, 
+          pera:                  0 , 
+          gaseosa:               2 , 
+          chocolate:             2 , 
+          caramelos:             2 , 
+          flan:                  2 , 
+          manteca:               2 , 
+          mani:                  1 , 
+          agua:                  1 , 
+          leche:                 0 , 
+          carnes:                1 , 
+          pollo:                 1 , 
+          pan:                   2 , 
+          fideos:                1 , 
+          berenjenas:            1 , 
+          cebolla:               1 , 
+          tomate:                1 ,
+          lechuga:               1 , 
+          palta:                 1 , 
+          queso:                 1 , 
+          pescado:               1 , 
+          papa:                  1 
+        }
+      } 
+
+    };
+
+
+  } else {
+    var xx = {
+      c2: {
+        question: "¿Te gusta?",
+        options: [ 'Si!', 'No!', 'No probe!' ] ,
+        answer: {
+          /* 0 para opcion 0
+           * 1 para opcion 1
+           * 5 para sacar cartel "solo para comer muy de ves en cuando"
+           * 9 cualquiera de las 2 opciones
+           */
+          manzana:               0, 
+          pera:                  0 , 
+          gaseosa:               2 , 
+          chocolate:             2 , 
+          caramelos:             2 , 
+          mermelada:             0 , 
+          banana:                0 , 
+          sandia:                0 , 
+          uvas:                  2 , 
+          naranja:               2 , 
+          galletitasdulces:      0 ,
+          yogur:                 0 , 
+          flan:                  2 , 
+          huevos:                1 , 
+          arroz:                 1 , 
+          manteca:               2 , 
+          mani:                  1 , 
+          agua:                  1 , 
+          leche:                 0 , 
+          carnes:                1 , 
+          pollo:                 1 , 
+          pan:                   2 , 
+          fideos:                1 , 
+          berenjenas:            1 , 
+          cebolla:               1 , 
+          tomate:                1 ,
+          lechuga:               1 , 
+          palta:                 1 , 
+          queso:                 1 , 
+          pescado:               1 , 
+          papa:                  1 
+        }
+      } 
+    };
+  }
+
 
   function makeQuestions() { /* making all text for question */
     var questions = [];
@@ -163,7 +234,14 @@ function __main__() {
     if( questions_pos < questions_object.length ) {
       make_question(questions_object[questions_pos++], loop)
     } else {
-      redirectTo('index.html');
+      clock.stop();
+      ModalMessage.andRedirect(
+          "Y te sobraron " + clock.time + " segundos. Total de puntos: " +
+          String(clock.time)
+      , function() {
+        redirectTo('../index.html');
+        return;
+      });
       return;
     }
     switch (event.option) {

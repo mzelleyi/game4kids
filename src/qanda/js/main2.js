@@ -1,4 +1,5 @@
 function __main__() {
+  var points = 0;
    var oos = {
         manzana:          { img: 'manzana.png'         , label: 'Manzana'            }, 
         pera:             { img: 'pera.png'            , label: 'Pera'               }, 
@@ -33,52 +34,123 @@ function __main__() {
         papa:             { img: 'papa.png'            , label: 'Papa'               }
   };
  
-  
-  var xx = {
-    c2: {
-      question: "¿Es para Desayuno/Merienda o Almuerzo/Cena?",
-      options: [ 'Des/Mer', 'Alm/Cena', 'Las 2' ] ,
-      answer: {
-        /* 0 para opcion 0
-         * 1 para opcion 1
-         * 5 para sacar cartel "solo para comer muy de ves en cuando"
-         * 9 cualquiera de las 2 opciones
-         */
-        manzana:               2, 
-        pera:                  2 , 
-        gaseosa:               2 , 
-        chocolate:             2 , 
-        caramelos:             2 , 
-        mermelada:             0 , 
-        banana:                2 , 
-        sandia:                2 , 
-        uvas:                  2 , 
-        naranja:               2 , 
-        galletitasdulces:      0 ,
-        yogur:                 0 , 
-        flan:                  2 , 
-        huevos:                1 , 
-        arroz:                 1 , 
-        manteca:               2 , 
-        mani:                  1 , 
-        agua:                  2 , 
-        leche:                 0 , 
-        carnes:                1 , 
-        pollo:                 1 , 
-        pan:                   2 , 
-        fideos:                1 , 
-        berenjenas:            1 , 
-        cebolla:               1 , 
-        tomate:                1 ,
-        lechuga:               1 , 
-        palta:                 1 , 
-        queso:                 1 , 
-        pescado:               1 , 
-        papa:                  1 
-      }
-    } 
-  
-  };
+  if (level === 'easy') { 
+    var xx = {
+      c2: {
+        question: "¿Es para Desayuno/Merienda o Almuerzo/Cena?",
+        options: [ 'Des/Mer', 'Alm/Cena', 'Las 2' ] ,
+        answer: {
+          /* 0 para opcion 0
+           * 1 para opcion 1
+           * 5 para sacar cartel "solo para comer muy de ves en cuando"
+           * 9 cualquiera de las 2 opciones
+           */
+          manzana:               2, 
+          naranja:               2 , 
+          galletitasdulces:      0 ,
+          yogur:                 0 , 
+          flan:                  2 , 
+          carnes:                1 , 
+          pollo:                 1 , 
+          pan:                   2 , 
+          fideos:                1 , 
+          berenjenas:            1 , 
+          cebolla:               1 , 
+          tomate:                1 ,
+          lechuga:               1 , 
+          palta:                 1 , 
+          queso:                 1 , 
+          pescado:               1 , 
+          papa:                  1 
+        }
+      } 
+
+    };
+  } else if (level === 'middle') {
+    var xx = {
+      c2: {
+        question: "¿Es para Desayuno/Merienda o Almuerzo/Cena?",
+        options: [ 'Des/Mer', 'Alm/Cena', 'Las 2' ] ,
+        answer: {
+          /* 0 para opcion 0
+           * 1 para opcion 1
+           * 5 para sacar cartel "solo para comer muy de ves en cuando"
+           * 9 cualquiera de las 2 opciones
+           */
+          manzana:               2, 
+          naranja:               2 , 
+          galletitasdulces:      0 ,
+          yogur:                 0 , 
+          flan:                  2 , 
+          huevos:                1 , 
+          arroz:                 1 , 
+          agua:                  2 , 
+          leche:                 0 , 
+          carnes:                1 , 
+          pollo:                 1 , 
+          pan:                   2 , 
+          fideos:                1 , 
+          berenjenas:            1 , 
+          cebolla:               1 , 
+          tomate:                1 ,
+          lechuga:               1 , 
+          palta:                 1 , 
+          queso:                 1 , 
+          pescado:               1 , 
+          papa:                  1 
+       }
+      } 
+
+    };
+
+  } else {
+    var xx = {
+      c2: {
+        question: "¿Es para Desayuno/Merienda o Almuerzo/Cena?",
+        options: [ 'Des/Mer', 'Alm/Cena', 'Las 2' ] ,
+        answer: {
+          /* 0 para opcion 0
+           * 1 para opcion 1
+           * 5 para sacar cartel "solo para comer muy de ves en cuando"
+           * 9 cualquiera de las 2 opciones
+           */
+          manzana:               2, 
+          pera:                  2 , 
+          gaseosa:               2 , 
+          chocolate:             2 , 
+          caramelos:             2 , 
+          mermelada:             0 , 
+          banana:                2 , 
+          sandia:                2 , 
+          uvas:                  2 , 
+          naranja:               2 , 
+          galletitasdulces:      0 ,
+          yogur:                 0 , 
+          flan:                  2 , 
+          huevos:                1 , 
+          arroz:                 1 , 
+          manteca:               2 , 
+          mani:                  1 , 
+          agua:                  2 , 
+          leche:                 0 , 
+          carnes:                1 , 
+          pollo:                 1 , 
+          pan:                   2 , 
+          fideos:                1 , 
+          berenjenas:            1 , 
+          cebolla:               1 , 
+          tomate:                1 ,
+          lechuga:               1 , 
+          palta:                 1 , 
+          queso:                 1 , 
+          pescado:               1 , 
+          papa:                  1 
+        }
+      } 
+
+    };
+
+  }
 
   function makeQuestions() { /* making all text for question */
     var questions = [];
@@ -155,15 +227,26 @@ function __main__() {
     if ((event.option !== 3) && (event.option !== event.food.answer)) {
       $('audio_01').play();
       ModalMessage.show("Tienes otro intento!");
+      points = (points === 0)? 0: points -1;
       return;
+    } else {
+      if (event.option === event.food.answer) points++;
     }
 
     if( questions_pos < questions_object.length ) {
       make_question(questions_object[questions_pos++], loop)
     } else {
-      redirectTo('index3.html');
-      return;
+      clock.stop();
+      ModalMessage.andRedirect(
+          "Terminaste!!! hiciste " + points + " puntos!!! <br>" +
+          "Y te sobraron " + clock.time + " segundos. Total de puntos: " +
+          String(clock.time + points)
+      , function() {
+        redirectTo('../index.html');
+        return;
+      });
     }
+
     switch (event.option) {
       case 0: 
         var elem = document.createElement('li');

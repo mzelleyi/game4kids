@@ -137,6 +137,13 @@ var ModalMessage  = {
       location.reload(true);
       return false;
     }
+  },
+  andRedirect: function(msg, f) {
+    var o = $('light');
+    o.style.display = 'block';
+    o.getElementsByTagName('p')[0].innerHTML = msg;
+    document.getElementById('fade').style.display='block';
+    o.getElementsByTagName('a')[0].onclick = f;
     
   }
 };
