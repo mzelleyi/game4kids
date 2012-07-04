@@ -1,4 +1,5 @@
 function __main__() {
+  var level = ('level' in qs)? qs.level: 'easy';
   var points = 0;
    var oos = {
         manzana:          { img: 'manzana.png'         , label: 'Manzana'            }, 

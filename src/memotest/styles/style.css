@@ -3,8 +3,7 @@ a img {
 }
 #logod {
   background-image:  url('../images/bg.gif');
-  background-color: #fff;
-  width: 1200px;
+  width: 1400px;
   height: 80px;
 }
 
@@ -15,16 +14,15 @@ a img {
 	padding-left:0;
 	padding-right:0;
 	padding-bottom:0;
-	width:1200px;
+	width:1400px;
 	font-family:Verdana, Geneva, sans-serif
 }
 #content-wrapper h1 {
 	padding-left:10px;
 }
 #gameWrapper {
-	width:1200px;
-	height:594px;
-	background:url(../images/back.png);
+	width:1400px;
+	height:794px;
 }
 #gameWrapper h1 {
 	font-family: 'Bangers', verdana, arial;

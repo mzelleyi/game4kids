@@ -18,7 +18,6 @@ h1{font-family:Verdana, Geneva, sans-serif}
 	padding:0;
 text-align:$startSide;
 font:$bodyfont;
-	background: url(../images/container-bg.png) left 10px repeat-x;
 }
 
 a {
@@ -128,7 +127,6 @@ div.span-3, div.span-21, div.span-24 {
 }
 #content-wrapper {
 	width:930px;
-	background: #FFFFFF;
 	padding:10px;
 	padding-bottom:30px;	
 }

@@ -215,6 +215,7 @@ function __main__() {
     }
     for (c=0; c<bads.length; c++) {
       if (posx === bads[c][0] && posy === bads[c][1]){
+        bads.splice(c, 1);
         addClass($('cell-'+String(posy) + "-" + String(posx)), "eat");
         setTimeout(function() { 
           $('cell-'+String(posy) + "-" + String(posx)).innerHTML = "";
@@ -223,7 +224,6 @@ function __main__() {
         ModalMessage.show(cartel_bads);
       }
     }
-
     if( (posx === winx ) && (posy === winy)) {
       ModalMessage.andReload("Ganaste!!!");
       $('audio_02').play();

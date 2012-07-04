@@ -258,9 +258,9 @@ var checkJugada = function (){
 
       //decrease current points
       points=100;
+      nextplayer();
     }
 
-    nextplayer();
   } 
 
   //turn off is_flipping

@@ -12,5 +12,5 @@ NORMAL='\033[00m'
 echo -e $RED"Syncrizing files"$NORMAL
 rsync -e ssh --stats --progress  -avz --exclude '.git' ~/dev/jobs/game4 dsl.puntania.com.ar:dsl.puntania.com.ar
 echo -e $RED"Fixing image files permissions"$NORMAL
-ssh malaniz@dsl.puntania.com.ar 'cd dsl.puntania.com.ar/game4/;for x in `find -name images`; do chmod 777 $x/*; done'
+ssh malaniz@dsl.puntania.com.ar 'cd dsl.puntania.com.ar/game4/; for x in `find -name images`; do chmod 777 $x/*; done'
 

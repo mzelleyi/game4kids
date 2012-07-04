@@ -1,0 +1,88 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title> Preguntas! </title>
+<link href="css/styles.css" rel="stylesheet" type="text/css"/>
+<script src="js/aloader.js"></script> 
+</head>
+
+<body id=body>
+
+
+<!-- BEGIN html for message method -->
+<div id="light" class="white_content">
+  <a href = "javascript:void(0)" 
+    onclick = "ModalMessage.close();">
+    <img src='images/close.png'>
+  </a>
+  <p> </p> 
+</div>
+<div id="loading" class="loading"> <p> Cargando </p>  </div>
+<div id="fade" class="black_overlay"></div>
+<!-- END html for message method -->
+
+
+<!-- BEGIN javascript preLoad Code -->
+<script>
+      
+(function() {
+  document.getElementById('loading').style.display = 'block';
+  document.getElementById('fade').style.display = 'block';
+  load.css( [ 'css/styles.css'] );                                                                     
+  load.js([ 'js/utils.js', 'js/main.js' ], function() {
+    $('loading').style.display='none';
+    $('fade').style.display='none';
+    __main__();
+  });
+})();                                                                           
+
+</script>
+<!-- END javascript preLoad Code -->
+
+
+<!-- BEGIN All on center -->
+<center>
+
+<div id="logod">
+  <img src="images/logod.png">
+</div>
+
+<div id=container>
+  <div id="soundmanager"></div>
+  
+  <!-- BEGIN Pregunta centro -->
+  <div id="top">
+  <center>
+    <div id="timer" > </div>
+    <div id="render"> </div>
+  </center>
+
+  <!-- END   Pregunta centro -->
+
+</div>
+
+<div id=footer>Logatec 2012
+  |<a href="http://www.logatec.com.ar">top</a>
+</div>
+
+</center>
+<!-- END All on center -->
+
+
+<!-- BEGIN audio stuff -->
+<audio src='sound/01.wav' preload='auto' id='audio_01' class="audio"></audio>
+<audio src='sound/00.wav' preload='auto' id='audio_00' class="audio"></audio>
+<audio src='sound/11.wav' preload='auto' id='audio_11' class="audio"></audio>
+<audio src='sound/12.wav' preload='auto' id='audio_12' class="audio"></audio>
+<audio src='sound/suma_mal.wav' preload='auto' id='sumamal' class="audio"></audio>
+
+<audio  loop="loop" autoplay="autoplay" id="music">
+  <source src="sound/backsound.mp3" type="audio/mpeg" />
+</audio>
+<!-- END audio stuff -->
+
+
+</body>
+</html>
+

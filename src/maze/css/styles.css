@@ -247,14 +247,13 @@ body {
 
 #help {
   position: absolute;
-  top: 40%;
-  left: 72%;
+  top: 350px;
+  left:1100px;
   width: 252px;
   height: 400px;
   background-image: url('../images/help.png');
   background-repeat: no-repeat;
   z-index:1003;
-
 }
 .passed {
 

@@ -100,7 +100,6 @@ div.span-3, div.span-21, div.span-24 {
 	min-width:160px
 }
 .menu-primary li a {
-	color:#FFF;
 	padding:6px 8px 9px 8px;
 	margin-right:6px;
 	text-decoration:none;
@@ -128,7 +127,6 @@ div.span-3, div.span-21, div.span-24 {
 }
 #content-wrapper {
 	width:930px;
-	background: #FFFFFF;
 	padding:10px;
 	padding-bottom:30px;	
 }
