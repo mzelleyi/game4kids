@@ -20,7 +20,17 @@ body {
   height: 80px;
 }
 
-/*
+#nube1 {
+  background-image: url('../images/nube1.png');
+  width: 250px;
+  height: 120px;
+}
+#nube2 {
+  position:relative;
+  width: 250px;
+  height: 100px;
+  border: 1px solid #ccc;
+}
 #cloud1{
   position : absolute;
   top : -300px;
@@ -81,7 +91,6 @@ body {
   60% { -webkit-transform : scale(0.9) ; }
   100% { -webkit-transform : scale(0.5) ; }
 }
-*/
 #top {
   position:relative;
   z-index:3;
@@ -113,21 +122,21 @@ body {
 }
 #render {
   position:absolute;
+  background-image: url('../images/preguntas.png');
+  background-position: -0px -10px;
   -moz-opacity: 0.8;
   opacity:.80;
   filter: alpha(opacity=80);
-  background-color: #000;
   padding: 10px;
   text-align: center;
 	border-radius: 15px;
-  margin-top: 30px;
+  margin-top: 3px;
   margin-left: 350px;
   width: 580px;
   min-height: 330px;
-	box-shadow: 0px 5px 5px #333;
 }
-
 #render p {
+  
   font-size: 25px;
   text-align:center;
   width: 100%;
@@ -154,9 +163,7 @@ body {
   display: block;
 }
 #render a {
- 
-  position: relative;
-  top: 300px;
+
   text-decoration: none;
   -moz-opacity: 0.8;
   opacity:.80;
@@ -165,32 +172,16 @@ body {
   padding: 10px;
   margin-top: 0px;
   margin-left: 13px;
-	box-shadow: 0px 5px 5px #333;
+	box-shadow: 5px 5px 5px #333;
 	background-color: rgba(255,255,255,.5);
   display: block;
   float: right;
   font-size: 26px;
-
-  -webkit-animation: bright 1s linear 0s infinite alternate;
 }
-@-webkit-keyframes bright {
-  0% { box-shadow: 0px 5px 5px #333; }
-  100% { box-shadow: 0px 10px 10px #843; }
-}
-
 
 #render a:first-child {
   margin-right: 100px;
 }
-#render a:hover {
-  -webkit-animation: sizing 1s linear 0s infinite alternate;
-}
-@-webkit-keyframes sizing {
-  0% { background-color: #000; }
-  100% { background-color: #aaa; }
-}
-
-
 
 
 

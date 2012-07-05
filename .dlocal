@@ -9,6 +9,8 @@ BLUE='\033[0;34m'
 NORMAL='\033[00m'
 
 #rsync -e ssh --stats --progress  -avz --exclude '.hg' ~/dev/moalaniz/ moalaniz@inter4.unsl.edu.ar:public_html 
-echo -e $RED"Syncrizing files"$NORMAL
-cp -rf * ~/Dropbox/game4/game4v2
+echo -e $RED"Synchronizing files"$NORMAL
+#cp -rf * ~/Dropbox/nutrijuegos
+rsync -av --exclude='.git' --exclude='.d' --exclude=".dlocal" . ~/Dropbox/nutrijuegos 
+echo -e $RED"done!"$NORMAL
 

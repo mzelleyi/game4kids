@@ -296,17 +296,14 @@ function __main__() {
   document.getElementById("btnbottom").onclick = movebottom;
 
   (function() { /* setting control for touchscreens */
-
     var arrows = [], i, elem;
 
     arrows[0] = document.getElementById("btnleft");
     arrows[1] = document.getElementById("btntop");
     arrows[2] = document.getElementById("btnright");
     arrows[3] = document.getElementById("btnbottom");
-
     for(i = 0; i< 4; i++) {
       elem = arrows[i];
-
       elem.onmouseover = function(e) {
         this.style.backgroundPositionY = '-35px';
       };
@@ -314,9 +311,7 @@ function __main__() {
         //console.log(elem.className);
         this.style.backgroundPositionY = '';
       };
-
     }
-
   })();/* end setting control for touchscreens */
 
   function callhelp() {
@@ -347,7 +342,4 @@ function __main__() {
   ghost();
   /* END ghost effect ;) */
 
-
 }
-
- 

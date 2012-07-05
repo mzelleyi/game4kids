@@ -1,27 +1,29 @@
 <html>
-  <head> 
-    <title> Maze Generator </title>
-    <link href='http://fonts.googleapis.com/css?family=Butcherman' rel='stylesheet' type='text/css'>
-    <link href='http://fonts.googleapis.com/css?family=Eater' rel='stylesheet' type='text/css'>
-<script src="js/aloader.js"></script> 
-  </head>
-  <body id="body">
-    <!-- BEGIN html for message method -->
-    <div id="light" class="white_content">
-      <a href = "javascript:void(0)" 
-        onclick = "document.getElementById('light').style.display='none';document.getElementById('fade').style.display='none'">
-        <img src='images/close.png'>
-      </a>
-      <p> Message here </p> 
-    </div>
-    <div id="loading" class="loading">
-      <p> Cargando </p> 
-    </div>
-		<div id="fade" class="black_overlay"></div>
-    <!-- END html for message method -->
+
+<head> 
+  <title> Maze Generator </title>
+  <link href='http://fonts.googleapis.com/css?family=Butcherman' rel='stylesheet' type='text/css'>
+  <link href='http://fonts.googleapis.com/css?family=Eater' rel='stylesheet' type='text/css'>
+  <script src="js/aloader.js"></script> 
+</head>
+  
+<body id="body">
 
 
-    <center>
+<!-- BEGIN html for message method -->
+<div id="light" class="white_content">
+  <a href = "javascript:void(0)" 
+      onclick = "document.getElementById('light').style.display='none';document.getElementById('fade').style.display='none'">
+    <img src='images/close.png'>
+  </a>
+  <p> Message here </p> 
+</div>
+<div id="loading" class="loading"> <p> Cargando </p> </div>
+<div id="fade" class="black_overlay"></div>
+<!-- END html for message method -->
+
+
+<!-- BEGIN Preload javascript code -->
 <script>
 // function to load images and resources 
 (function() {
@@ -36,49 +38,51 @@
   //}
   });                                                            })();                                                                           
 </script>
+<!-- END Preload javascript code -->
 
           
  
- 
-  <div id="logod">
-    <img src="images/logod.png">
+<center>
+<!-- BEGIN web game --> 
+<div id="logod">
+  <img src="images/logod.png">
+</div>
+<div id=coins>
+  <div id="soundmanager"></div>
+  <h2>El Laberinto!</h2>
+  <div id=timer></div>
+</div>
+<div id=container>
+
+  <div id="render">
   </div>
-      <div id=coins>
-      <div id="soundmanager"></div>
-      <h2>El Laberinto!</h2>
-        <div id=timer></div>
-      </div>
-    <div id=container>
-
-      <div id="render">
-      </div>
-      <div id="joystick">
-        <table>
-          <tr> 
-            <td class="empty">  </td> 
-            <td id="btntop">  </td> 
-            <td class="empty">  </td> 
-          </tr>
-          <tr> 
-            <td id="btnleft"> </td> 
-            <td id="btncenter">  </td> 
-            <td id="btnright"> </td> 
-          </tr>
-          <tr> 
-            <td class="empty">  </td> 
-            <td id="btnbottom" > </td> 
-            <td class="empty">  </td> 
-          </tr>
-        </table>
-      </div>
-      <a id="help" href="javascript:void(0)"> </a>
-      <div style="clear:both"></div> 
-      <div id=footer>
-        Logatec 2012 |<a href="http://www.logatec.com.ar"> site </a> 
-      </div>
-    </div>
-
-  </center>
+  <div id="joystick">
+    <table>
+      <tr> 
+        <td class="empty">  </td> 
+        <td id="btntop">  </td> 
+        <td class="empty">  </td> 
+      </tr>
+      <tr> 
+        <td id="btnleft"> </td> 
+        <td id="btncenter">  </td> 
+        <td id="btnright"> </td> 
+      </tr>
+      <tr> 
+        <td class="empty">  </td> 
+        <td id="btnbottom" > </td> 
+        <td class="empty">  </td> 
+      </tr>
+    </table>
+  </div>
+  <a id="help" href="javascript:void(0)"> </a>
+  <div style="clear:both"></div> 
+  <div id=footer>
+    Logatec 2012 |<a href="http://www.logatec.com.ar"> site </a> 
+  </div>
+</div>
+<!-- END web game --> 
+</center>
 
 <audio src='sound/ctrlsound.wav' preload='auto' id='audio_01' class=audio></audio>
 <audio src='sound/aplausos.mp3' preload='auto' id='audio_02' class=audio></audio>
@@ -87,7 +91,6 @@
 <audio  loop="loop" autoplay="autoplay" id="music">
     <source src="sound/music.mp3" type="audio/mpeg" />
 </audio>
- 
 
   </body>
 </html>

@@ -77,13 +77,28 @@ var menu4 = [
   {id:'m4', label:labelback()    , next: back} 
 ];
 
+var menu5 = [
+  {id:'m1', label:'Fácil'     , next: 'healthyteeth/index.html?level=easy' } ,
+  {id:'m2', label:'Intermedio', next: 'healthyteeth/index.html?level=middle' } ,
+  {id:'m3', label:'Dificil'   , next: 'healthyteeth/index.html?level=hard' } ,
+  {id:'m4', label:labelback()    , next: back} 
+];
+
+var menu6 = [
+  {id:'m1', label:'Fácil'     , next: 'riddle/index.html?level=easy' } ,
+  {id:'m2', label:'Intermedio', next: 'riddle/index.html?level=middle' } ,
+  {id:'m3', label:'Dificil'   , next: 'riddle/index.html?level=hard' } ,
+  {id:'m4', label:labelback()    , next: back} 
+];
+
+
 var menu0 = [
   {id:'m1', label:'Sopa de letras'        , image: 'm1.png', next:menu1} ,
   {id:'m2', label:'Memotest'              , image: 'm2.png', next:menu2} ,
   {id:'m3', label:'Preguntas y Respuestas', image: 'm3.png', next:menu3} ,
   {id:'m4', label:'Laberintos'            , image: 'm4.png', next:menu4} ,
-//  {id:'m5', label:'Dientes Sanos'            , image: 'm4.png', next:menu4} ,
-//  {id:'m6', label:'Adivinanzas'            , image: 'm4.png', next:menu4} 
+  {id:'m5', label:'Dientes Sanos'         , image: 'm4.png', next:menu5} ,
+  {id:'m6', label:'Adivinanzas'           , image: 'm4.png', next:menu6} 
 ];
 
 
