@@ -4,7 +4,6 @@ a img {
 #logod {
   background-image:  url('../images/bg.gif');
   background-color: #fff;
-  width: 1400px;
   height: 80px;
 }
 
@@ -12,18 +11,20 @@ a img {
   height: 80px;
 }
 #content-wrapper {
+  border: 1px solid #000;
 	padding-left:0;
 	padding-right:0;
 	padding-bottom:0;
-	width:1400px;
+	width:1300px;
 	font-family:Verdana, Geneva, sans-serif
 }
 #content-wrapper h1 {
 	padding-left:10px;
 }
 #gameWrapper {
-	width:1400px;
-	height:794px;
+  margin: 0;
+	width:1200px;
+	height:650px;
 }
 #gameWrapper h1 {
 	font-family: 'Bangers', verdana, arial;
@@ -36,6 +37,7 @@ a img {
 /*	width:600px;*/
 	height:600px;
 	float:left;
+
 }
 .holder {
 	width:128px;
@@ -82,7 +84,7 @@ a img {
 	padding-top:200px;
 }
 #scoreWrapper {
-	width:350px;
+	width:300px;
 	float:left;
 	position:relative;
 }
@@ -91,7 +93,7 @@ a img {
 	height:380px;
 	float:left;
 	background-color: rgba(255,204,0,.5);
-	margin:0 50px;
+	margin:0 30px;
 	-moz-border-radius: 15px;
 	border-radius: 15px;
 	-moz-box-shadow: 5px 5px 5px #F44B0A;

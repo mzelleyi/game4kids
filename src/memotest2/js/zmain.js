@@ -62,7 +62,7 @@ var initGame = function (){
   } else if ( level === 'middle' ) {
     $('#board').css('width', '800px');
   } else {
-    $('#board').css('width', '1000px');
+    $('#board').css('width', '900px');
   }   
   //set card template
   markup="<div class='holder' id='holder${cardId}' style='display:none'><div class='card' style='background-position:${position}px' id='card${cardId}' num='${cardId}'><img class='question' src='images/xx.png'></div></div>";
