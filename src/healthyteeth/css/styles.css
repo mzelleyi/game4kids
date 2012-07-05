@@ -1,9 +1,208 @@
+body {
+  margin:0; 
+  padding:0;
+  font-family: verdana, arial;
+  font-size:18px;
+  color:#F44B0A;
+  font-family: 'Happy Monkey', cursive;
+  background-image: url('../images/background.jpg');
+  width: 100%;
+  height: 100%;
 
+}
+#logod {
+  position:relative;
+  z-index:3;
+  background-image:  url('../images/bg.gif');
+  height: 80px;
+}
+#logod img{
+  height: 80px;
+}
+
+/* modal box */
+.black_overlay{
+  display: none;
+  position: absolute;
+  top: 0%;
+  left: 0%;
+  width: 100%;
+  height: 100%;
+  background-color: black;
+  z-index:1001;
+  -moz-opacity: 0.8;
+  opacity:.80;
+  filter: alpha(opacity=80);
+}
+.white_content {
+  display: none;
+  position: absolute;
+  top: 25%;
+  left: 30%;
+  width: 500px;
+  height: 300px;
+
+  text-align: center;
+  /*background-image: url('../../images/cartel.png');*/
+  background-image: url('../images/cartel.png');
+  background-repeat: no-repeat;
+  z-index:1002;
+  overflow: auto;
+}
+
+
+#soundmanager div {
+  float: left
+}
+#soundmanager {
+	border-radius: 15px;
+	-webkit-box-shadow: 5px 5px 5px #333;
+	box-shadow: 5px 5px 5px #333;
+	background-color: rgba(255,255,255,.5);
+	
+  position: absolute;
+  top: 30px;
+  left: 280px;
+  width: 250px;
+  z-index:1001;
+  -moz-opacity: 0.8;
+  opacity:.80;
+  filter: alpha(opacity=80);
+}
+
+
+
+
+#tablet {
+  width: 900px;
+  height: 700px;
+  background-color: #000;
+  border-radius: 10px;
+  -moz-opacity: 0.8;
+  opacity:.80;
+  filter: alpha(opacity=80);
+}
+}
+
+#coins {
+  position: absolute;
+  top: 40px;
+  left: 1000px;
+  width: 100px;
+  height: 50px;
+  z-index: 1001;
+}
+#timer {
+  position: absolute;
+  top: 20px;
+  left: 100px;
+
+  width: 100px;
+  height: 50px;
+  z-index: 1001;
+}
+
+
+
+.pointer {
+  width: 1px;
+  height: 1px;
+  position: absolute;
+  background-image: url('../images/pacman.png');
+  background-size: 6px 1px;
+  -webkit-animation-name: pacmanSprite;
+  -webkit-animation-duration: 1s;
+  -webkit-animation-iteration-count: infinite;
+  -webkit-animation-timing-function: linear;
+  /*  let’s increase the size of the element*/
+  -webkit-transform: scaleX(40) scaleY(40); 
+  -webkit-transform-origin: top left;
+}
+@-webkit-keyframes pacmanSprite {
+  0% { 
+    background-position: 0 0;
+  }
+  10% {
+    background-position: -1px 0;
+  }
+  20% {
+    background-position: -2px 0;
+  }
+  30% {
+    background-position: -3px 0;
+  }
+  40% {
+    background-position: -4px 0;
+  }
+  50% {
+    background-position: -5px 0;
+  }
+  60% {
+    background-position: -6px 0;
+  }
+  70% {
+    background-position: -3px 0;
+  }
+  80% {
+    background-position: -2px 0;
+  }
+  90% {
+    background-position: -1px 0;
+  }
+  100% {
+    background-position: -0px 0;
+  }
+}
+
+
+.goodMeal {
+  width: 40px;
+  height: 40px;
+  position: absolute;
+
+}
+.badMeal {
+  width: 40px;
+  height: 40px;
+  position: absolute;
+}
+
+.removed {
+  background-color: #00f;
+
+}
+.eated {
+
+  -webkit-animation-name: eatedanim;
+  -webkit-animation-duration: 1s;
+  -webkit-animation-iteration-count: 1;
+  -webkit-animation-timing-function: linear;
+  /*  let’s increase the size of the element*/
+
+}
+
+@-webkit-keyframes eatedanim {
+  0% { 
+    opacity:1;
+  }
+  70% {
+    -webkit-transform: scale(3,3); 
+  }
+  100%{
+    -webkit-transform: scale(2,2); 
+    opacity: 0; 
+  }
+}
+
+
+
+
+/*
 
 body {
   margin:0; 
   padding:0;
-  background-image: url('../images/background.png');
+  background-image: url('../../images/background.png');
   font-family: verdana, arial;
   font-size:18px;
   color:#F44B0A;
@@ -12,7 +211,7 @@ body {
 #logod {
   position:relative;
   z-index:3;
-  background-image:  url('../images/bg.gif');
+  background-image:  url('../../images/bg.gif');
   width: 1300px;
   height: 80px;
 }
@@ -21,7 +220,7 @@ body {
 }
 
 #nube1 {
-  background-image: url('../images/nube1.png');
+  background-image: url('../../images/nube1.png');
   width: 250px;
   height: 120px;
 }
@@ -62,7 +261,7 @@ body {
 }
 
 #cloud2{
-  background-image: url('../images/nube2.png');
+  background-image: url('../../images/nube2.png');
   position : absolute;
   top : -300px;
   -webkit-animation-name: position1, reduce, fade;
@@ -141,11 +340,9 @@ body {
   text-align:center;
   width: 100%;
   color: white;
-  /*
   margin-left: 30px;
   float: left;
   padding-left: 10px;
-  */
 }
 
 
@@ -155,11 +352,6 @@ body {
   padding: 3px;
   border: 1px solid #ccc;
 	border-radius: 5px;
-  /*
-  float: right;
-  margin-right: 10px;
-  margin-top: 12px;
-  */
   display: block;
 }
 #render a {
@@ -304,7 +496,6 @@ body {
 }
 
 
-/* modal box */
 .black_overlay{
   display: none;
   position: absolute;
@@ -332,21 +523,6 @@ body {
   z-index:1002;
   overflow: auto;
 }
-/*
-.white_content {
-  display: none;
-  position: absolute;
-  top: 25%;
-  left: 25%;
-  width: 50%;
-  height: 50%;
-  padding: 16px;
-  border: 16px solid orange;
-  background-color: white;
-  z-index:1002;
-  overflow: auto;
-}
-*/
 #light a {
   float: right;
 
@@ -372,7 +548,6 @@ body {
   z-index:1002;
   overflow: auto;
 }
-/* end modal box */
 
 
 #soundmanager div {
@@ -423,3 +598,4 @@ box-shadow: 0 0 10px #87F, 0 0 10px #87F,0 0 0.3em #87F;
 
   top : 130px; left : 800px; 
 }
+*/
