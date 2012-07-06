@@ -38,13 +38,8 @@ function __main__() {
     },
     {
       question: "Parece que es la mas sana, más sana que fruta alguna. Al verla me vienen ganas de comer cuatro no una",
-      options: [ 'Cereza', 'Uva', 'Frutilla' ] ,
+      options: [ 'Cereza', 'Manzana', 'Frutilla' ] ,
       answer: 1
-    },
-    {
-      question: "A esta en racimo la quieren, por su sabor dulce y fino. Pero algunos la prefieren, porque les recuerda al vino",
-      options: [ 'Uva', 'Cereza', 'Manzana' ] ,
-      answer: 3
     },
     {
       question: "Es fruta de suave piel, aunque comience con dura. Al sabor es siempre fiel, y en almibar... de locura!",
@@ -128,13 +123,8 @@ function __main__() {
     },
     {
       question: "Parece que es la mas sana, más sana que fruta alguna. Al verla me vienen ganas de comer cuatro no una",
-      options: [ 'Cereza', 'Uva', 'Frutilla' ] ,
+      options: [ 'Cereza', 'Manzana', 'Frutilla' ] ,
       answer: 1
-    },
-    {
-      question: "A esta en racimo la quieren, por su sabor dulce y fino. Pero algunos la prefieren, porque les recuerda al vino",
-      options: [ 'Uva', 'Cereza', 'Manzana' ] ,
-      answer: 3
     },
     {
       question: "Es fruta de suave piel, aunque comience con dura. Al sabor es siempre fiel, y en almibar... de locura!",
@@ -276,13 +266,8 @@ function __main__() {
     },
     {
       question: "Parece que es la mas sana, más sana que fruta alguna. Al verla me vienen ganas de comer cuatro no una",
-      options: [ 'Cereza', 'Uva', 'Frutilla' ] ,
+      options: [ 'Cereza', 'Manzana', 'Frutilla' ] ,
       answer: 1
-    },
-    {
-      question: "A esta en racimo la quieren, por su sabor dulce y fino. Pero algunos la prefieren, porque les recuerda al vino",
-      options: [ 'Uva', 'Cereza', 'Manzana' ] ,
-      answer: 3
     },
     {
       question: "Es fruta de suave piel, aunque comience con dura. Al sabor es siempre fiel, y en almibar... de locura!",
