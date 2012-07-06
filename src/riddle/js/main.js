@@ -2,6 +2,7 @@ function __main__() {
   var level = ('level' in qs)? qs.level: 'easy';
   var points = 0;
   var riddles = [];
+  var positions = [];
     
   position = 0;
   if (level === 'easy') {
@@ -327,6 +328,22 @@ function __main__() {
     ];
   }
 
+  function shuffle(list) {
+    var i, j, t;
+    for (i = 1; i < list.length; i++) {
+      j = Math.floor(Math.random()*(1+i));  // choose j in [0..i]
+      if (j != i) {
+        t = list[i];                        // swap list[i] and list[j]
+        list[i] = list[j];
+        list[j] = t;
+      }
+    }
+    return list;
+  }
+  for (var i=0; i<riddles.length; i++) {
+    positions[positions.length] = i;
+  }
+  positions = shuffle(positions);
 
 
   function make_question(q, callback) {
@@ -378,8 +395,8 @@ function __main__() {
       }
     }
 
-    if( position < riddles.length ) {
-      make_question(riddles[position++], loop)
+    if( position < positions.length ) {
+      make_question(riddles[positions[position++]], loop)
     } else {
       clock.stop();
       ModalMessage.andRedirect(
