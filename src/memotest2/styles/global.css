@@ -1,4 +1,8 @@
 body {
+  -webkit-user-select: none;
+  -khtml-user-select: none;   
+  -webkit-user-select: none;
+ 
 	background:  url(../images/background.png);
 	color:#3B3B3B;
 	font-family:Arial, Helvetica, Sans-serif;

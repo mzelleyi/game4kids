@@ -29,9 +29,12 @@ function __main__ () {
     /* points */
     that.good = 0;
     that.bad = 0;
+    that.lifes = 3;
 
+    that.fruitsTimer = null;
 
     /* styling elements */
+    that.coins.innerHTML = String(that.good);
     that.tablet.style.width  = String(that.size.width)  + 'px';
     that.tablet.style.height = String(that.size.height) + 'px';
 
@@ -39,6 +42,11 @@ function __main__ () {
     that.teeths.style.top  = that.center.y + 'px';
     that.teeths.style.left = that.center.x + 'px';
     console.log(that.center);
+
+    that.youLost = function () {
+      ModalMessage.show("Perdiste");
+      clearInterval(that.fruitsTimer);
+    };
 
     function meals() {
       var div = document.createElement('div');
@@ -80,25 +88,37 @@ function __main__ () {
           that.teeths.style.left = -20 + e.clientX + "px";
         }
         if (e.target.className === 'badMeal') {
+          $('sumamal').play();
           e.target.className += ' eated';
           setTimeout(function() {
             e.target.className = 'removed';
           }, 1000);
  
           that.bad++;
-          that.coins.innerHTML = String(that.bad) + " --- " + String(that.good);
+          addClass($('diente1'), 'badtouch');
+          if (that.bad === 3) {
+            that.bad = 0;
+            var lifes = $('lifes')
+              , dientes  = lifes.getElementsByTagName('img');
+            that.lifes--;
+            lifes.removeChild(dientes[that.lifes]); 
+          }
+          if (that.lifes === 0) {
+            that.youLost();
+          }
         } else if (e.target.className === 'goodMeal') {
           e.target.className += ' eated';
+          $('audio_00').play();
           setTimeout(function() {
             e.target.className = 'removed';
           }, 1000);
           that.good++;
-          that.coins.innerHTML = String(that.bad) + " --- " + String(that.good);
+          that.coins.innerHTML = String(that.good);
         }
 
       });
 
-      setInterval(meals, 1000);
+      that.fruitsTimer = setInterval(meals, 1000);
     };
   }
 

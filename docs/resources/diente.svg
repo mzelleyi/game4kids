@@ -1,0 +1,26 @@
+<?xml version="1.0"?><svg width="744.09448819" height="1052.3622047" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+ <title>diente</title>
+ <defs>
+  <linearGradient id="linearGradient1697-9-6">
+   <stop stop-color="#69db0e" id="stop1698-4-1" offset="0"/>
+   <stop stop-color="#397607" id="stop1699-8-4" offset="1"/>
+  </linearGradient>
+  <linearGradient y2="0.933531" x2="0.491787" y1="0.077503" x1="0.491787" id="linearGradient3673-8-2" xlink:href="#linearGradient1697-9-6"/>
+  <linearGradient y2="1.321237" x2="0.482625" y1="-0.037723" x1="0.478642" id="linearGradient4817" xlink:href="#linearGradient1702-4-2"/>
+  <linearGradient id="linearGradient1702-4-2">
+   <stop stop-color="#ffffff" stop-opacity="0.690722" id="stop1703-5-2" offset="0"/>
+   <stop stop-color="#ffffff" stop-opacity="0" id="stop1704-5-1" offset="1"/>
+  </linearGradient>
+ </defs>
+ <metadata id="metadata3271">image/svg+xml</metadata>
+ <g>
+  <title>Layer 1</title>
+  <g id="layer1">
+   <g id="svg_1">
+    <path fill="#007fff" fill-rule="nonzero" stroke="url(#linearGradient3673-8-2)" stroke-width="0.327425" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="4" stroke-dashoffset="0" d="m337.41452,509.648773c0,38.176971 -30.948547,69.125519 -69.125732,69.125519c-38.177063,0 -69.12561,-30.948547 -69.12561,-69.125519c0,-38.176971 30.948547,-69.125732 69.12561,-69.125732c38.177185,0 69.125732,30.948761 69.125732,69.125732z" id="path1070-1-5"/>
+    <path opacity="0.9" fill="url(#linearGradient4817)" fill-rule="evenodd" id="path1713-1-7" d="m318.500061,491.439758c16.107422,-0.351013 -4.501831,-44.710388 -49.258728,-44.94635c-48.85228,-0.249451 -58.848587,40.284302 -51.087906,41.023438c0,0 13.383438,1.837952 26.117508,5.393433c20.502319,5.783661 45.580383,-4.744751 55.462402,-6.27478c11.015808,-1.705536 17.198853,5.588196 18.766724,4.80426z"/>
+    <path fill="#ffffff" fill-rule="nonzero" stroke="#cccccc" stroke-width="2" stroke-miterlimit="4" d="m285.612976,461.778778c-4.829956,0.06012 -10.734985,1.548218 -16.93396,2.421204c-15.695007,-1.454987 -29.536987,-8.025391 -29.536987,12.860992c0,9.338013 1.46698,16.238007 5.470947,29.178009c-1.434998,21.725006 2.709045,50.824005 5.165039,50.578033c1.411987,4.643982 6.781982,-14.564026 8.649963,-34.192017c2.237,-8.359009 14.513,-8.45105 16.614014,0.458008c1.311035,18.60199 9.281006,36.359985 10.622009,34.076965c1.848999,-1.513977 6.796021,-28.750977 6.015015,-51.031982c5.76001,-11.77002 5.750977,-20.050995 5.750977,-29.067017c0,-12.401001 -4.758972,-15.370087 -11.817017,-15.282196l0,0z" id="path7358"/>
+   </g>
+  </g>
+ </g>
+</svg>
