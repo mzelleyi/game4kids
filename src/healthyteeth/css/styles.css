@@ -94,7 +94,7 @@ body {
   left: 1000px;
   width: 100px;
   height: 50px;
-  z-index: 1001;
+  font-size: 40px;
 }
 #timer {
   position: absolute;

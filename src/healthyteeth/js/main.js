@@ -1,4 +1,16 @@
+
+
 function __main__ () {
+
+  var level = ('level' in qs)? qs.level: 'easy';
+  var fruits_per_second = 0;
+  if (level === 'easy') {
+    fruits_per_second = 2000;
+  } else if( level === 'middle') {
+    fruits_per_second = 1000;
+  } else {
+    fruits_per_second = 500;
+  }
   var Tablet = function()
   {
     var body = null
@@ -41,10 +53,9 @@ function __main__ () {
     that.teeths.className  = 'pointer';
     that.teeths.style.top  = that.center.y + 'px';
     that.teeths.style.left = that.center.x + 'px';
-    console.log(that.center);
 
     that.youLost = function () {
-      ModalMessage.show("Perdiste");
+      ModalMessage.andReload("Lograste " + that.good + " Puntos! Felicitaciones!");
       clearInterval(that.fruitsTimer);
     };
 
@@ -118,7 +129,7 @@ function __main__ () {
 
       });
 
-      that.fruitsTimer = setInterval(meals, 1000);
+      that.fruitsTimer = setInterval(meals, fruits_per_second);
     };
   }
 
