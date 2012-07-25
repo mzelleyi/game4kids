@@ -1,0 +1,174 @@
+a img {
+	border:none;
+}
+#logod {
+  height: 80px;
+  background-color: #fff;
+}
+
+#logod img {
+  height: 80px;
+}
+#content-wrapper {
+  margin: 0;
+	padding-left:0;
+	padding-right:0;
+	padding-bottom:0;
+	width:1300px;
+	font-family:Verdana, Geneva, sans-serif
+}
+#content-wrapper h1 {
+	padding-left:10px;
+}
+#gameWrapper {
+	width:1300px;
+	height:650px;
+}
+#gameWrapper h1 {
+	font-family: 'Bangers', verdana, arial;
+	font-size:75px;
+	color:#0000ff;
+	text-shadow: 1px 3px 2px #94D300, 10px 10px 10px #FFF;
+	text-align:center;
+}
+#board {
+/*	width:800px;*/
+	height:600px;
+	float:left;
+}
+.holder {
+	width:128px;
+	height:128px;
+	float:left;
+  font-size: 30px;
+	background-color: rgba(255,255,255,.5);
+	margin:10px;
+	-moz-border-radius: 15px;
+	border-radius: 15px;
+	-moz-box-shadow: 5px 5px 5px #333;
+	-webkit-box-shadow: 5px 5px 5px #333;
+	box-shadow: 5px 5px 5px #333;
+}
+.played {
+	background-color: rgba(250,214,15,.5);
+}
+.card {
+	width:128px;
+	height:128px;
+	background-image:url(../images/fruits.png);
+	background-repeat: no-repeat;
+}
+.enabled {
+	cursor: pointer;
+	cursor: hand;
+}
+.waiting {
+	cursor: auto;
+	opacity:0.5;
+}
+.flipped {
+	cursor: auto;
+}
+.card img {
+	width:128px;
+	height:128px;
+}
+#indicator {
+	width:1200px;
+	height:394px;
+	background:#DBDF0F;
+	text-align:center;
+	padding-top:200px;
+}
+#scoreWrapper {
+	width:350px;
+	float:left;
+	position:relative;
+}
+#scoreBoard {
+	width:250px;
+	height:280px;
+	float:left;
+	background-color: rgba(055,004,200,.5);
+	margin:0 30px;
+	-moz-border-radius: 15px;
+	border-radius: 15px;
+	-moz-box-shadow: 5px 5px 5px #0000cc;
+	-webkit-box-shadow: 5px 5px 5px #0000cc;
+	box-shadow: 5px 5px 5px #0000cc;
+}
+#scoreBoard p {
+	padding:0 15px 15px;
+	font-size:30px;
+	font-weight:bold;
+	color:#FFF;
+	font-family: 'Bangers', verdana, serif;
+}
+#scoreBoard p span {
+	display:block;
+	float:left;
+	width:100px;
+}
+#scoreBoard p span.label {
+	text-align:left;
+	text-shadow: 2px 2px 2px #00FE4A, 5px 5px 10px #0000ff;
+}
+#scoreBoard p span.counter {
+	text-align:right;
+	text-shadow: 2px 2px 2px #94D300, 5px 5px 5px #94D300
+}
+#restart {
+	position:absolute;
+	top:450px;
+	left: 150px;
+	z-index:20;
+	text-align:center;
+}
+#restart a {
+	text-decoration:none;
+	font-size:45px;
+	font-weight:bold;
+	color:#FFF;
+	font-family: 'Bangers', verdana, serif;
+	text-shadow: 2px 2px 2px #94D300, 5px 5px 5px #94D300
+}
+#restart a:hover{
+	text-shadow: 2px 2px 2px #FA6A1C, 5px 5px 5px #FA6A1C
+}
+#greetings {
+	position:absolute;
+	top:-250px;
+	left: 440px;
+	z-index:21;
+	font-size:50px;
+	font-weight:bold;
+	font-style:italic;
+	color:#9FCA02;
+	font-family: 'Bangers', verdana, serif;
+	text-shadow: 2px 2px 2px #AC6C32, 5px 5px 5px #D1B867;
+}
+#kiwi {
+	position:absolute;
+	top:150px;
+	left: 1150px;
+	z-index:21;
+}
+
+#soundmanager div {
+  float: left
+}
+#soundmanager {
+	border-radius: 15px;
+	-webkit-box-shadow: 5px 5px 5px #333;
+	box-shadow: 5px 5px 5px #333;
+	background-color: rgba(255,255,255,.5);
+	
+  position: absolute;
+  top: 40px;
+  left: 110px;
+  width: 200px;
+  z-index:1001;
+  -moz-opacity: 0.8;
+  opacity:.80;
+  filter: alpha(opacity=80);
+}
