@@ -1,0 +1,276 @@
+{
+  "trivia": {
+    "pregunta": [
+      {
+        "texto": "El tercer microclima del mundo se encuentra en:",
+        "correcta": "2",
+        "opcion": [
+          "Villa Mercedes",
+          "Villa de Merlo",
+          "Villa de la Quebrada"
+        ]
+      },
+      {
+        "texto": "El único Parque Nacional de San Luis se llama:",
+        "correcta": "1",
+        "opcion": [
+          "Sierra de Las Quijadas",
+          "Talampaya",
+          "Ischigualasto"
+        ]
+      },
+      {
+        "texto": "Cuál es la Calle de una vereda sola?",
+        "correcta": "3",
+        "opcion": [
+          "Calle Junín",
+          "Calle San Martín",
+          "Calle Angosta"
+        ]
+      },
+      {
+        "texto": "La Florida es:",
+        "correcta": "1",
+        "opcion": [
+          "Un dique",
+          "Un cerro",
+          "Un árbol"
+        ]
+      },
+      {
+        "texto": "La escuela de Sarmiento se encuentra en:",
+        "correcta": "2",
+        "opcion": [
+          "Luján",
+          "San Francisco del Monte de Oro",
+          "Quines"
+        ]
+      },
+      {
+        "texto": "El único río que corre de sur a norte es:",
+        "correcta": "3",
+        "opcion": [
+          "Río Quinto",
+          "Río Trapiche",
+          "Río Conlara"
+        ]
+      },
+      {
+        "texto": "El Hotel Potrero de los Funes se encuentra en:",
+        "correcta": "3",
+        "opcion": [
+          "El Volcán",
+          "La Huertita",
+          "Potrero de los Funes"
+        ]
+      },
+      {
+        "texto": "La Carolina se conoce por:",
+        "correcta": "2",
+        "opcion": [
+          "Las aguas termales",
+          "Las antiguas minas de oro",
+          "Las salinas"
+        ]
+      },
+      {
+        "texto": "Donde se encuentra el Parque Astronómico?",
+        "correcta": "2",
+        "opcion": [
+          "Cortaderas",
+          "Ciudad de La Punta",
+          "Concarán"
+        ]
+      },
+      {
+        "texto": "Inti Huasi es:",
+        "correcta": "2",
+        "opcion": [
+          "Un lago",
+          "Un cerro y una gruta",
+          "Un parque"
+        ]
+      },
+      {
+        "texto": "El Parque Bajo de Véliz se hizo conocido por: ",
+        "correcta": "1",
+        "opcion": [
+          "El fósil de la araña más grande del mundo",
+          "El bosque de algarrobos",
+          "El hotel temático"
+        ]
+      },
+      {
+        "texto": "Qué animales figuran en el escudo de San Luis?",
+        "correcta": "3",
+        "opcion": [
+          "Pumas",
+          "Caballos",
+          "Venados"
+        ]
+      },
+      {
+        "texto": "Que hay en Balde y San Jerónimo?",
+        "correcta": "1",
+        "opcion": [
+          "Aguas termales",
+          "Saltos de agua",
+          "Museos"
+        ]
+      },
+      {
+        "texto": "Donde se encuentra el Monumento al Pueblo Puntano de la Independencia?",
+        "correcta": "2",
+        "opcion": [
+          "Tilisarao",
+          "Las Chacras",
+          "Santa Rosa del Conlara"
+        ]
+      },
+      {
+        "texto": "Cual es el mineral que se extrae en La Toma?",
+        "correcta": "2",
+        "opcion": [
+          "Tungsteno",
+          "Onix",
+          "Oro"
+        ]
+      },
+      {
+        "texto": "El Morro es:",
+        "correcta": "3",
+        "opcion": [
+          "Un pájaro",
+          "Una piedra",
+          "Un cerro"
+        ]
+      },
+      {
+        "texto": "Que significa Nogolí?",
+        "correcta": "3",
+        "opcion": [
+          "Tierra del maíz",
+          "Campo fértil",
+          "Aguas claras"
+        ]
+      },
+      {
+        "texto": "Al pie de que sierra se encuentra la Villa de Merlo?",
+        "correcta": "1",
+        "opcion": [
+          "Comechingones",
+          "Sierras de San Luis",
+          "Las Quijadas"
+        ]
+      },
+      {
+        "texto": "Como se llama la autopista que pasa por la ciudad de San Luis?",
+        "correcta": "2",
+        "opcion": [
+          "Santos Ortiz",
+          "Serranías Puntanas",
+          "Ruta 55"
+        ]
+      },
+      {
+        "texto": "Cuál es el viento característico de la Ciudad de San Luis?",
+        "correcta": "1",
+        "opcion": [
+          "El Chorrillero",
+          "El zonda",
+          "El Monzón"
+        ]
+      },
+      {
+        "texto": "Cómo se llama el gran héroe puntano?",
+        "correcta": "1",
+        "opcion": [
+          "Juan Pascual Pringles",
+          "Juan Martín Guemes",
+          "Manuel Belgrano"
+        ]
+      },
+      {
+        "texto": "La primera ciudad fundada en el siglo XXI es: ",
+        "correcta": "3",
+        "opcion": [
+          "La Ribera del Río Quinto",
+          "Nueva Galia",
+          "La Punta"
+        ]
+      },
+      {
+        "texto": "Qué actriz fue homenajeada en el Festival Internacional San Luis Cine 2007?",
+        "correcta": "2",
+        "opcion": [
+          "Elizabeth Tailor",
+          "Catherine Denueve",
+          "Susan Sarandon"
+        ]
+      },
+      {
+        "texto": "Qué carrera se corre en el circuito internacional de Potrero de los Funes?",
+        "correcta": "2",
+        "opcion": [
+          "Fórmula 1",
+          "FIA GT",
+          "Indi Car"
+        ]
+      },
+      {
+        "texto": "El Tour de San Luis es una carrera ciclística internacional que se corre en:",
+        "correcta": "3",
+        "opcion": [
+          "Mayo",
+          "Noviembre",
+          "Enero"
+        ]
+      },
+      {
+        "texto": "Como se llaman las salinas?",
+        "correcta": "3",
+        "opcion": [
+          "Del Carrizal",
+          "De Río Hondo",
+          "Del Bebedero"
+        ]
+      },
+      {
+        "texto": "Que tiene Papagayos?",
+        "correcta": "1",
+        "opcion": [
+          "Palmeras Caranday",
+          "Arrayanes",
+          "Guayacanes"
+        ]
+      },
+      {
+        "texto": "El sur de la provincia se caracteriza por tener:",
+        "correcta": "2",
+        "opcion": [
+          "Pistas de esqui",
+          "Lagunas para pesca",
+          "Montañas"
+        ]
+      },
+      {
+        "texto": "Al pie de que sierras se encuentra la ciudad de San Luis?",
+        "correcta": "3",
+        "opcion": [
+          "Sierras de Tilisarao",
+          "Sierras de Socoscora",
+          "Sierras de San Luis"
+        ]
+      },
+      {
+        "texto": "Cuántos Km. de autopistas hay en la provincia?",
+        "correcta": "1",
+        "opcion": [
+          "516 Km.",
+          "400 Km.",
+          "280 Km."
+        ]
+      }
+    ]
+  }
+}

@@ -1,0 +1,77 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>mAlaniz: MemoTest</title>
+<link rel="stylesheet" type="text/css" href="styles/global.css"/>
+
+<script src="js/jquery.min.js"></script>
+<script src="js/jquery.easing.1.3.js"></script>
+<script src="js/jQueryPreload.js"></script>
+<script src="js/jQueryRotate.2.1.js"></script>
+<script src="js/jquery.shuffle.js"></script>
+<script src="js/jquery.tmpl.min.js"></script>
+<script src="js/utils.js"></script>
+<script src="js/database.js"></script>
+<script src="js/zmain.js"></script>
+
+
+<link  href="http://fonts.googleapis.com/css?family=Bangers:regular" rel="stylesheet" type="text/css" >
+<link rel="stylesheet" type="text/css" href="styles/style.css">
+
+</head>
+<body id="body">
+  <center>
+  <div id="logod">
+    <img src="images/logod.png">
+  </div>
+  <div id='body-wrapper'>
+   <div id='outer-wrapper'>
+  </div>
+  <div style='clear:both;'/>  <div id="content-wrapper">
+    <div id="gameWrapper">
+      <div id=soundmanager></div>
+      <p id="indicator">
+      		<img src="images/loading.png" width="252" height="71" /><br />
+		    <img src="images/ajax-loader.gif" width="220" height="19" />
+      </p>
+      <div id="gameContent" style="display:none">
+          <div id="scoreWrapper">
+          	<h1>Memotest</h1>
+            <div id="scoreBoard">
+              <p><span class="label">Tiempo:</span><span class="counter" id="timeCount">-</span></p>
+	            <p><span class="label">Clicks1:</span><span class="counter" id="tapsCount">-</span></p>
+              <p><span class="label">Puntos1:</span><span class="counter" id="scoreCount">-</span></p>
+              </div>
+            </div>
+            <!--div id="restart" style="display:none;"><a href="javascript:restart()">Reiniciar<br /><img src="images/raft.png"></a></div-->
+			<div id="greetings"> Ganaste!</div>
+            <div id="kiwi" style="display:none;"><img src="images/kiwi.png"></div>
+          </div>
+          <div id="board"></div>          
+          <audio src='sound/01.wav' preload='auto' id='audio_01' class=audio></audio>
+          <audio src='sound/09.wav' preload='auto' id='audio_09' class=audio></audio>
+          <audio src='sound/11.wav' preload='auto' id='audio_11' class=audio></audio>
+          <audio src='sound/12.wav' preload='auto' id='audio_12' class=audio></audio>
+          <audio src='sound/suma_mal.wav' preload='auto' id='sumamal' class=audio></audio>
+
+          <!--audio  loop="loop" autoplay="autoplay" id="music">
+            <source src="sound/osito.mp3" type="audio/mpeg" />
+          </audio-->
+     </div>
+     <div class="clear"></div>
+  </div>  
+</div>
+
+</center>
+<script>
+  posPage();
+</script>
+
+</body>
+</html>
+
+
+
+
+

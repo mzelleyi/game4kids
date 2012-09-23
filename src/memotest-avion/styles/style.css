@@ -3,11 +3,14 @@ a img {
 }
 #logod {
   height: 80px;
-  background-color: #fff;
+  background-color: #aaa;
+	opacity:0.8;
 }
 
 #logod img {
+  float: right;
   height: 80px;
+  padding-right: 100px;
 }
 #content-wrapper {
   margin: 0;
@@ -27,7 +30,7 @@ a img {
 #gameWrapper h1 {
 	font-family: 'Bangers', verdana, arial;
 	font-size:75px;
-	color:#0000ff;
+	color:#3333ff;
 	text-shadow: 1px 3px 2px #94D300, 10px 10px 10px #FFF;
 	text-align:center;
 }
@@ -96,6 +99,7 @@ a img {
 	-moz-box-shadow: 5px 5px 5px #0000cc;
 	-webkit-box-shadow: 5px 5px 5px #0000cc;
 	box-shadow: 5px 5px 5px #0000cc;
+
 
 }
 #scoreBoard p {
