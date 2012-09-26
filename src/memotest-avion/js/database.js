@@ -44,7 +44,7 @@ function getPosition(id, renderPosition) {
         var i=0, length = 0;
         for (i=0, length=results.rows.length; i<length; i++) {
           if (results.rows.item(i).id === id) {
-            renderPosition(i+1, length-1);
+            renderPosition(i+1, length);
             return;
           }
         }
