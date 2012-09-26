@@ -171,7 +171,7 @@ function sound_manager(o) {
   i = 4;
   tv.style.backgroundPosition = "-" + String(w*i) + "px 0px";
   tv.onclick = function (e) {
-    window.location = '../index.html';
+    window.location = '';
   };
   o.appendChild(tv);
 
