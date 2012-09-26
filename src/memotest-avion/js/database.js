@@ -33,6 +33,28 @@ function selectAll() {
   });
 }
 
+function getPosition(id, renderPosition) {
+  /* posible problema por renderPosition y la clausura,
+   * al no usar funcion anonima en el dataPositionHandler
+   */
+  POINTSDB.transaction(function(transaction) {
+    transaction.executeSql("SELECT * FROM memo_players ORDER BY points DESC",
+      [], 
+      function (tx, results) {
+        var i=0, length = 0;
+        for (i=0, length=results.rows.length; i<length; i++) {
+          if (results.rows.item(i).id === id) {
+            renderPosition(i+1, length-1);
+            return;
+          }
+        }
+      }
+
+    );
+  });
+}
+
+
 function dataSelectHandler(transaction, results) {
   var i = 0, length = 0;
 
@@ -42,12 +64,18 @@ function dataSelectHandler(transaction, results) {
   }
 }
 
-function insertElement(points) {
+function insertElement(points, renderPosition) {
   POINTSDB.transaction(function(transaction) {
     var winOn = new Date();
     transaction.executeSql(
       "INSERT INTO memo_players (points, win_on) VALUES (?,?)", 
-      [points, winOn]
+      [points, winOn],
+      function (transaction2, resultSet) {
+        id = resultSet.insertId;
+        console.log("este es el id a buscar: " + id);
+        getPosition(id, renderPosition );
+     }, 
+      errorHandler
     );
   });
 }

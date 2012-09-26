@@ -266,13 +266,17 @@ var checkFinish = function (){
     //hide cards
     $(".holder").fadeOut('fast');		
 
-    //show finish message
-    $("#kiwi").fadeIn('fast');
-    $("#greetings").animate({top: '290px' }, {queue:false, duration:600, easing:'easeOutBounce'});
-    $("#kiwi").animate({left: '550px' }, {queue:false, duration:1200, easing:'easeOutBounce'});
-
+    // store in database
     initDatabase();
-    insertElement(points);
+    insertElement(score, function(pos, all) {
+      //show finish message
+      $("#position").html("Estas en la position " + pos + " de " + all + " jugadores.");
+      $("#kiwi").fadeIn('fast');
+      $("#greetings").animate({top: '290px' }, {queue:false, duration:600, easing:'easeOutBounce'});
+      $("#kiwi").animate({left: '550px' }, {queue:false, duration:1200, easing:'easeOutBounce'});
+
+    });
+
 
   }	
 };
