@@ -156,7 +156,7 @@ function __main__() {
     } else {
       clock.stop();
       ModalMessage.andRedirect(
-          "Terminaste!!! hiciste " + points + " puntos!!! <br>"
+          "<a href='javascript:void(0)'><img style='width:300px' src='images/win.png'></a>" 
       , function() {
         redirectTo('');
         return;
