@@ -166,7 +166,7 @@ function __main__() {
   }
 
   ModalMessage.andRedirect("<a id=lplay href='javascript:void(0)'> <img id=play src=images/play.png> </a>", function() {
-    clock.time = 300;
+    clock.time = 20;
     clock.start();
     loop();
     ModalMessage.close();
