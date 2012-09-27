@@ -1,5 +1,6 @@
 var i= 0;
 
+
 setInterval(function() {
   i = ((i + 1) % 4);
   $('body').style.backgroundImage = "url('images/fondo" + i +".png')";
@@ -151,7 +152,7 @@ function __main__() {
       }
     }
 
-    if( position < positions.length ) {
+    if( position < positions.length && points < 3) {
       make_question(riddles[positions[position++]], loop)
     } else {
       clock.stop();
