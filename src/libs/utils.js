@@ -474,7 +474,7 @@ function controlManager (options) {
 
 /* END sound manager */
 
-
+/*
 var clock = new Timer({
  render: 'timer', 
  label: 'El Tiempo',
@@ -488,4 +488,5 @@ var clock = new Timer({
 
 
 clock.start();
+*/
 c = new controlManager({render: 'soundmanager'});
