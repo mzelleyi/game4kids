@@ -477,7 +477,7 @@ function controlManager (options) {
 var clock = new Timer({
  render: 'timer', 
  label: 'El Tiempo',
- time: 300,
+ time: 20,
  eventValue: 0,
  callback: function () {
    ModalMessage.andReload("Perdiste!!!");
