@@ -5,7 +5,7 @@ body {
 
   margin:0; 
   /*background-position: 0px 80px;*/
-  background-image:  url('../images/fondo.png');
+  background-image:  url('../images/fondo0.png');
  
   -webkit-background-size : cover;
   -moz-background-size    : cover;
@@ -266,9 +266,10 @@ body {
 
 }
 #timer {
-  position:relative;
+  position:absolute;
   padding: 10px;
   font-size:25px;
+  padding-left: 400px;
   z-index: 2000;
 
 }
@@ -436,4 +437,10 @@ box-shadow: 0 0 10px #87F, 0 0 10px #87F,0 0 0.3em #87F;
   z-index: 1000;
 
   top : 130px; left : 800px; 
+}
+
+
+
+#play {
+  width: 200px;
 }

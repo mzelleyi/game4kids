@@ -175,9 +175,9 @@ var ModalMessage  = {
     var o = $('light');
     o.style.display = 'block';
     o.getElementsByTagName('p')[0].innerHTML = msg;
-    document.getElementById('fade').style.display='block';
+    document.getElementById('fade').style.display = 'block';
     o.getElementsByTagName('a')[0].onclick = f;
-    
+    o.getElementsByTagName('a')[1].onclick = f;
   }
 };
 
@@ -474,7 +474,6 @@ function controlManager (options) {
 
 /* END sound manager */
 
-/*
 var clock = new Timer({
  render: 'timer', 
  label: 'El Tiempo',
@@ -486,7 +485,6 @@ var clock = new Timer({
  next: 'dec'
 });
 
+window.clock = clock;
 
-clock.start();
-*/
 c = new controlManager({render: 'soundmanager'});

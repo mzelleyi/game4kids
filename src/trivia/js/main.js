@@ -1,3 +1,10 @@
+var i= 0;
+
+setInterval(function() {
+  i = ((i + 1) % 4);
+  $('body').style.backgroundImage = "url('images/fondo" + i +".png')";
+}, 5000);
+
 function __main__() {
   var level = ('level' in qs)? qs.level: 'easy';
   var points = 0;
@@ -94,32 +101,43 @@ function __main__() {
 
     if ((event.response !== 3) && (event.response !== event.riddle.answer)) {
       $('audio_01').play();
-      ModalMessage.show("Tienes otro intento!");
-      points = (points === 0)? 0: points - 1;
+      ModalMessage.andRedirect(
+          "Perdiste!!!"
+      , function() {
+        location.reload(true);
+        clock.stop();
+        return;
+      });
+
       return;
     } else {
       if (event.response === event.riddle.answer) {
         points++;
-        // update points
       }
     }
 
     if( position < positions.length ) {
       make_question(riddles[positions[position++]], loop)
     } else {
-      //clock.stop();
+      clock.stop();
       ModalMessage.andRedirect(
           "Terminaste!!! hiciste " + points + " puntos!!! <br>"
       , function() {
-        redirectTo('../index.html');
+        redirectTo('');
         return;
       });
     }
-
-
-
   }
-  loop(); 
+
+  ModalMessage.andRedirect("<a href='javascript:void(0)'> <img id=play src=images/play.png> <br> Click para comenzar</a>", function() {
+    clock.time = 300;
+    clock.start();
+    loop();
+    ModalMessage.close();
+    return;
+  });
+ 
+
 }
 
 
