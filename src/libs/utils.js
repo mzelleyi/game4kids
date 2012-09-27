@@ -219,7 +219,7 @@ function Timer(options) {
   function eachTime() {
       if (that.time === that.options.eventValue) {
         that.time = that.options.time;
-        that.callback();
+        that.options.callback();
         clearInterval(that.timer);
       }
       that.options.render.innerHTML = that.options.label + " : ";
