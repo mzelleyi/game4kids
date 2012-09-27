@@ -184,25 +184,30 @@ body {
   width: 92%;
   font-size: 26px;
 
-  -webkit-animation: bright 1s linear 0s infinite alternate;
+  /*-webkit-animation: bright 1s linear 0s infinite alternate;
+   * */
 }
+/*
 @-webkit-keyframes bright {
   0% { box-shadow: 0px 5px 5px #333; }
   100% { box-shadow: 0px 10px 10px #843; }
 }
 
+*/
 
 #render a:first-child {
   margin-right: 100px;
 }
 #render a:hover {
-  -webkit-animation: sizing 1s linear 0s infinite alternate;
+ /* -webkit-animation: sizing 1s linear 0s infinite alternate;
+  */
 }
+/*
 @-webkit-keyframes sizing {
   0% { background-color: #000; }
   100% { background-color: #aaa; }
 }
-
+*/
 
 
 
@@ -412,9 +417,11 @@ body {
 
 .animationFruits {
 
-  -webkit-animation: titleAnim 2s linear 0s infinite alternate;
+  /*-webkit-animation: titleAnim 2s linear 0s infinite alternate;
+   */
 }
 
+/*
 @-webkit-keyframes titleAnim {
 from { 
 box-shadow: 0 0 10px #020055, 0 0 10px #020055,0 0 0.3em #020055;
@@ -423,7 +430,7 @@ to {
 box-shadow: 0 0 10px #87F, 0 0 10px #87F,0 0 0.3em #87F;
 }
 }
-
+*/
  
 #pajarito1 {
   position:relative;
@@ -443,4 +450,9 @@ box-shadow: 0 0 10px #87F, 0 0 10px #87F,0 0 0.3em #87F;
 
 #play {
   width: 200px;
+}
+#lplay {
+  padding-right: 50px;; 
+  text-decoration: none;
+
 }

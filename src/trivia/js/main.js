@@ -33,7 +33,42 @@ function __main__() {
       question: "El Gobernador Claudio POGGI entrega viviendas",
       options: [ 'Aun no entrega viviendas, comenzará en Diciembre del 2012', 'Todos los meses.', 'Dos viviendas cada tres meses.' ] ,
       answer: 1
+    },
+    {
+      question: "El acceso a una vivienda digna es:",
+      options: [ 'Un lujo de quien pueda tenerla.', 'Es imposible en San Luis', 'Es un derecho de quien la necesita' ] ,
+      answer: 2
+    },
+    {
+      question: "El Gobierno de la Provincia de San Luis construyó y entregó",
+      options: [ 'Más de 55.000 viviendas', '1.500 viviendas', 'Un poco más de 10.000 viviendas' ] ,
+      answer: 0
+    },
+    {
+      question: "En la actualidad hay en marcha de construcción",
+      options: [ 'Aproximadamente 146 viviendas sociales', 'Aproximadamente 1000 viviendas sociales', 'Aproximadamente 2000 viviendas sociales' ] ,
+      answer: 2
+    },
+    {
+      question: "A pesar de ser llamadas ‘Viviendas Sociales’, las casas que construye el Estado Provincial son realizadas con material de primera calidad, poseen tres ambientes",
+      options: [ 'No, se construyen con materiales reciclados y económicos', 'No, solo poseen un ambiente amplio', 'Si, los materiales son de primera calidad y poseen tres ambientes' ] ,
+      answer: 2
+    },
+    {
+      question: "Siguiendo las políticas del Gobierno Provincial se están construyendo viviendas en toda la Provincia",
+      options: [ 'No, solo se construyen en la ciudad de San Luis', 'Se construyen en todo el territorio provincial', 'Se construyen en la ciudad de San Luis, Merlo y Villa Mercedes' ] ,
+      answer: 1
+    },
+    {
+      question: "Internos del servicio penitenciario realizarán materiales para el Plan Solidaridad",
+      options: [ 'Realizarán puertas y ventanas de maderas y metálicas para el Plan de viviendas.', 'Los internos no pueden tener ningún tipo de vínculo con la sociedad', 'Todos los internos trabajarán en las obras de construcción de viviendas.' ] ,
+      answer: 0
     }
+  
+  
+  
+  
+  
    
     ];
 
@@ -129,7 +164,7 @@ function __main__() {
     }
   }
 
-  ModalMessage.andRedirect("<a href='javascript:void(0)'> <img id=play src=images/play.png> <br> Click para comenzar</a>", function() {
+  ModalMessage.andRedirect("<a id=lplay href='javascript:void(0)'> <img id=play src=images/play.png> </a>", function() {
     clock.time = 300;
     clock.start();
     loop();

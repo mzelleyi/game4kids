@@ -466,7 +466,7 @@ function controlManager (options) {
   buttonBack.off = false;
   buttonBack.define('onoff',  [1,0], 'y', 4);
   buttonBack.event('click', function(e) {
-    redirectTo('../index.html');
+    window.location = '';
   });
 
 
