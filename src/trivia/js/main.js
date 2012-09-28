@@ -12,7 +12,6 @@ function __main__() {
   var riddles = [];
   var positions = [];
     
-  position = 0;
   if (level === 'easy') {
     riddles = [
     {
@@ -73,6 +72,7 @@ function __main__() {
    
     ];
 
+  position = Math.floor(Math.random() * (riddles.length - 1));
   } else if (level === 'middle') {
     // middle
     riddles = [];
@@ -136,9 +136,10 @@ function __main__() {
     event.riddle   = ('riddle'   in event)? event.riddle  : 'invalid';
 
     if ((event.response !== 3) && (event.response !== event.riddle.answer)) {
-      $('audio_01').play();
+      $('music').pause();
+      $('looser').play();
       ModalMessage.andRedirect(
-          "Perdiste!!!"
+          "<a id=lplay href='javascript:void(0)'> <img id=play src=images/perdiste.png> </a>"
       , function() {
         location.reload(true);
         clock.stop();
@@ -155,6 +156,8 @@ function __main__() {
     if( position < positions.length && points < 3) {
       make_question(riddles[positions[position++]], loop)
     } else {
+      $('music').pause();
+      $('winner').play();
       clock.stop();
       ModalMessage.andRedirect(
           "<a href='javascript:void(0)'><img style='width:300px' src='images/win.png'></a>" 
@@ -165,7 +168,12 @@ function __main__() {
     }
   }
 
+  $('music').pause();
+  $('previous').play();
   ModalMessage.andRedirect("<a id=lplay href='javascript:void(0)'> <img id=play src=images/play.png> </a>", function() {
+    $('previous').pause();
+    $('music').play();
+ 
     clock.time = 20;
     clock.start();
     loop();
