@@ -1,13 +1,21 @@
+@font-face {
+  font-family: 'Bangers';
+  font-style: normal;
+  font-weight: 400;
+  src: local('Bangers'), local('Bangers-Regular'), url(../fonts/DqeGA7eaz0hhOYTfkeJBIA.woff) format('woff');
+}
 body {
   -webkit-user-select: none;
   -khtml-user-select: none;   
   -webkit-user-select: none;
  
 	background:  url(../images/fondo.jpg);
+  /*
   -webkit-background-size : cover;
   -moz-background-size    : cover;
   -o-background-size      : cover;
   background-size         : cover;
+  */
 
 	color:#3B3B3B;
 	font-family:Arial, Helvetica, Sans-serif;
