@@ -33,6 +33,8 @@
   document.getElementById('loading').style.display = 'block';
   document.getElementById('fade').style.display = 'block';
   load.css( [ 'css/styles.css'] );                                                                     
+  load.js([ 'js/riddles.js']);
+  
   load.js([ 'js/utils.js', 'js/main.js' ], function() {
     $('loading').style.display='none';
     $('fade').style.display='none';
